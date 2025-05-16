@@ -11,7 +11,7 @@
 
 **AmazôniaExperience** é uma plataforma inovadora que visa enriquecer a experiência de visitantes internacionais, especialmente estudantes e acadêmicos, durante a COP30 em Belém do Pará (10-21 de novembro de 2025). Através de um sistema de gamificação integrado com a agenda oficial do evento, incentivamos a exploração cultural e turística da região amazônica, promovendo o turismo sustentável e a valorização da cultura local.
 
-> **"Conheça Belém, participe dos eventos da COP30 e acumule AmaCoins para experiências únicas da Amazônia"**
+> **"Conheça Belém, participe dos eventos da COP30 e acumule AmaCoins para experiências únicas na Amazônia"**
 
 ## ✨ Funcionalidades Principais
 
