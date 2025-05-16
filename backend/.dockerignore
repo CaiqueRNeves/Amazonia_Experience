@@ -1,0 +1,55 @@
+# Dependências
+node_modules
+npm-debug.log
+yarn-error.log
+yarn-debug.log
+package-lock.json
+
+# Arquivos de ambiente
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs
+*.log
+
+# Arquivos de banco de dados
+*.sqlite
+*.sqlite3
+*.db
+!src/database/test.sqlite3
+
+# Diretório de cobertura de testes
+coverage
+
+# Diretório de build
+dist
+build
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Diretório de uploads
+uploads
+
+# Arquivos de IDE e editores
+.idea
+.vscode
+*.swp
+*.swo
+
+# Arquivos de controle de versão
+.git
+.gitignore
+
+# Arquivos de Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Documentação e outros arquivos não necessários em produção
+README.md
+LICENSE
+docs

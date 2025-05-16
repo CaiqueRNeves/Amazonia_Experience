@@ -1,0 +1,7 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "🔍 Verificando código com ESLint..."
+npm run lint
+
+echo "✅ Código verificado com sucesso!"
