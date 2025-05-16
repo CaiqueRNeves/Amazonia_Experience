@@ -1,0 +1,120 @@
+exports.seed = async function(knex) {
+  // Deleta todos os registros existentes
+  await knex('emergency_services').del();
+  
+  // Insere os serviços de emergência
+  return knex('emergency_services').insert([
+    {
+      id: 1,
+      name: 'Hospital Pronto Socorro Municipal Mário Pinotti',
+      service_type: 'hospital',
+      address: 'Av. 14 de Março, s/n - Umarizal, Belém - PA',
+      latitude: -1.4547,
+      longitude: -48.4880,
+      phone_number: '(91) 3252-6111',
+      alternative_phone: null,
+      opening_hours: '24 horas',
+      is_24h: true,
+      languages_spoken: JSON.stringify(['pt-BR', 'en-US']),
+      additional_info: 'Principal hospital de emergência de Belém, com pronto-atendimento para casos urgentes.',
+      created_at: new Date(),
+      updated_at: new Date()
+    },
+    {
+      id: 2,
+      name: 'Hospital de Pronto Socorro Dr. João Lúcio Pereira Machado',
+      service_type: 'hospital',
+      address: 'Av. Cosme Ferreira, 3937 - Aleixo, Belém - PA',
+      latitude: -1.4410,
+      longitude: -48.4762,
+      phone_number: '(91) 3249-9555',
+      alternative_phone: null,
+      opening_hours: '24 horas',
+      is_24h: true,
+      languages_spoken: JSON.stringify(['pt-BR']),
+      additional_info: 'Hospital de referência para emergências e trauma.',
+      created_at: new Date(),
+      updated_at: new Date()
+    },
+    {
+      id: 3,
+      name: 'Farmácia 24h Drogasil',
+      service_type: 'pharmacy',
+      address: 'Av. Presidente Vargas, 158 - Campina, Belém - PA',
+      latitude: -1.4522,
+      longitude: -48.4992,
+      phone_number: '(91) 3212-5050',
+      alternative_phone: null,
+      opening_hours: '24 horas',
+      is_24h: true,
+      languages_spoken: JSON.stringify(['pt-BR', 'en-US']),
+      additional_info: 'Farmácia com amplo estoque de medicamentos e alguns funcionários que falam inglês.',
+      created_at: new Date(),
+      updated_at: new Date()
+    },
+    {
+      id: 4,
+      name: '8º Batalhão de Polícia Militar',
+      service_type: 'police',
+      address: 'Av. Governador José Malcher, 1365 - Nazaré, Belém - PA',
+      latitude: -1.4567,
+      longitude: -48.4798,
+      phone_number: '190',
+      alternative_phone: '(91) 3214-2190',
+      opening_hours: '24 horas',
+      is_24h: true,
+      languages_spoken: JSON.stringify(['pt-BR']),
+      additional_info: 'Batalhão da polícia militar com equipe designada para atendimento a turistas durante a COP30.',
+      created_at: new Date(),
+      updated_at: new Date()
+    },
+    {
+      id: 5,
+      name: 'Corpo de Bombeiros Militar do Pará - Quartel Central',
+      service_type: 'fire_department',
+      address: 'Av. Júlio César, 3000 - Val-de-Cans, Belém - PA',
+      latitude: -1.3891,
+      longitude: -48.4763,
+      phone_number: '193',
+      alternative_phone: '(91) 3258-2323',
+      opening_hours: '24 horas',
+      is_24h: true,
+      languages_spoken: JSON.stringify(['pt-BR']),
+      additional_info: 'Unidade central do Corpo de Bombeiros, responsável por atendimentos de emergência em toda a cidade.',
+      created_at: new Date(),
+      updated_at: new Date()
+    },
+    {
+      id: 6,
+      name: 'Delegacia Especializada em Atendimento ao Turista (DEAT)',
+      service_type: 'tourist_police',
+      address: 'Av. Presidente Vargas, 915 - Campina, Belém - PA',
+      latitude: -1.4530,
+      longitude: -48.4980,
+      phone_number: '(91) 3222-2150',
+      alternative_phone: '(91) 98415-3434',
+      opening_hours: 'Segunda a sexta: 08:00 - 18:00, Sábado e domingo: 09:00 - 15:00',
+      is_24h: false,
+      languages_spoken: JSON.stringify(['pt-BR', 'en-US', 'es-ES', 'fr-FR']),
+      additional_info: 'Delegacia especializada no atendimento a turistas, com policiais que falam diversos idiomas. Durante a COP30, terá horário estendido.',
+      created_at: new Date(),
+      updated_at: new Date()
+    },
+    {
+      id: 7,
+      name: 'Consulado dos Estados Unidos em Belém',
+      service_type: 'embassy',
+      address: 'Av. Boulevard Castilhos França, 452 - Campina, Belém - PA',
+      latitude: -1.4505,
+      longitude: -48.5036,
+      phone_number: '(91) 3226-9695',
+      alternative_phone: null,
+      opening_hours: 'Segunda a sexta: 09:00 - 16:00',
+      is_24h: false,
+      languages_spoken: JSON.stringify(['pt-BR', 'en-US']),
+      additional_info: 'Consulado com serviços de assistência a cidadãos americanos em situações de emergência.',
+      created_at: new Date(),
+      updated_at: new Date()
+    }
+  ]);
+};
