@@ -1,0 +1,40 @@
+# Dependências
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn-debug.log
+package-lock.json
+
+# Arquivos de ambiente
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs
+*.log
+
+# Arquivos de banco de dados
+*.sqlite
+*.sqlite3
+*.db
+
+# Diretório de cobertura de testes
+coverage/
+
+# Diretório de build
+dist/
+build/
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Diretório de uploads
+uploads/
+
+# Arquivos de IDE e editores
+.idea/
+.vscode/
+*.swp
+*.swo
