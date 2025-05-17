@@ -17,7 +17,11 @@ Este é o backend da plataforma AmazôniaExperience, desenvolvida para a COP30 e
 - **GitHub Actions**: CI/CD pipeline
 - **Outras bibliotecas**: Helmet, Express Rate Limit, Express Validator, i18next, etc.
 
+
 ## 📁 Estrutura do Projeto
+
+> **"Conheça Belém, participe dos eventos da COP30 e acumule AmaCoins para experiências únicas na Amazônia"**
+
 
 ```
 backend/
@@ -328,5 +332,9 @@ Para documentar novos endpoints, adicione anotações de Swagger no arquivo de r
 
 ## 👨‍💻 Autores
 
+
 - **Caique Rabelo Neves** - caiquerabelo2015@hotmail.com
 - **Lucas Soares dos Santos** - lluquinhas482@gmail.com
+
+------------------------------------------------------------------------------------------------------------------
+
