@@ -1,0 +1,423 @@
+{
+  "app": {
+    "name": "AmazôniaExperience",
+    "tagline": "Ваш полный опыт COP30",
+    "loading": "Загрузка..."
+  },
+  "nav": {
+    "home": "Главная",
+    "events": "События",
+    "places": "Места",
+    "rewards": "Награды",
+    "quizzes": "Викторины",
+    "connectivity": "Подключение",
+    "emergency": "Экстренная помощь",
+    "chat": "Ассистент",
+    "profile": "Профиль"
+  },
+  "auth": {
+    "login": "Вход",
+    "register": "Регистрация",
+    "logout": "Выход",
+    "email": "Электронная почта",
+    "password": "Пароль",
+    "confirmPassword": "Подтвердите пароль",
+    "name": "Имя",
+    "nationality": "Гражданство",
+    "forgotPassword": "Забыли пароль?",
+    "noAccount": "Нет аккаунта?",
+    "hasAccount": "Уже есть аккаунт?",
+    "createAccount": "Создать аккаунт",
+    "loginNow": "Войти сейчас",
+    "loginSuccess": "Вход выполнен успешно!",
+    "registerSuccess": "Регистрация выполнена успешно!",
+    "logoutSuccess": "Вы вышли из системы",
+    "loginRequired": "Пожалуйста, войдите, чтобы продолжить",
+    "welcomeBack": "С возвращением",
+    "welcome": "Добро пожаловать в AmazôniaExperience"
+  },
+  "profile": {
+    "title": "Мой профиль",
+    "edit": "Редактировать профиль",
+    "save": "Сохранить изменения",
+    "cancel": "Отмена",
+    "myAmacoins": "Мои AmaCoins",
+    "myVisits": "Мои посещения",
+    "myRedemptions": "Мои награды",
+    "notifications": "Уведомления",
+    "personalInfo": "Личная информация",
+    "preferences": "Предпочтения",
+    "settings": "Настройки",
+    "language": "Язык",
+    "theme": "Тема",
+    "profileUpdated": "Профиль успешно обновлен!"
+  },
+  "amacoins": {
+    "balance": "Баланс",
+    "history": "История",
+    "earned": "Заработано",
+    "spent": "Потрачено",
+    "earnMore": "Заработать больше AmaCoins",
+    "howToEarn": "Как заработать AmaCoins",
+    "earnedFrom": "Получено от",
+    "spentOn": "Потрачено на"
+  },
+  "events": {
+    "title": "События",
+    "upcoming": "Предстоящие события",
+    "ongoing": "Текущие события",
+    "past": "Прошедшие события",
+    "featured": "Рекомендуемые события",
+    "all": "Все события",
+    "nearby": "События поблизости",
+    "search": "Поиск событий",
+    "filter": "Фильтр событий",
+    "date": "Дата",
+    "time": "Время",
+    "location": "Место",
+    "type": "Тип",
+    "details": "Детали события",
+    "checkin": "Регистрация",
+    "checkinSuccess": "Регистрация успешна!",
+    "checkinFailed": "Ошибка регистрации",
+    "alreadyCheckedIn": "Вы уже зарегистрировались на этом событии",
+    "capacity": "Вместимость",
+    "attendees": "Участники",
+    "share": "Поделиться",
+    "reward": "Награда",
+    "types": {
+      "conference": "Конференция",
+      "panel": "Панельная дискуссия",
+      "workshop": "Мастер-класс",
+      "exhibition": "Выставка",
+      "cultural": "Культурное",
+      "social": "Социальное"
+    },
+    "emptyState": "События не найдены",
+    "checkInHere": "Зарегистрироваться здесь",
+    "amacoinValue": "Стоимость в AmaCoins",
+    "startTime": "Время начала",
+    "endTime": "Время окончания",
+    "directions": "Как добраться"
+  },
+  "places": {
+    "title": "Места",
+    "featured": "Рекомендуемые места",
+    "all": "Все места",
+    "nearby": "Места поблизости",
+    "search": "Поиск мест",
+    "filter": "Фильтр мест",
+    "details": "Детали места",
+    "location": "Локация",
+    "address": "Адрес",
+    "openingHours": "Часы работы",
+    "checkin": "Регистрация",
+    "checkinSuccess": "Регистрация успешна!",
+    "checkinFailed": "Ошибка регистрации",
+    "alreadyCheckedIn": "Вы уже зарегистрировались в этом месте сегодня",
+    "reward": "Награда",
+    "types": {
+      "tourist_spot": "Туристическая достопримечательность",
+      "restaurant": "Ресторан",
+      "shop": "Магазин",
+      "cultural_venue": "Культурное заведение"
+    },
+    "emptyState": "Места не найдены",
+    "checkInHere": "Зарегистрироваться здесь",
+    "amacoinValue": "Стоимость в AmaCoins",
+    "directions": "Как добраться",
+    "partner": "Партнер",
+    "wifiAvailable": "WiFi доступен",
+    "distance": "Расстояние"
+  },
+  "rewards": {
+    "title": "Награды",
+    "available": "Доступные награды",
+    "physical": "Физические продукты",
+    "digital": "Цифровые услуги",
+    "search": "Поиск наград",
+    "filter": "Фильтр наград",
+    "details": "Детали награды",
+    "redeem": "Обменять",
+    "redeemSuccess": "Обмен успешен!",
+    "redeemFailed": "Ошибка обмена",
+    "insufficientFunds": "Недостаточно средств",
+    "history": "История обменов",
+    "redemptionCode": "Код обмена",
+    "redemptionDate": "Дата обмена",
+    "partner": "Партнер",
+    "cost": "Стоимость",
+    "types": {
+      "physical_product": "Физический продукт",
+      "digital_service": "Цифровая услуга",
+      "discount_coupon": "Скидочный купон"
+    },
+    "emptyState": "Награды не найдены",
+    "amacoinsCost": "Стоимость в AmaCoins",
+    "availableUntil": "Доступно до",
+    "stock": "В наличии",
+    "howToRedeem": "Как обменять",
+    "termsAndConditions": "Условия и положения"
+  },
+  "quizzes": {
+    "title": "Викторины",
+    "available": "Доступные викторины",
+    "completed": "Завершенные викторины",
+    "leaderboard": "Таблица лидеров",
+    "start": "Начать викторину",
+    "continue": "Продолжить",
+    "question": "Вопрос",
+    "of": "из",
+    "next": "Далее",
+    "submit": "Отправить",
+    "correct": "Верно!",
+    "incorrect": "Неверно!",
+    "correctAnswer": "Правильный ответ",
+    "yourAnswer": "Ваш ответ",
+    "results": "Результаты",
+    "score": "Счет",
+    "reward": "Награда",
+    "timeLeft": "Оставшееся время",
+    "totalQuestions": "Всего вопросов",
+    "correctAnswers": "Правильные ответы",
+    "difficulty": {
+      "easy": "Легкий",
+      "medium": "Средний",
+      "hard": "Сложный"
+    },
+    "topics": {
+      "amazon": "Амазония",
+      "sustainability": "Устойчивое развитие",
+      "climate": "Климат",
+      "biodiversity": "Биоразнообразие",
+      "culture": "Культура"
+    },
+    "emptyState": "Викторины не найдены",
+    "tryAgain": "Попробовать снова",
+    "earnedAmacoins": "Заработано AmaCoins",
+    "aboutToExpire": "Эта викторина скоро истечет!",
+    "expired": "Срок действия этой викторины истек",
+    "timeRemaining": "Оставшееся время",
+    "congratulations": "Поздравляем!"
+  },
+  "connectivity": {
+    "title": "Подключение",
+    "wifiSpots": "Точки WiFi",
+    "nearby": "Ближайшие точки",
+    "map": "Карта подключения",
+    "heatmap": "Тепловая карта",
+    "report": "Сообщить о подключении",
+    "filter": "Фильтр точек",
+    "speed": "Скорость",
+    "reliability": "Надежность",
+    "status": "Статус",
+    "details": "Детали точки",
+    "isFree": "Бесплатно",
+    "isPaid": "Платно",
+    "isVerified": "Проверено",
+    "lastUpdated": "Последнее обновление",
+    "reportSuccess": "Отчет успешно отправлен!",
+    "reportFailed": "Ошибка отправки отчета",
+    "speeds": {
+      "slow": "Медленно",
+      "medium": "Средне",
+      "fast": "Быстро"
+    },
+    "statuses": {
+      "working": "Работает",
+      "issues": "Проблемы",
+      "down": "Не работает"
+    },
+    "emptyState": "Точки подключения не найдены",
+    "wifiPassword": "Пароль WiFi",
+    "howToConnect": "Как подключиться",
+    "workingPercentage": "Процент работоспособности",
+    "yourExperience": "Ваш опыт",
+    "comment": "Комментарий"
+  },
+  "emergency": {
+    "title": "Экстренная помощь",
+    "services": "Экстренные службы",
+    "contacts": "Важные контакты",
+    "phrases": "Полезные фразы",
+    "nearby": "Ближайшие службы",
+    "map": "Карта экстренных служб",
+    "call": "Позвонить",
+    "directions": "Как добраться",
+    "types": {
+      "hospital": "Больница",
+      "pharmacy": "Аптека",
+      "police": "Полиция",
+      "fire_department": "Пожарная служба",
+      "embassy": "Посольство",
+      "tourist_police": "Туристическая полиция"
+    },
+    "categories": {
+      "health": "Здоровье",
+      "safety": "Безопасность",
+      "help": "Помощь",
+      "transportation": "Транспорт"
+    },
+    "emptyState": "Экстренные службы не найдены",
+    "emergencyNumber": "Номер экстренной службы",
+    "openingHours": "Часы работы",
+    "is24h": "Открыто 24 часа",
+    "languagesSpoken": "Используемые языки",
+    "distance": "Расстояние"
+  },
+  "chat": {
+    "title": "Ассистент",
+    "placeholder": "Введите ваше сообщение...",
+    "send": "Отправить",
+    "startChat": "Начните беседу с ассистентом",
+    "suggestedQuestions": "Предлагаемые вопросы",
+    "feedback": {
+      "helpful": "Полезно",
+      "notHelpful": "Не полезно",
+      "thanks": "Спасибо за ваш отзыв!"
+    },
+    "contexts": {
+      "general": "Общие",
+      "event": "Событие",
+      "place": "Место",
+      "emergency": "Экстренная помощь",
+      "connectivity": "Подключение"
+    },
+    "suggestions": {
+      "events": "Какие события проходят сегодня?",
+      "places": "Где найти рестораны поблизости?",
+      "amacoins": "Как заработать AmaCoins?",
+      "rewards": "Как обменять награды?",
+      "emergency": "Номера экстренных служб"
+    }
+  },
+  "common": {
+    "viewMore": "Показать больше",
+    "viewAll": "Показать все",
+    "showMore": "Показать больше",
+    "showLess": "Показать меньше",
+    "seeAll": "Смотреть все",
+    "loadMore": "Загрузить еще",
+    "refresh": "Обновить",
+    "retry": "Повторить",
+    "confirm": "Подтвердить",
+    "cancel": "Отмена",
+    "close": "Закрыть",
+    "save": "Сохранить",
+    "edit": "Редактировать",
+    "delete": "Удалить",
+    "search": "Поиск",
+    "filter": "Фильтр",
+    "back": "Назад",
+    "next": "Далее",
+    "submit": "Отправить",
+    "success": "Успех",
+    "error": "Ошибка",
+    "warning": "Предупреждение",
+    "info": "Информация",
+    "today": "Сегодня",
+    "tomorrow": "Завтра",
+    "yesterday": "Вчера",
+    "now": "Сейчас",
+    "distance": "{{distance}} км от вас",
+    "time": "{{time}} мин",
+    "seconds": "{{count}} секунда",
+    "seconds_plural": "{{count}} секунд",
+    "minutes": "{{count}} минута",
+    "minutes_plural": "{{count}} минут",
+    "hours": "{{count}} час",
+    "hours_plural": "{{count}} часов",
+    "days": "{{count}} день",
+    "days_plural": "{{count}} дней"
+  },
+  "validation": {
+    "required": "Обязательное поле",
+    "email": "Некорректный email",
+    "minLength": "Должно быть не менее {{count}} символов",
+    "maxLength": "Должно быть не более {{count}} символов",
+    "passwordMatch": "Пароли не совпадают",
+    "invalidInput": "Неверный ввод"
+  },
+  "errors": {
+    "generic": "Произошла ошибка. Пожалуйста, попробуйте снова.",
+    "connection": "Ошибка соединения. Проверьте ваше интернет-соединение.",
+    "notFound": "Не найдено",
+    "unauthorized": "Не авторизован",
+    "forbidden": "Доступ запрещен",
+    "serverError": "Ошибка сервера",
+    "pageNotFound": "Страница не найдена",
+    "serviceUnavailable": "Сервис недоступен",
+    "timeout": "Превышено время ожидания"
+  },
+  "offline": {
+    "alert": "Вы не в сети",
+    "limited": "Доступна ограниченная функциональность",
+    "cached": "Просмотр кэшированного содержимого",
+    "tryAgain": "Попробуйте снова, когда будете в сети"
+  },
+  "geolocation": {
+    "permission": "Пожалуйста, разрешите доступ к вашему местоположению для просмотра ближайших точек",
+    "denied": "Доступ к местоположению запрещен",
+    "unavailable": "Служба определения местоположения недоступна",
+    "timeout": "Истекло время запроса местоположения",
+    "findingLocation": "Определение вашего местоположения..."
+  },
+  "notifications": {
+    "title": "Уведомления",
+    "enable": "Включить уведомления",
+    "disable": "Отключить уведомления",
+    "preferences": {
+      "events": "События",
+      "rewards": "Награды",
+      "quizzes": "Викторины",
+      "emergency": "Экстренная помощь"
+    },
+    "types": {
+      "event_reminder": "Напоминание о событии",
+      "quiz_available": "Доступна новая викторина",
+      "system_notification": "Системное уведомление",
+      "emergency_alert": "Экстренное оповещение"
+    }
+  },
+  "map": {
+    "zoomIn": "Приблизить",
+    "zoomOut": "Отдалить",
+    "currentLocation": "Ваше местоположение",
+    "searchNearby": "Искать поблизости",
+    "directions": "Получить маршрут",
+    "legend": "Легенда"
+  },
+  "footer": {
+    "about": "О нас",
+    "partners": "Партнеры",
+    "terms": "Условия",
+    "privacy": "Конфиденциальность",
+    "contact": "Контакты",
+    "copyright": "© 2025 AmazôniaExperience. Все права защищены."
+  },
+  "landing": {
+    "hero": {
+      "title": "Исследуйте, Участвуйте, Зарабатывайте",
+      "subtitle": "Ваш полный опыт COP30",
+      "cta": "Начните свое путешествие"
+    },
+    "features": {
+      "events": {
+        "title": "События",
+        "description": "Получите доступ к полной программе COP30 и зарабатывайте AmaCoins, участвуя в мероприятиях."
+      },
+      "places": {
+        "title": "Места",
+        "description": "Откройте для себя туристические достопримечательности и участвующие заведения."
+      },
+      "rewards": {
+        "title": "Награды",
+        "description": "Обменивайте ваши AmaCoins на продукты и услуги от местных партнеров."
+      },
+      "connectivity": {
+        "title": "Подключение",
+        "description": "Найдите бесплатные точки WiFi по всему городу."
+      }
+    }
+  }
+}

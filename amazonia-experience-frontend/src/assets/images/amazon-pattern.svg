@@ -1,0 +1,26 @@
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="amazon-pattern" patternUnits="userSpaceOnUse" width="100" height="100">
+      <!-- Linhas onduladas representando o rio -->
+      <path d="M0 20C10 15, 20 25, 30 20C40 15, 50 25, 60 20C70 15, 80 25, 90 20C100 15, 110 25, 120 20" stroke="#1E90FF" stroke-width="1" fill="none" opacity="0.2" />
+      <path d="M0 40C10 35, 20 45, 30 40C40 35, 50 45, 60 40C70 35, 80 45, 90 40C100 35, 110 45, 120 40" stroke="#1E90FF" stroke-width="1" fill="none" opacity="0.2" />
+      <path d="M0 60C10 55, 20 65, 30 60C40 55, 50 65, 60 60C70 55, 80 65, 90 60C100 55, 110 65, 120 60" stroke="#1E90FF" stroke-width="1" fill="none" opacity="0.2" />
+      <path d="M0 80C10 75, 20 85, 30 80C40 75, 50 85, 60 80C70 75, 80 85, 90 80C100 75, 110 85, 120 80" stroke="#1E90FF" stroke-width="1" fill="none" opacity="0.2" />
+      
+      <!-- Pequenas folhas distribuídas -->
+      <path d="M20 10C20 10 15 15 10 12C5 10 2 7 2 7C2 7 7 20 12 22C17 24 20 10 20 10Z" fill="#0B6623" opacity="0.1" />
+      <path d="M70 30C70 30 65 35 60 32C55 30 52 27 52 27C52 27 57 40 62 42C67 44 70 30 70 30Z" fill="#0B6623" opacity="0.1" />
+      <path d="M30 70C30 70 25 75 20 72C15 70 12 67 12 67C12 67 17 80 22 82C27 84 30 70 30 70Z" fill="#0B6623" opacity="0.1" />
+      <path d="M80 50C80 50 75 55 70 52C65 50 62 47 62 47C62 47 67 60 72 62C77 64 80 50 80 50Z" fill="#0B6623" opacity="0.1" />
+      
+      <!-- Pequenos círculos representando gotas de água -->
+      <circle cx="25" cy="25" r="2" fill="#1E90FF" opacity="0.2" />
+      <circle cx="75" cy="15" r="2" fill="#1E90FF" opacity="0.2" />
+      <circle cx="45" cy="65" r="2" fill="#1E90FF" opacity="0.2" />
+      <circle cx="85" cy="85" r="2" fill="#1E90FF" opacity="0.2" />
+      <circle cx="15" cy="55" r="2" fill="#1E90FF" opacity="0.2" />
+    </pattern>
+  </defs>
+  
+  <rect width="100" height="100" fill="url(#amazon-pattern)" />
+</svg>

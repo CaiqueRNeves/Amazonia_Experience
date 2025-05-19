@@ -1,0 +1,18 @@
+<svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Folha grande -->
+  <path d="M40 10C40 10 30 20 20 15C10 10 5 5 5 5C5 5 15 30 25 35C35 40 40 10 40 10Z" fill="#0B6623" />
+  
+  <!-- Folha média -->
+  <path d="M35 15C35 15 45 25 40 35C35 45 25 45 25 45C25 45 30 30 25 20C20 10 35 15 35 15Z" fill="#5DBB63" />
+  
+  <!-- Rio -->
+  <path d="M5 30C5 30 20 25 30 30C40 35 50 30 55 25C60 20 70 20 80 25C90 30 95 35 105 30C115 25 120 25 120 25" stroke="#1E90FF" stroke-width="3" stroke-linecap="round" />
+  
+  <!-- Texto -->
+  <text x="55" y="25" font-family="Arial, sans-serif" font-weight="bold" font-size="16" fill="#0B6623">Amazônia</text>
+  <text x="55" y="45" font-family="Arial, sans-serif" font-weight="bold" font-size="16" fill="#5DBB63">Experience</text>
+  
+  <!-- Ícone COP30 -->
+  <circle cx="180" cy="30" r="15" fill="#1E90FF" />
+  <text x="168" y="35" font-family="Arial, sans-serif" font-weight="bold" font-size="10" fill="white">COP30</text>
+</svg>

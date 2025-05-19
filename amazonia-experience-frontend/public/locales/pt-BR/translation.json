@@ -1,0 +1,423 @@
+{
+  "app": {
+    "name": "AmazôniaExperience",
+    "tagline": "Sua experiência completa na COP30",
+    "loading": "Carregando..."
+  },
+  "nav": {
+    "home": "Início",
+    "events": "Eventos",
+    "places": "Locais",
+    "rewards": "Recompensas",
+    "quizzes": "Quizzes",
+    "connectivity": "Conectividade",
+    "emergency": "Emergência",
+    "chat": "Assistente",
+    "profile": "Perfil"
+  },
+  "auth": {
+    "login": "Entrar",
+    "register": "Cadastrar",
+    "logout": "Sair",
+    "email": "E-mail",
+    "password": "Senha",
+    "confirmPassword": "Confirmar senha",
+    "name": "Nome",
+    "nationality": "Nacionalidade",
+    "forgotPassword": "Esqueceu a senha?",
+    "noAccount": "Não tem uma conta?",
+    "hasAccount": "Já tem uma conta?",
+    "createAccount": "Criar conta",
+    "loginNow": "Entrar agora",
+    "loginSuccess": "Login realizado com sucesso!",
+    "registerSuccess": "Cadastro realizado com sucesso!",
+    "logoutSuccess": "Você saiu da sua conta",
+    "loginRequired": "Faça login para continuar",
+    "welcomeBack": "Bem-vindo(a) de volta",
+    "welcome": "Bem-vindo(a) ao AmazôniaExperience"
+  },
+  "profile": {
+    "title": "Meu Perfil",
+    "edit": "Editar perfil",
+    "save": "Salvar alterações",
+    "cancel": "Cancelar",
+    "myAmacoins": "Meus AmaCoins",
+    "myVisits": "Minhas Visitas",
+    "myRedemptions": "Minhas Recompensas",
+    "notifications": "Notificações",
+    "personalInfo": "Informações Pessoais",
+    "preferences": "Preferências",
+    "settings": "Configurações",
+    "language": "Idioma",
+    "theme": "Tema",
+    "profileUpdated": "Perfil atualizado com sucesso!"
+  },
+  "amacoins": {
+    "balance": "Saldo",
+    "history": "Histórico",
+    "earned": "Ganhos",
+    "spent": "Gastos",
+    "earnMore": "Ganhe mais AmaCoins",
+    "howToEarn": "Como ganhar AmaCoins",
+    "earnedFrom": "Ganhou de",
+    "spentOn": "Gastou em"
+  },
+  "events": {
+    "title": "Eventos",
+    "upcoming": "Próximos eventos",
+    "ongoing": "Acontecendo agora",
+    "past": "Eventos passados",
+    "featured": "Eventos em destaque",
+    "all": "Todos os eventos",
+    "nearby": "Eventos próximos",
+    "search": "Buscar eventos",
+    "filter": "Filtrar eventos",
+    "date": "Data",
+    "time": "Horário",
+    "location": "Local",
+    "type": "Tipo",
+    "details": "Detalhes do evento",
+    "checkin": "Check-in",
+    "checkinSuccess": "Check-in realizado com sucesso!",
+    "checkinFailed": "Falha ao realizar check-in",
+    "alreadyCheckedIn": "Você já fez check-in neste evento",
+    "capacity": "Capacidade",
+    "attendees": "Participantes",
+    "share": "Compartilhar",
+    "reward": "Recompensa",
+    "types": {
+      "conference": "Conferência",
+      "panel": "Painel",
+      "workshop": "Workshop",
+      "exhibition": "Exposição",
+      "cultural": "Cultural",
+      "social": "Social"
+    },
+    "emptyState": "Nenhum evento encontrado",
+    "checkInHere": "Faça check-in aqui",
+    "amacoinValue": "Valor em AmaCoins",
+    "startTime": "Horário de início",
+    "endTime": "Horário de término",
+    "directions": "Como chegar"
+  },
+  "places": {
+    "title": "Locais",
+    "featured": "Locais em destaque",
+    "all": "Todos os locais",
+    "nearby": "Locais próximos",
+    "search": "Buscar locais",
+    "filter": "Filtrar locais",
+    "details": "Detalhes do local",
+    "location": "Localização",
+    "address": "Endereço",
+    "openingHours": "Horário de funcionamento",
+    "checkin": "Check-in",
+    "checkinSuccess": "Check-in realizado com sucesso!",
+    "checkinFailed": "Falha ao realizar check-in",
+    "alreadyCheckedIn": "Você já fez check-in neste local hoje",
+    "reward": "Recompensa",
+    "types": {
+      "tourist_spot": "Ponto Turístico",
+      "restaurant": "Restaurante",
+      "shop": "Loja",
+      "cultural_venue": "Espaço Cultural"
+    },
+    "emptyState": "Nenhum local encontrado",
+    "checkInHere": "Faça check-in aqui",
+    "amacoinValue": "Valor em AmaCoins",
+    "directions": "Como chegar",
+    "partner": "Parceiro",
+    "wifiAvailable": "WiFi disponível",
+    "distance": "Distância"
+  },
+  "rewards": {
+    "title": "Recompensas",
+    "available": "Recompensas disponíveis",
+    "physical": "Produtos físicos",
+    "digital": "Serviços digitais",
+    "search": "Buscar recompensas",
+    "filter": "Filtrar recompensas",
+    "details": "Detalhes da recompensa",
+    "redeem": "Resgatar",
+    "redeemSuccess": "Resgate realizado com sucesso!",
+    "redeemFailed": "Falha ao resgatar recompensa",
+    "insufficientFunds": "Saldo insuficiente",
+    "history": "Histórico de resgates",
+    "redemptionCode": "Código de resgate",
+    "redemptionDate": "Data de resgate",
+    "partner": "Parceiro",
+    "cost": "Custo",
+    "types": {
+      "physical_product": "Produto físico",
+      "digital_service": "Serviço digital",
+      "discount_coupon": "Cupom de desconto"
+    },
+    "emptyState": "Nenhuma recompensa encontrada",
+    "amacoinsCost": "Custo em AmaCoins",
+    "availableUntil": "Disponível até",
+    "stock": "Estoque",
+    "howToRedeem": "Como resgatar",
+    "termsAndConditions": "Termos e condições"
+  },
+  "quizzes": {
+    "title": "Quizzes",
+    "available": "Quizzes disponíveis",
+    "completed": "Quizzes completados",
+    "leaderboard": "Ranking",
+    "start": "Iniciar quiz",
+    "continue": "Continuar",
+    "question": "Pergunta",
+    "of": "de",
+    "next": "Próximo",
+    "submit": "Enviar",
+    "correct": "Correto!",
+    "incorrect": "Incorreto!",
+    "correctAnswer": "Resposta correta",
+    "yourAnswer": "Sua resposta",
+    "results": "Resultados",
+    "score": "Pontuação",
+    "reward": "Recompensa",
+    "timeLeft": "Tempo restante",
+    "totalQuestions": "Total de perguntas",
+    "correctAnswers": "Respostas corretas",
+    "difficulty": {
+      "easy": "Fácil",
+      "medium": "Médio",
+      "hard": "Difícil"
+    },
+    "topics": {
+      "amazon": "Amazônia",
+      "sustainability": "Sustentabilidade",
+      "climate": "Clima",
+      "biodiversity": "Biodiversidade",
+      "culture": "Cultura"
+    },
+    "emptyState": "Nenhum quiz encontrado",
+    "tryAgain": "Tentar novamente",
+    "earnedAmacoins": "AmaCoins ganhos",
+    "aboutToExpire": "Este quiz expira em breve!",
+    "expired": "Este quiz expirou",
+    "timeRemaining": "Tempo restante",
+    "congratulations": "Parabéns!"
+  },
+  "connectivity": {
+    "title": "Conectividade",
+    "wifiSpots": "Pontos de WiFi",
+    "nearby": "Pontos próximos",
+    "map": "Mapa de conectividade",
+    "heatmap": "Mapa de calor",
+    "report": "Reportar conectividade",
+    "filter": "Filtrar pontos",
+    "speed": "Velocidade",
+    "reliability": "Confiabilidade",
+    "status": "Status",
+    "details": "Detalhes do ponto",
+    "isFree": "Gratuito",
+    "isPaid": "Pago",
+    "isVerified": "Verificado",
+    "lastUpdated": "Última atualização",
+    "reportSuccess": "Relatório enviado com sucesso!",
+    "reportFailed": "Falha ao enviar relatório",
+    "speeds": {
+      "slow": "Lenta",
+      "medium": "Média",
+      "fast": "Rápida"
+    },
+    "statuses": {
+      "working": "Funcionando",
+      "issues": "Problemas",
+      "down": "Fora do ar"
+    },
+    "emptyState": "Nenhum ponto de conectividade encontrado",
+    "wifiPassword": "Senha do WiFi",
+    "howToConnect": "Como conectar",
+    "workingPercentage": "Percentual de funcionamento",
+    "yourExperience": "Sua experiência",
+    "comment": "Comentário"
+  },
+  "emergency": {
+    "title": "Emergência",
+    "services": "Serviços de emergência",
+    "contacts": "Contatos importantes",
+    "phrases": "Frases úteis",
+    "nearby": "Serviços próximos",
+    "map": "Mapa de emergência",
+    "call": "Ligar",
+    "directions": "Como chegar",
+    "types": {
+      "hospital": "Hospital",
+      "pharmacy": "Farmácia",
+      "police": "Polícia",
+      "fire_department": "Corpo de Bombeiros",
+      "embassy": "Embaixada",
+      "tourist_police": "Polícia Turística"
+    },
+    "categories": {
+      "health": "Saúde",
+      "safety": "Segurança",
+      "help": "Ajuda",
+      "transportation": "Transporte"
+    },
+    "emptyState": "Nenhum serviço de emergência encontrado",
+    "emergencyNumber": "Número de emergência",
+    "openingHours": "Horário de funcionamento",
+    "is24h": "Aberto 24h",
+    "languagesSpoken": "Idiomas falados",
+    "distance": "Distância"
+  },
+  "chat": {
+    "title": "Assistente",
+    "placeholder": "Digite sua mensagem...",
+    "send": "Enviar",
+    "startChat": "Inicie uma conversa com o assistente",
+    "suggestedQuestions": "Perguntas sugeridas",
+    "feedback": {
+      "helpful": "Útil",
+      "notHelpful": "Não útil",
+      "thanks": "Obrigado pelo feedback!"
+    },
+    "contexts": {
+      "general": "Geral",
+      "event": "Evento",
+      "place": "Local",
+      "emergency": "Emergência",
+      "connectivity": "Conectividade"
+    },
+    "suggestions": {
+      "events": "Quais eventos estão acontecendo hoje?",
+      "places": "Onde encontro restaurantes próximos?",
+      "amacoins": "Como ganho AmaCoins?",
+      "rewards": "Como resgato recompensas?",
+      "emergency": "Números de emergência"
+    }
+  },
+  "common": {
+    "viewMore": "Ver mais",
+    "viewAll": "Ver todos",
+    "showMore": "Mostrar mais",
+    "showLess": "Mostrar menos",
+    "seeAll": "Ver tudo",
+    "loadMore": "Carregar mais",
+    "refresh": "Atualizar",
+    "retry": "Tentar novamente",
+    "confirm": "Confirmar",
+    "cancel": "Cancelar",
+    "close": "Fechar",
+    "save": "Salvar",
+    "edit": "Editar",
+    "delete": "Excluir",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "back": "Voltar",
+    "next": "Avançar",
+    "submit": "Enviar",
+    "success": "Sucesso",
+    "error": "Erro",
+    "warning": "Aviso",
+    "info": "Informação",
+    "today": "Hoje",
+    "tomorrow": "Amanhã",
+    "yesterday": "Ontem",
+    "now": "Agora",
+    "distance": "{{distance}} km de distância",
+    "time": "{{time}} mins",
+    "seconds": "{{count}} segundo",
+    "seconds_plural": "{{count}} segundos",
+    "minutes": "{{count}} minuto",
+    "minutes_plural": "{{count}} minutos",
+    "hours": "{{count}} hora",
+    "hours_plural": "{{count}} horas",
+    "days": "{{count}} dia",
+    "days_plural": "{{count}} dias"
+  },
+  "validation": {
+    "required": "Campo obrigatório",
+    "email": "E-mail inválido",
+    "minLength": "Deve ter pelo menos {{count}} caracteres",
+    "maxLength": "Deve ter no máximo {{count}} caracteres",
+    "passwordMatch": "Senhas não coincidem",
+    "invalidInput": "Entrada inválida"
+  },
+  "errors": {
+    "generic": "Ocorreu um erro. Tente novamente.",
+    "connection": "Erro de conexão. Verifique sua internet.",
+    "notFound": "Não encontrado",
+    "unauthorized": "Não autorizado",
+    "forbidden": "Acesso negado",
+    "serverError": "Erro no servidor",
+    "pageNotFound": "Página não encontrada",
+    "serviceUnavailable": "Serviço indisponível",
+    "timeout": "Tempo limite excedido"
+  },
+  "offline": {
+    "alert": "Você está offline",
+    "limited": "Funcionalidade limitada disponível",
+    "cached": "Visualizando conteúdo em cache",
+    "tryAgain": "Tente novamente quando estiver online"
+  },
+  "geolocation": {
+    "permission": "Permita acesso à sua localização para ver pontos próximos",
+    "denied": "Permissão de localização negada",
+    "unavailable": "Serviço de localização indisponível",
+    "timeout": "Tempo limite para obter localização excedido",
+    "findingLocation": "Localizando sua posição..."
+  },
+  "notifications": {
+    "title": "Notificações",
+    "enable": "Ativar notificações",
+    "disable": "Desativar notificações",
+    "preferences": {
+      "events": "Eventos",
+      "rewards": "Recompensas",
+      "quizzes": "Quizzes",
+      "emergency": "Emergência"
+    },
+    "types": {
+      "event_reminder": "Lembrete de evento",
+      "quiz_available": "Novo quiz disponível",
+      "system_notification": "Notificação do sistema",
+      "emergency_alert": "Alerta de emergência"
+    }
+  },
+  "map": {
+    "zoomIn": "Ampliar",
+    "zoomOut": "Reduzir",
+    "currentLocation": "Sua localização",
+    "searchNearby": "Buscar nas proximidades",
+    "directions": "Obter direções",
+    "legend": "Legenda"
+  },
+  "footer": {
+    "about": "Sobre",
+    "partners": "Parceiros",
+    "terms": "Termos",
+    "privacy": "Privacidade",
+    "contact": "Contato",
+    "copyright": "© 2025 AmazôniaExperience. Todos os direitos reservados."
+  },
+  "landing": {
+    "hero": {
+      "title": "Explore, Participe, Ganhe",
+      "subtitle": "Sua experiência completa na COP30",
+      "cta": "Comece sua jornada"
+    },
+    "features": {
+      "events": {
+        "title": "Eventos",
+        "description": "Acesse toda a programação da COP30 e ganhe AmaCoins ao participar."
+      },
+      "places": {
+        "title": "Locais",
+        "description": "Descubra pontos turísticos e estabelecimentos participantes."
+      },
+      "rewards": {
+        "title": "Recompensas",
+        "description": "Troque seus AmaCoins por produtos e serviços de parceiros locais."
+      },
+      "connectivity": {
+        "title": "Conectividade",
+        "description": "Encontre pontos de WiFi gratuito pela cidade."
+      }
+    }
+  }
+}

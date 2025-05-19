@@ -1,0 +1,139 @@
+/* Sobrescrições e extensões para o Tailwind CSS */
+
+/* Adiciona suporte a clamp de linha */
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Adiciona suporte a aspect-ratio onde não existe */
+.aspect-video {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  overflow: hidden;
+}
+
+.aspect-video > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.aspect-square {
+  position: relative;
+  padding-bottom: 100%;
+  height: 0;
+  overflow: hidden;
+}
+
+.aspect-square > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Aprimoramentos de acessibilidade */
+.focus-visible {
+  outline: 2px solid var(--amazon-green-500);
+  outline-offset: 2px;
+}
+
+/* Estende os estilos de texto */
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+/* Extensões específicas para cores */
+.bg-gradient-amazon {
+  background: linear-gradient(135deg, var(--amazon-green-500), var(--sustainable-green-500));
+}
+
+.bg-gradient-river {
+  background: linear-gradient(135deg, var(--amazon-river-500), var(--amazon-river-300));
+}
+
+.bg-pattern-amazon {
+  background-image: url('/assets/images/amazon-pattern.svg');
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+/* Sobrescrever botões de formulário */
+input[type="checkbox"], input[type="radio"] {
+  color: var(--amazon-green-600);
+  border-color: var(--amazon-green-300);
+}
+
+input[type="checkbox"]:checked, input[type="radio"]:checked {
+  background-color: var(--amazon-green-600);
+  border-color: var(--amazon-green-600);
+}
+
+/* Inputs customizados */
+.custom-input {
+  border: 1px solid var(--amazon-green-200);
+  border-radius: var(--border-radius-md);
+  padding: 0.5rem 0.75rem;
+  transition: border-color var(--transition-fast) ease-in-out;
+}
+
+.custom-input:focus {
+  border-color: var(--amazon-green-500);
+  box-shadow: 0 0 0 3px var(--amazon-green-100);
+}
+
+/* Adições do sistema de design */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.badge-green {
+  background-color: var(--sustainable-green-100);
+  color: var(--sustainable-green-800);
+}
+
+.badge-blue {
+  background-color: var(--amazon-river-100);
+  color: var(--amazon-river-800);
+}
+
+.badge-yellow {
+  background-color: var(--warning);
+  color: #664d03;
+}
+
+.badge-red {
+  background-color: var(--error);
+  color: white;
+}

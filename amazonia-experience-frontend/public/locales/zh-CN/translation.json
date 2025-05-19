@@ -1,0 +1,423 @@
+{
+  "app": {
+    "name": "AmazôniaExperience",
+    "tagline": "您的完整COP30体验",
+    "loading": "加载中..."
+  },
+  "nav": {
+    "home": "首页",
+    "events": "活动",
+    "places": "地点",
+    "rewards": "奖励",
+    "quizzes": "问答",
+    "connectivity": "连接",
+    "emergency": "应急",
+    "chat": "助手",
+    "profile": "个人资料"
+  },
+  "auth": {
+    "login": "登录",
+    "register": "注册",
+    "logout": "退出",
+    "email": "电子邮箱",
+    "password": "密码",
+    "confirmPassword": "确认密码",
+    "name": "姓名",
+    "nationality": "国籍",
+    "forgotPassword": "忘记密码？",
+    "noAccount": "没有账号？",
+    "hasAccount": "已有账号？",
+    "createAccount": "创建账号",
+    "loginNow": "立即登录",
+    "loginSuccess": "登录成功！",
+    "registerSuccess": "注册成功！",
+    "logoutSuccess": "您已退出登录",
+    "loginRequired": "请登录以继续",
+    "welcomeBack": "欢迎回来",
+    "welcome": "欢迎使用AmazôniaExperience"
+  },
+  "profile": {
+    "title": "我的资料",
+    "edit": "编辑资料",
+    "save": "保存更改",
+    "cancel": "取消",
+    "myAmacoins": "我的AmaCoins",
+    "myVisits": "我的访问",
+    "myRedemptions": "我的兑换",
+    "notifications": "通知",
+    "personalInfo": "个人信息",
+    "preferences": "偏好设置",
+    "settings": "设置",
+    "language": "语言",
+    "theme": "主题",
+    "profileUpdated": "个人资料更新成功！"
+  },
+  "amacoins": {
+    "balance": "余额",
+    "history": "历史记录",
+    "earned": "获得",
+    "spent": "消费",
+    "earnMore": "赚取更多AmaCoins",
+    "howToEarn": "如何赚取AmaCoins",
+    "earnedFrom": "获得来源",
+    "spentOn": "消费于"
+  },
+  "events": {
+    "title": "活动",
+    "upcoming": "即将举行的活动",
+    "ongoing": "正在进行的活动",
+    "past": "过去的活动",
+    "featured": "精选活动",
+    "all": "所有活动",
+    "nearby": "附近的活动",
+    "search": "搜索活动",
+    "filter": "筛选活动",
+    "date": "日期",
+    "time": "时间",
+    "location": "地点",
+    "type": "类型",
+    "details": "活动详情",
+    "checkin": "签到",
+    "checkinSuccess": "签到成功！",
+    "checkinFailed": "签到失败",
+    "alreadyCheckedIn": "您已经在此活动签到",
+    "capacity": "容量",
+    "attendees": "参与者",
+    "share": "分享",
+    "reward": "奖励",
+    "types": {
+      "conference": "会议",
+      "panel": "专题讨论",
+      "workshop": "工作坊",
+      "exhibition": "展览",
+      "cultural": "文化活动",
+      "social": "社交活动"
+    },
+    "emptyState": "未找到活动",
+    "checkInHere": "在此签到",
+    "amacoinValue": "AmaCoins值",
+    "startTime": "开始时间",
+    "endTime": "结束时间",
+    "directions": "获取路线"
+  },
+  "places": {
+    "title": "地点",
+    "featured": "精选地点",
+    "all": "所有地点",
+    "nearby": "附近地点",
+    "search": "搜索地点",
+    "filter": "筛选地点",
+    "details": "地点详情",
+    "location": "位置",
+    "address": "地址",
+    "openingHours": "营业时间",
+    "checkin": "签到",
+    "checkinSuccess": "签到成功！",
+    "checkinFailed": "签到失败",
+    "alreadyCheckedIn": "您今天已经在此地点签到",
+    "reward": "奖励",
+    "types": {
+      "tourist_spot": "旅游景点",
+      "restaurant": "餐厅",
+      "shop": "商店",
+      "cultural_venue": "文化场所"
+    },
+    "emptyState": "未找到地点",
+    "checkInHere": "在此签到",
+    "amacoinValue": "AmaCoins值",
+    "directions": "获取路线",
+    "partner": "合作伙伴",
+    "wifiAvailable": "WiFi可用",
+    "distance": "距离"
+  },
+  "rewards": {
+    "title": "奖励",
+    "available": "可用奖励",
+    "physical": "实物产品",
+    "digital": "数字服务",
+    "search": "搜索奖励",
+    "filter": "筛选奖励",
+    "details": "奖励详情",
+    "redeem": "兑换",
+    "redeemSuccess": "兑换成功！",
+    "redeemFailed": "兑换失败",
+    "insufficientFunds": "余额不足",
+    "history": "兑换历史",
+    "redemptionCode": "兑换码",
+    "redemptionDate": "兑换日期",
+    "partner": "合作伙伴",
+    "cost": "花费",
+    "types": {
+      "physical_product": "实物产品",
+      "digital_service": "数字服务",
+      "discount_coupon": "折扣券"
+    },
+    "emptyState": "未找到奖励",
+    "amacoinsCost": "AmaCoins花费",
+    "availableUntil": "有效期至",
+    "stock": "库存",
+    "howToRedeem": "如何兑换",
+    "termsAndConditions": "条款和条件"
+  },
+  "quizzes": {
+    "title": "问答",
+    "available": "可用问答",
+    "completed": "已完成问答",
+    "leaderboard": "排行榜",
+    "start": "开始问答",
+    "continue": "继续",
+    "question": "问题",
+    "of": "共",
+    "next": "下一题",
+    "submit": "提交",
+    "correct": "正确！",
+    "incorrect": "错误！",
+    "correctAnswer": "正确答案",
+    "yourAnswer": "您的答案",
+    "results": "结果",
+    "score": "得分",
+    "reward": "奖励",
+    "timeLeft": "剩余时间",
+    "totalQuestions": "问题总数",
+    "correctAnswers": "正确答案",
+    "difficulty": {
+      "easy": "简单",
+      "medium": "中等",
+      "hard": "困难"
+    },
+    "topics": {
+      "amazon": "亚马逊",
+      "sustainability": "可持续性",
+      "climate": "气候",
+      "biodiversity": "生物多样性",
+      "culture": "文化"
+    },
+    "emptyState": "未找到问答",
+    "tryAgain": "重试",
+    "earnedAmacoins": "获得的AmaCoins",
+    "aboutToExpire": "此问答即将过期！",
+    "expired": "此问答已过期",
+    "timeRemaining": "剩余时间",
+    "congratulations": "恭喜！"
+  },
+  "connectivity": {
+    "title": "连接",
+    "wifiSpots": "WiFi热点",
+    "nearby": "附近热点",
+    "map": "连接地图",
+    "heatmap": "热力图",
+    "report": "报告连接状况",
+    "filter": "筛选热点",
+    "speed": "速度",
+    "reliability": "可靠性",
+    "status": "状态",
+    "details": "热点详情",
+    "isFree": "免费",
+    "isPaid": "付费",
+    "isVerified": "已验证",
+    "lastUpdated": "最后更新",
+    "reportSuccess": "报告提交成功！",
+    "reportFailed": "报告提交失败",
+    "speeds": {
+      "slow": "慢",
+      "medium": "中等",
+      "fast": "快"
+    },
+    "statuses": {
+      "working": "正常",
+      "issues": "问题",
+      "down": "不可用"
+    },
+    "emptyState": "未找到连接热点",
+    "wifiPassword": "WiFi密码",
+    "howToConnect": "如何连接",
+    "workingPercentage": "工作百分比",
+    "yourExperience": "您的体验",
+    "comment": "评论"
+  },
+  "emergency": {
+    "title": "应急",
+    "services": "应急服务",
+    "contacts": "重要联系人",
+    "phrases": "实用短语",
+    "nearby": "附近服务",
+    "map": "应急地图",
+    "call": "呼叫",
+    "directions": "获取路线",
+    "types": {
+      "hospital": "医院",
+      "pharmacy": "药店",
+      "police": "警察",
+      "fire_department": "消防部门",
+      "embassy": "大使馆",
+      "tourist_police": "旅游警察"
+    },
+    "categories": {
+      "health": "健康",
+      "safety": "安全",
+      "help": "帮助",
+      "transportation": "交通"
+    },
+    "emptyState": "未找到应急服务",
+    "emergencyNumber": "紧急电话",
+    "openingHours": "营业时间",
+    "is24h": "24小时开放",
+    "languagesSpoken": "使用语言",
+    "distance": "距离"
+  },
+  "chat": {
+    "title": "助手",
+    "placeholder": "输入您的消息...",
+    "send": "发送",
+    "startChat": "开始与助手对话",
+    "suggestedQuestions": "建议的问题",
+    "feedback": {
+      "helpful": "有帮助",
+      "notHelpful": "没有帮助",
+      "thanks": "感谢您的反馈！"
+    },
+    "contexts": {
+      "general": "一般",
+      "event": "活动",
+      "place": "地点",
+      "emergency": "应急",
+      "connectivity": "连接"
+    },
+    "suggestions": {
+      "events": "今天有什么活动？",
+      "places": "哪里可以找到附近的餐厅？",
+      "amacoins": "如何获得AmaCoins？",
+      "rewards": "如何兑换奖励？",
+      "emergency": "紧急联系电话"
+    }
+  },
+  "common": {
+    "viewMore": "查看更多",
+    "viewAll": "查看全部",
+    "showMore": "显示更多",
+    "showLess": "显示更少",
+    "seeAll": "查看全部",
+    "loadMore": "加载更多",
+    "refresh": "刷新",
+    "retry": "重试",
+    "confirm": "确认",
+    "cancel": "取消",
+    "close": "关闭",
+    "save": "保存",
+    "edit": "编辑",
+    "delete": "删除",
+    "search": "搜索",
+    "filter": "筛选",
+    "back": "返回",
+    "next": "下一步",
+    "submit": "提交",
+    "success": "成功",
+    "error": "错误",
+    "warning": "警告",
+    "info": "信息",
+    "today": "今天",
+    "tomorrow": "明天",
+    "yesterday": "昨天",
+    "now": "现在",
+    "distance": "距离{{distance}}公里",
+    "time": "{{time}}分钟",
+    "seconds": "{{count}}秒",
+    "seconds_plural": "{{count}}秒",
+    "minutes": "{{count}}分钟",
+    "minutes_plural": "{{count}}分钟",
+    "hours": "{{count}}小时",
+    "hours_plural": "{{count}}小时",
+    "days": "{{count}}天",
+    "days_plural": "{{count}}天"
+  },
+  "validation": {
+    "required": "必填字段",
+    "email": "无效的电子邮箱",
+    "minLength": "最少需要{{count}}个字符",
+    "maxLength": "最多只能有{{count}}个字符",
+    "passwordMatch": "密码不匹配",
+    "invalidInput": "无效输入"
+  },
+  "errors": {
+    "generic": "发生错误。请重试。",
+    "connection": "连接错误。请检查您的网络。",
+    "notFound": "未找到",
+    "unauthorized": "未授权",
+    "forbidden": "禁止访问",
+    "serverError": "服务器错误",
+    "pageNotFound": "页面未找到",
+    "serviceUnavailable": "服务不可用",
+    "timeout": "请求超时"
+  },
+  "offline": {
+    "alert": "您处于离线状态",
+    "limited": "有限功能可用",
+    "cached": "正在查看缓存内容",
+    "tryAgain": "联网后重试"
+  },
+  "geolocation": {
+    "permission": "请允许访问您的位置以查看附近的点",
+    "denied": "位置访问被拒绝",
+    "unavailable": "位置服务不可用",
+    "timeout": "位置请求超时",
+    "findingLocation": "正在查找您的位置..."
+  },
+  "notifications": {
+    "title": "通知",
+    "enable": "启用通知",
+    "disable": "禁用通知",
+    "preferences": {
+      "events": "活动",
+      "rewards": "奖励",
+      "quizzes": "问答",
+      "emergency": "应急"
+    },
+    "types": {
+      "event_reminder": "活动提醒",
+      "quiz_available": "新问答可用",
+      "system_notification": "系统通知",
+      "emergency_alert": "应急警报"
+    }
+  },
+  "map": {
+    "zoomIn": "放大",
+    "zoomOut": "缩小",
+    "currentLocation": "您的位置",
+    "searchNearby": "搜索附近",
+    "directions": "获取路线",
+    "legend": "图例"
+  },
+  "footer": {
+    "about": "关于我们",
+    "partners": "合作伙伴",
+    "terms": "条款",
+    "privacy": "隐私政策",
+    "contact": "联系我们",
+    "copyright": "© 2025 AmazôniaExperience。保留所有权利。"
+  },
+  "landing": {
+    "hero": {
+      "title": "探索、参与、获得",
+      "subtitle": "您的完整COP30体验",
+      "cta": "开始您的旅程"
+    },
+    "features": {
+      "events": {
+        "title": "活动",
+        "description": "获取完整的COP30活动安排，参与并赚取AmaCoins。"
+      },
+      "places": {
+        "title": "地点",
+        "description": "探索旅游景点和参与的商家。"
+      },
+      "rewards": {
+        "title": "奖励",
+        "description": "用您的AmaCoins兑换当地合作伙伴提供的产品和服务。"
+      },
+      "connectivity": {
+        "title": "连接",
+        "description": "在城市中寻找免费WiFi热点。"
+      }
+    }
+  }
+}
