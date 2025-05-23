@@ -2,10 +2,10 @@ const rateLimit = require('express-rate-limit');
 
 // Configuração padrão de rate limit para API
 const apiLimiter = rateLimit({
-  windowMs: process.env.RATE_LIMIT_WINDOW * 60 * 1000 || 15 * 60 * 1000, // 15 minutos padrão
-  max: process.env.RATE_LIMIT_MAX || 100, // limite de 100 requisições por janela
-  standardHeaders: true, // Retorna `RateLimit-*` headers
-  legacyHeaders: false, // Desativa os headers `X-RateLimit-*`
+  windowMs: parseInt(process.env.RATE_LIMIT_WINDOW) * 60 * 1000 || 15 * 60 * 1000,
+  max: parseInt(process.env.RATE_LIMIT_MAX) || 100,
+  standardHeaders: true,
+  legacyHeaders: false,
   message: {
     status: 'error',
     message: 'Muitas requisições, tente novamente mais tarde'

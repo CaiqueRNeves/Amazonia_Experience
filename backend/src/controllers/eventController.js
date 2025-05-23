@@ -69,6 +69,29 @@ exports.getEvent = async (req, res, next) => {
   }
 };
 
+// Obter eventos em andamento
+exports.getOngoingEvents = async (req, res, next) => {
+  try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    
+    const ongoingEvents = await Event.findOngoing();
+    
+    res.json({
+      status: 'success',
+      data: {
+        events: ongoingEvents,
+        pagination: {
+          page,
+          limit
+        }
+      }
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 // Listar eventos próximos (geolocalização)
 exports.getNearbyEvents = async (req, res, next) => {
   try {

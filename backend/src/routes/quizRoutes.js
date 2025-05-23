@@ -6,8 +6,8 @@ const { validateQuizAnswer } = require('../validators/quizValidator');
 
 // Rotas públicas
 router.get('/', quizController.getQuizzes);
+router.get('/leaderboard', quizController.getLeaderboard); // CORRETO: antes da rota com parâmetro
 router.get('/:id', quizController.getQuiz);
-router.get('/leaderboard', quizController.getLeaderboard);
 
 // Rotas protegidas (requerem autenticação)
 router.post('/:id/start', authMiddleware, quizController.startQuiz);

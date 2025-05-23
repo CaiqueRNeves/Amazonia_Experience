@@ -8,7 +8,11 @@ class ChatMessage {
 
   // Criar mensagem
   static async create(messageData) {
-    const [id] = await db('chat_messages').insert(messageData);
+    const [id] = await db('chat_messages').insert({
+      ...messageData,
+      created_at: new Date(),
+      updated_at: new Date()
+    });
     return this.findById(id);
   }
 
@@ -31,7 +35,7 @@ class ChatMessage {
       .select('*')
       .limit(limit)
       .offset(offset)
-      .orderBy('created_at');
+      .orderBy('created_at', 'asc');
   }
 
   // Atualizar feedback
@@ -39,7 +43,8 @@ class ChatMessage {
     await db('chat_messages').where({ id }).update({
       is_helpful: isHelpful,
       feedback_text: feedbackText,
-      feedback_at: new Date()
+      feedback_at: new Date(),
+      updated_at: new Date()
     });
     
     return this.findById(id);

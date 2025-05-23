@@ -1,6 +1,7 @@
 const Reward = require('../models/Reward');
 const Redemption = require('../models/Redemption');
 const User = require('../models/User');
+const db = require('../config/database');
 const { NotFoundError, ValidationError, ForbiddenError } = require('../middleware/error');
 
 // Listar recompensas
@@ -125,7 +126,7 @@ exports.getReward = async (req, res, next) => {
   }
 };
 
-// Resgatar uma recompensa
+// Resgatar uma recompensa (CORRIGIDO)
 exports.redeemReward = async (req, res, next) => {
   try {
     const rewardId = req.params.id;
@@ -148,27 +149,51 @@ exports.redeemReward = async (req, res, next) => {
       throw new ValidationError('Saldo de AmaCoins insuficiente');
     }
     
-    // Criar registro de resgate
-    const redemption = await Redemption.create({
-      user_id: userId,
-      reward_id: rewardId,
-      amacoins_spent: reward.amacoins_cost
-    });
+    // Iniciar transação para garantir consistência
+    const trx = await db.transaction();
     
-    res.status(201).json({
-      status: 'success',
-      data: {
-        redemption,
-        reward: {
-          name: reward.name,
-          type: reward.reward_type,
-          cost: reward.amacoins_cost
-        },
-        user: {
-          new_balance: user.amacoins - reward.amacoins_cost
+    try {
+      // Decrementar estoque da recompensa
+      await trx('rewards')
+        .where({ id: rewardId })
+        .decrement('stock', 1);
+      
+      // Debitar AmaCoins do usuário
+      await trx('users')
+        .where({ id: userId })
+        .decrement('amacoins', reward.amacoins_cost);
+      
+      // Criar registro de resgate
+      const [redemptionId] = await trx('redemptions').insert({
+        user_id: userId,
+        reward_id: rewardId,
+        amacoins_spent: reward.amacoins_cost,
+        redeemed_at: new Date(),
+        status: 'pending'
+      });
+      
+      const redemption = await trx('redemptions').where({ id: redemptionId }).first();
+      
+      await trx.commit();
+      
+      res.status(201).json({
+        status: 'success',
+        data: {
+          redemption,
+          reward: {
+            name: reward.name,
+            type: reward.reward_type,
+            cost: reward.amacoins_cost
+          },
+          user: {
+            new_balance: user.amacoins - reward.amacoins_cost
+          }
         }
-      }
-    });
+      });
+    } catch (error) {
+      await trx.rollback();
+      throw error;
+    }
   } catch (error) {
     next(error);
   }

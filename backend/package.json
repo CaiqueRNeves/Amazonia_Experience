@@ -18,7 +18,8 @@
     "docker:run": "docker run -p 3000:3000 amazonia-experience-backend:latest",
     "docker:compose": "docker-compose up",
     "docker:compose:build": "docker-compose up --build",
-    "prepare-release": "standard-version"
+    "prepare-release": "standard-version",
+    "prepare": "husky install"
   },
   "keywords": [
     "cop30",
@@ -60,11 +61,5 @@
     "prettier": "^2.8.8",
     "standard-version": "^9.5.0",
     "supertest": "^6.3.3"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint",
-      "pre-push": "npm test"
-    }
   }
 }

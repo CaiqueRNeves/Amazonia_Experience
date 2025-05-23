@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const { body, validationResult } = require('express-validator');
 const { ValidationError } = require('../middleware/error');
 
@@ -169,11 +170,53 @@ exports.validateCreateQuiz = [
   validateRequest
 ];
 
-// Outras validações do admin...
+// Validação para atualização de quiz (IMPLEMENTADO COMPLETO)
 exports.validateUpdateQuiz = [
-  // Semelhante ao validateCreateQuiz, mas com campos opcionais
+  body('title')
+    .optional()
+    .isLength({ min: 3, max: 100 }).withMessage('O título deve ter entre 3 e 100 caracteres'),
+  
+  body('description')
+    .optional()
+    .isLength({ max: 500 }).withMessage('A descrição deve ter no máximo 500 caracteres'),
+  
+  body('difficulty')
+    .optional()
+    .isIn(['easy', 'medium', 'hard']).withMessage('Dificuldade inválida'),
+  
+  body('topic')
+    .optional()
+    .isLength({ min: 3, max: 50 }).withMessage('O tópico deve ter entre 3 e 50 caracteres'),
+  
+  body('amacoins_reward')
+    .optional()
+    .isInt({ min: 10, max: 500 }).withMessage('A recompensa deve estar entre 10 e 500 AmaCoins'),
+  
+  body('questions')
+    .optional()
+    .isArray().withMessage('As perguntas devem ser um array'),
+  
+  body('questions.*.question_text')
+    .optional()
+    .notEmpty().withMessage('O texto da pergunta é obrigatório'),
+  
+  body('questions.*.question_type')
+    .optional()
+    .isIn(['multiple_choice', 'true_false', 'open_ended']).withMessage('Tipo de pergunta inválido'),
+  
+  body('questions.*.options')
+    .optional()
+    .if(body('questions.*.question_type').equals('multiple_choice'))
+    .isArray({ min: 2, max: 5 }).withMessage('Perguntas de múltipla escolha devem ter entre 2 e 5 opções'),
+  
+  body('questions.*.correct_answer')
+    .optional()
+    .notEmpty().withMessage('A resposta correta é obrigatória'),
+  
+  validateRequest
 ];
 
+// Validação para adicionar serviço de emergência
 exports.validateAddEmergencyService = [
   body('name')
     .notEmpty().withMessage('O nome é obrigatório')
@@ -199,21 +242,38 @@ exports.validateAddEmergencyService = [
     .notEmpty().withMessage('O número de telefone é obrigatório')
     .isLength({ min: 8, max: 20 }).withMessage('O telefone deve ter entre 8 e 20 caracteres'),
   
+  body('is_24h')
+    .optional()
+    .isBoolean().withMessage('O valor para funcionamento 24h deve ser um booleano'),
+  
+  body('languages_spoken')
+    .optional()
+    .isArray().withMessage('Os idiomas falados devem ser um array'),
+  
   validateRequest
 ];
 
+// Validação para atualizar ponto de conectividade
 exports.validateUpdateConnectivitySpot = [
   body('id')
     .notEmpty().withMessage('O ID do ponto de conectividade é obrigatório')
     .isInt({ min: 1 }).withMessage('ID inválido'),
   
-  body('verified')
+  body('is_verified')
     .optional()
     .isBoolean().withMessage('O valor para verificado deve ser um booleano'),
   
   body('wifi_speed')
     .optional()
     .isIn(['slow', 'medium', 'fast']).withMessage('Velocidade Wi-Fi inválida'),
+  
+  body('is_free')
+    .optional()
+    .isBoolean().withMessage('O valor para gratuito deve ser um booleano'),
+  
+  body('working_percentage')
+    .optional()
+    .isFloat({ min: 0, max: 100 }).withMessage('A porcentagem de funcionamento deve estar entre 0 e 100'),
   
   validateRequest
 ];

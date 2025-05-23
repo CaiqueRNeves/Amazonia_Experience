@@ -11,16 +11,17 @@ exports.getConnectivitySpots = async (req, res, next) => {
     // Construir filtros a partir dos query params
     const filters = {};
     
+    // CORREÇÃO: Manter consistência na nomenclatura snake_case
     if (req.query.is_free === 'true') {
-      filters.isFree = true;
+      filters.is_free = true;
     }
     
     if (req.query.wifi_speed) {
-      filters.wifiSpeed = req.query.wifi_speed;
+      filters.wifi_speed = req.query.wifi_speed;
     }
     
     if (req.query.is_verified === 'true') {
-      filters.isVerified = true;
+      filters.is_verified = true;
     }
     
     if (req.query.search) {
