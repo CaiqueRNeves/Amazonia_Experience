@@ -1,0 +1,98 @@
+:root {
+  /* Cores primárias - Amazon Green */
+  --amazon-green-50: #E6F2EC;
+  --amazon-green-100: #C0DFC8;
+  --amazon-green-200: #93C6A1;
+  --amazon-green-300: #67AD7A;
+  --amazon-green-400: #459A5E;
+  --amazon-green-500: #0B6623;
+  --amazon-green-600: #095C1F;
+  --amazon-green-700: #07511B;
+  --amazon-green-800: #054716;
+  --amazon-green-900: #033D12;
+  
+  /* Cores secundárias - Sustainable Green */
+  --sustainable-green-50: #F0F9F1;
+  --sustainable-green-100: #D9F0DB;
+  --sustainable-green-200: #B4E2B8;
+  --sustainable-green-300: #8ED394;
+  --sustainable-green-400: #69C570;
+  --sustainable-green-500: #5DBB63;
+  --sustainable-green-600: #41A147;
+  --sustainable-green-700: #347D38;
+  --sustainable-green-800: #275D2A;
+  --sustainable-green-900: #1A3E1C;
+  
+  /* Cores de destaque - Amazon River */
+  --amazon-river-50: #E9F4FF;
+  --amazon-river-100: #C7E3FF;
+  --amazon-river-200: #94CAFF;
+  --amazon-river-300: #62B0FF;
+  --amazon-river-400: #3FA0FF;
+  --amazon-river-500: #1E90FF;
+  --amazon-river-600: #0077EA;
+  --amazon-river-700: #0062C1;
+  --amazon-river-800: #004E9A;
+  --amazon-river-900: #003A73;
+  
+  /* Cores terrosas - Amazon Earth */
+  --amazon-earth-50: #F4ECE6;
+  --amazon-earth-100: #E3D0C0;
+  --amazon-earth-200: #CBA987;
+  --amazon-earth-300: #B3814D;
+  --amazon-earth-400: #9C5D2E;
+  --amazon-earth-500: #8B4513;
+  --amazon-earth-600: #7A3D11;
+  --amazon-earth-700: #69340E;
+  --amazon-earth-800: #582C0C;
+  --amazon-earth-900: #47230A;
+  
+  /* Cores de utilidade */
+  --error: #E53935;
+  --warning: #FFB74D;
+  --success: #43A047;
+  --info: #29B6F6;
+  
+  /* Cores de fundo */
+  --background-light: #F9FAFB;
+  --background-dark: #121212;
+  
+  /* Valores de espaçamento */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+  
+  /* Valores de borda */
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 1rem;
+  --border-radius-full: 9999px;
+  
+  /* Valores de sombra */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  /* Valores de transição */
+  --transition-fast: 150ms;
+  --transition-normal: 300ms;
+  --transition-slow: 500ms;
+  
+  /* Valores de layout */
+  --header-height: 4rem;
+  --footer-height: 12rem;
+  --sidebar-width: 16rem;
+}
+
+/* Variáveis para modo escuro */
+.dark-mode {
+  --background: var(--background-dark);
+  --text-primary: #FFFFFF;
+  --text-secondary: #A0AEC0;
+  --border-color: #2D3748;
+}

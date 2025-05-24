@@ -1,0 +1,106 @@
+/* Import de arquivos base */
+@import 'variables.css';
+@import 'animations.css';
+@import 'tailwind-override.css';
+
+/* Estilos globais */
+body {
+  font-family: 'Roboto', 'Open Sans', sans-serif;
+  color: #333;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Classes de utilidade para temas */
+.amazon-theme {
+  --primary-color: var(--amazon-green);
+  --secondary-color: var(--sustainable-green);
+  --accent-color: var(--amazon-river);
+  --dark-color: var(--amazon-earth);
+}
+
+/* Acessibilidade */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Utilidades de layout */
+.content-wrapper {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .content-wrapper {
+    padding: 0 2rem;
+  }
+}
+
+/* Utilidade para quebra de texto */
+.break-word {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Estilização de links */
+a {
+  color: var(--amazon-green-600);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--amazon-green-800);
+}
+
+/* Animações de entrada para elementos */
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.3s ease-in-out;
+}
+
+.slide-in-up {
+  animation: slideInUp 0.3s ease-in-out;
+}
+
+/* Override para foco acessível */
+:focus {
+  outline: 2px solid var(--amazon-green-600);
+  outline-offset: 2px;
+}
+
+/* Estilização de barra de rolagem */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--amazon-green-300);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--amazon-green-500);
+}

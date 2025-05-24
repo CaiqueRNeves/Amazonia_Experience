@@ -1,0 +1,423 @@
+{
+  "app": {
+    "name": "AmazôniaExperience",
+    "tagline": "Your complete COP30 experience",
+    "loading": "Loading..."
+  },
+  "nav": {
+    "home": "Home",
+    "events": "Events",
+    "places": "Places",
+    "rewards": "Rewards",
+    "quizzes": "Quizzes",
+    "connectivity": "Connectivity",
+    "emergency": "Emergency",
+    "chat": "Assistant",
+    "profile": "Profile"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "name": "Name",
+    "nationality": "Nationality",
+    "forgotPassword": "Forgot password?",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "createAccount": "Create account",
+    "loginNow": "Login now",
+    "loginSuccess": "Login successful!",
+    "registerSuccess": "Registration successful!",
+    "logoutSuccess": "You have been logged out",
+    "loginRequired": "Please login to continue",
+    "welcomeBack": "Welcome back",
+    "welcome": "Welcome to AmazôniaExperience"
+  },
+  "profile": {
+    "title": "My Profile",
+    "edit": "Edit profile",
+    "save": "Save changes",
+    "cancel": "Cancel",
+    "myAmacoins": "My AmaCoins",
+    "myVisits": "My Visits",
+    "myRedemptions": "My Rewards",
+    "notifications": "Notifications",
+    "personalInfo": "Personal Information",
+    "preferences": "Preferences",
+    "settings": "Settings",
+    "language": "Language",
+    "theme": "Theme",
+    "profileUpdated": "Profile updated successfully!"
+  },
+  "amacoins": {
+    "balance": "Balance",
+    "history": "History",
+    "earned": "Earned",
+    "spent": "Spent",
+    "earnMore": "Earn more AmaCoins",
+    "howToEarn": "How to earn AmaCoins",
+    "earnedFrom": "Earned from",
+    "spentOn": "Spent on"
+  },
+  "events": {
+    "title": "Events",
+    "upcoming": "Upcoming events",
+    "ongoing": "Happening now",
+    "past": "Past events",
+    "featured": "Featured events",
+    "all": "All events",
+    "nearby": "Nearby events",
+    "search": "Search events",
+    "filter": "Filter events",
+    "date": "Date",
+    "time": "Time",
+    "location": "Location",
+    "type": "Type",
+    "details": "Event details",
+    "checkin": "Check-in",
+    "checkinSuccess": "Check-in successful!",
+    "checkinFailed": "Check-in failed",
+    "alreadyCheckedIn": "You have already checked in to this event",
+    "capacity": "Capacity",
+    "attendees": "Attendees",
+    "share": "Share",
+    "reward": "Reward",
+    "types": {
+      "conference": "Conference",
+      "panel": "Panel",
+      "workshop": "Workshop",
+      "exhibition": "Exhibition",
+      "cultural": "Cultural",
+      "social": "Social"
+    },
+    "emptyState": "No events found",
+    "checkInHere": "Check in here",
+    "amacoinValue": "AmaCoins value",
+    "startTime": "Start time",
+    "endTime": "End time",
+    "directions": "Get directions"
+  },
+  "places": {
+    "title": "Places",
+    "featured": "Featured places",
+    "all": "All places",
+    "nearby": "Nearby places",
+    "search": "Search places",
+    "filter": "Filter places",
+    "details": "Place details",
+    "location": "Location",
+    "address": "Address",
+    "openingHours": "Opening hours",
+    "checkin": "Check-in",
+    "checkinSuccess": "Check-in successful!",
+    "checkinFailed": "Check-in failed",
+    "alreadyCheckedIn": "You have already checked in to this place today",
+    "reward": "Reward",
+    "types": {
+      "tourist_spot": "Tourist Spot",
+      "restaurant": "Restaurant",
+      "shop": "Shop",
+      "cultural_venue": "Cultural Venue"
+    },
+    "emptyState": "No places found",
+    "checkInHere": "Check in here",
+    "amacoinValue": "AmaCoins value",
+    "directions": "Get directions",
+    "partner": "Partner",
+    "wifiAvailable": "WiFi available",
+    "distance": "Distance"
+  },
+  "rewards": {
+    "title": "Rewards",
+    "available": "Available rewards",
+    "physical": "Physical products",
+    "digital": "Digital services",
+    "search": "Search rewards",
+    "filter": "Filter rewards",
+    "details": "Reward details",
+    "redeem": "Redeem",
+    "redeemSuccess": "Redemption successful!",
+    "redeemFailed": "Redemption failed",
+    "insufficientFunds": "Insufficient funds",
+    "history": "Redemption history",
+    "redemptionCode": "Redemption code",
+    "redemptionDate": "Redemption date",
+    "partner": "Partner",
+    "cost": "Cost",
+    "types": {
+      "physical_product": "Physical product",
+      "digital_service": "Digital service",
+      "discount_coupon": "Discount coupon"
+    },
+    "emptyState": "No rewards found",
+    "amacoinsCost": "AmaCoins cost",
+    "availableUntil": "Available until",
+    "stock": "Stock",
+    "howToRedeem": "How to redeem",
+    "termsAndConditions": "Terms and conditions"
+  },
+  "quizzes": {
+    "title": "Quizzes",
+    "available": "Available quizzes",
+    "completed": "Completed quizzes",
+    "leaderboard": "Leaderboard",
+    "start": "Start quiz",
+    "continue": "Continue",
+    "question": "Question",
+    "of": "of",
+    "next": "Next",
+    "submit": "Submit",
+    "correct": "Correct!",
+    "incorrect": "Incorrect!",
+    "correctAnswer": "Correct answer",
+    "yourAnswer": "Your answer",
+    "results": "Results",
+    "score": "Score",
+    "reward": "Reward",
+    "timeLeft": "Time left",
+    "totalQuestions": "Total questions",
+    "correctAnswers": "Correct answers",
+    "difficulty": {
+      "easy": "Easy",
+      "medium": "Medium",
+      "hard": "Hard"
+    },
+    "topics": {
+      "amazon": "Amazon",
+      "sustainability": "Sustainability",
+      "climate": "Climate",
+      "biodiversity": "Biodiversity",
+      "culture": "Culture"
+    },
+    "emptyState": "No quizzes found",
+    "tryAgain": "Try again",
+    "earnedAmacoins": "AmaCoins earned",
+    "aboutToExpire": "This quiz is about to expire!",
+    "expired": "This quiz has expired",
+    "timeRemaining": "Time remaining",
+    "congratulations": "Congratulations!"
+  },
+  "connectivity": {
+    "title": "Connectivity",
+    "wifiSpots": "WiFi spots",
+    "nearby": "Nearby spots",
+    "map": "Connectivity map",
+    "heatmap": "Heat map",
+    "report": "Report connectivity",
+    "filter": "Filter spots",
+    "speed": "Speed",
+    "reliability": "Reliability",
+    "status": "Status",
+    "details": "Spot details",
+    "isFree": "Free",
+    "isPaid": "Paid",
+    "isVerified": "Verified",
+    "lastUpdated": "Last updated",
+    "reportSuccess": "Report submitted successfully!",
+    "reportFailed": "Failed to submit report",
+    "speeds": {
+      "slow": "Slow",
+      "medium": "Medium",
+      "fast": "Fast"
+    },
+    "statuses": {
+      "working": "Working",
+      "issues": "Issues",
+      "down": "Down"
+    },
+    "emptyState": "No connectivity spots found",
+    "wifiPassword": "WiFi password",
+    "howToConnect": "How to connect",
+    "workingPercentage": "Working percentage",
+    "yourExperience": "Your experience",
+    "comment": "Comment"
+  },
+  "emergency": {
+    "title": "Emergency",
+    "services": "Emergency services",
+    "contacts": "Important contacts",
+    "phrases": "Useful phrases",
+    "nearby": "Nearby services",
+    "map": "Emergency map",
+    "call": "Call",
+    "directions": "Get directions",
+    "types": {
+      "hospital": "Hospital",
+      "pharmacy": "Pharmacy",
+      "police": "Police",
+      "fire_department": "Fire Department",
+      "embassy": "Embassy",
+      "tourist_police": "Tourist Police"
+    },
+    "categories": {
+      "health": "Health",
+      "safety": "Safety",
+      "help": "Help",
+      "transportation": "Transportation"
+    },
+    "emptyState": "No emergency services found",
+    "emergencyNumber": "Emergency number",
+    "openingHours": "Opening hours",
+    "is24h": "Open 24h",
+    "languagesSpoken": "Languages spoken",
+    "distance": "Distance"
+  },
+  "chat": {
+    "title": "Assistant",
+    "placeholder": "Type your message...",
+    "send": "Send",
+    "startChat": "Start a conversation with the assistant",
+    "suggestedQuestions": "Suggested questions",
+    "feedback": {
+      "helpful": "Helpful",
+      "notHelpful": "Not helpful",
+      "thanks": "Thank you for your feedback!"
+    },
+    "contexts": {
+      "general": "General",
+      "event": "Event",
+      "place": "Place",
+      "emergency": "Emergency",
+      "connectivity": "Connectivity"
+    },
+    "suggestions": {
+      "events": "What events are happening today?",
+      "places": "Where can I find nearby restaurants?",
+      "amacoins": "How do I earn AmaCoins?",
+      "rewards": "How do I redeem rewards?",
+      "emergency": "Emergency numbers"
+    }
+  },
+  "common": {
+    "viewMore": "View more",
+    "viewAll": "View all",
+    "showMore": "Show more",
+    "showLess": "Show less",
+    "seeAll": "See all",
+    "loadMore": "Load more",
+    "refresh": "Refresh",
+    "retry": "Retry",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "close": "Close",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "search": "Search",
+    "filter": "Filter",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "success": "Success",
+    "error": "Error",
+    "warning": "Warning",
+    "info": "Information",
+    "today": "Today",
+    "tomorrow": "Tomorrow",
+    "yesterday": "Yesterday",
+    "now": "Now",
+    "distance": "{{distance}} km away",
+    "time": "{{time}} mins",
+    "seconds": "{{count}} second",
+    "seconds_plural": "{{count}} seconds",
+    "minutes": "{{count}} minute",
+    "minutes_plural": "{{count}} minutes",
+    "hours": "{{count}} hour",
+    "hours_plural": "{{count}} hours",
+    "days": "{{count}} day",
+    "days_plural": "{{count}} days"
+  },
+  "validation": {
+    "required": "Required field",
+    "email": "Invalid email",
+    "minLength": "Must be at least {{count}} characters",
+    "maxLength": "Must be at most {{count}} characters",
+    "passwordMatch": "Passwords don't match",
+    "invalidInput": "Invalid input"
+  },
+  "errors": {
+    "generic": "An error occurred. Please try again.",
+    "connection": "Connection error. Check your internet.",
+    "notFound": "Not found",
+    "unauthorized": "Unauthorized",
+    "forbidden": "Access denied",
+    "serverError": "Server error",
+    "pageNotFound": "Page not found",
+    "serviceUnavailable": "Service unavailable",
+    "timeout": "Request timed out"
+  },
+  "offline": {
+    "alert": "You are offline",
+    "limited": "Limited functionality available",
+    "cached": "Viewing cached content",
+    "tryAgain": "Try again when online"
+  },
+  "geolocation": {
+    "permission": "Please allow access to your location to see nearby points",
+    "denied": "Location permission denied",
+    "unavailable": "Location service unavailable",
+    "timeout": "Location request timed out",
+    "findingLocation": "Finding your location..."
+  },
+  "notifications": {
+    "title": "Notifications",
+    "enable": "Enable notifications",
+    "disable": "Disable notifications",
+    "preferences": {
+      "events": "Events",
+      "rewards": "Rewards",
+      "quizzes": "Quizzes",
+      "emergency": "Emergency"
+    },
+    "types": {
+      "event_reminder": "Event reminder",
+      "quiz_available": "New quiz available",
+      "system_notification": "System notification",
+      "emergency_alert": "Emergency alert"
+    }
+  },
+  "map": {
+    "zoomIn": "Zoom in",
+    "zoomOut": "Zoom out",
+    "currentLocation": "Your location",
+    "searchNearby": "Search nearby",
+    "directions": "Get directions",
+    "legend": "Legend"
+  },
+  "footer": {
+    "about": "About",
+    "partners": "Partners",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "contact": "Contact",
+    "copyright": "© 2025 AmazôniaExperience. All rights reserved."
+  },
+  "landing": {
+    "hero": {
+      "title": "Explore, Participate, Earn",
+      "subtitle": "Your complete COP30 experience",
+      "cta": "Start your journey"
+    },
+    "features": {
+      "events": {
+        "title": "Events",
+        "description": "Access the complete COP30 program and earn AmaCoins by participating."
+      },
+      "places": {
+        "title": "Places",
+        "description": "Discover tourist spots and participating establishments."
+      },
+      "rewards": {
+        "title": "Rewards",
+        "description": "Exchange your AmaCoins for products and services from local partners."
+      },
+      "connectivity": {
+        "title": "Connectivity",
+        "description": "Find free WiFi spots around the city."
+      }
+    }
+  }
+}

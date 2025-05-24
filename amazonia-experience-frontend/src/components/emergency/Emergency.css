@@ -1,0 +1,170 @@
+/* Estilos para a seção de emergência */
+
+/* Cores para tipos de serviços de emergência */
+.hospital-color { color: #E53E3E; }
+.pharmacy-color { color: #38A169; }
+.police-color { color: #3182CE; }
+.fire-color { color: #DD6B20; }
+.embassy-color { color: #6B46C1; }
+.tourist-police-color { color: #0987A0; }
+
+/* Estilos para o mapa de emergência */
+.emergency-map .leaflet-container {
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+}
+
+.emergency-map .leaflet-popup-content {
+  min-width: 200px;
+}
+
+.emergency-map .leaflet-popup-content h3 {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.emergency-map .marker-cluster {
+  background-color: rgba(49, 130, 206, 0.6);
+}
+
+.emergency-map .marker-cluster div {
+  background-color: rgba(49, 130, 206, 0.8);
+  color: white;
+  font-weight: bold;
+}
+
+/* Botões de chamada de emergência */
+.emergency-call-button {
+  transition: transform 0.2s;
+}
+
+.emergency-call-button:hover {
+  transform: scale(1.05);
+}
+
+.emergency-call-button:active {
+  transform: scale(0.98);
+}
+
+/* Cartões de serviços de emergência */
+.emergency-service-card {
+  transition: all 0.2s ease-in-out;
+}
+
+.emergency-service-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Estilos para frases de emergência */
+.phrase-item {
+  transition: background-color 0.2s;
+}
+
+.phrase-item:hover {
+  background-color: rgba(237, 242, 247, 0.8);
+}
+
+.phrase-pronunciation {
+  color: #4A5568;
+  font-style: italic;
+}
+
+/* Responsividade para a grade de tipos de serviço */
+@media (max-width: 640px) {
+  .service-types-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .service-type-btn {
+    padding: 8px;
+  }
+  
+  .service-type-btn .text-sm {
+    font-size: 0.7rem;
+  }
+}
+
+/* Animação pulsante para botões em estado de emergência */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(220, 38, 38, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
+  }
+}
+
+.pulse-animation {
+  animation: pulse 2s infinite;
+}
+
+/* Estado de disponibilidade para serviços */
+.is-open {
+  color: #38A169;
+}
+
+.is-closed {
+  color: #E53E3E;
+}
+
+/* Badges para status de serviços */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.status-badge.is-24h {
+  background-color: #C6F6D5;
+  color: #2F855A;
+}
+
+.status-badge.emergency-room {
+  background-color: #FED7D7;
+  color: #C53030;
+}
+
+/* Estado vazio para a seção de emergência */
+.emergency-empty-state {
+  text-align: center;
+  padding: 2rem;
+  background-color: #F7FAFC;
+  border-radius: 0.5rem;
+  margin: 2rem 0;
+}
+
+.emergency-empty-state svg {
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto 1rem;
+  color: #CBD5E0;
+}
+
+/* Estilo para contatos de emergência */
+.emergency-contact-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.emergency-contact-item:last-child {
+  border-bottom: none;
+}
+
+.emergency-contact-name {
+  font-weight: 500;
+}
+
+.emergency-contact-number {
+  font-family: monospace;
+  font-weight: 600;
+}

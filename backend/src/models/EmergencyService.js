@@ -1,5 +1,5 @@
-const EmergencyService = require('../models/EmergencyService');
-const EmergencyPhrase = require('../models/EmergencyPhrase');
+const EmergencyService = require('./EmergencyService');
+const EmergencyPhrase = require('./EmergencyPhrase');
 const { NotFoundError, ValidationError } = require('../middleware/error');
 
 /**

@@ -1,0 +1,13 @@
+<svg width="40" height="30" viewBox="0 0 40 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fundo verde -->
+  <rect width="40" height="30" fill="#009C3B" />
+  
+  <!-- Losango amarelo -->
+  <path d="M2 15L20 2L38 15L20 28L2 15Z" fill="#FFDF00" />
+  
+  <!-- Círculo azul -->
+  <circle cx="20" cy="15" r="7" fill="#002776" />
+  
+  <!-- Faixa branca -->
+  <path d="M15 19C15 19 18 21 20 21C22 21 25 19 25 19" stroke="white" stroke-width="1" fill="none" />
+</svg>
