@@ -13,7 +13,11 @@ class Reward {
     
     // Aplicar filtros se fornecidos
     if (filters.rewardType) {
-      query = query.where('reward_type', filters.rewardType);
+      if (Array.isArray(filters.rewardType)) {
+        query = query.whereIn('reward_type', filters.rewardType);
+      } else {
+        query = query.where('reward_type', filters.rewardType);
+      }
     }
     
     if (filters.partnerId) {

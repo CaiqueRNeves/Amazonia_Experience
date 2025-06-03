@@ -2,7 +2,8 @@ const db = require('../config/database');
 
 class QuizAttempt {
   // Métodos de busca
-  static findById(id) {return db('quiz_attempts').where({ id }).first();
+  static findById(id) {
+    return db('quiz_attempts').where({ id }).first();
   }
 
   // Criar tentativa

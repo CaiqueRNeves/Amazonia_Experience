@@ -33,32 +33,13 @@ class Redemption {
       throw new ValidationError('Recompensa esgotada');
     }
 
-    // Iniciar transação para garantir consistência
-    const trx = await db.transaction();
+    const [id] = await db('redemptions').insert({
+      ...redemptionData,
+      redeemed_at: redemptionData.redeemed_at || new Date(),
+      status: redemptionData.status || 'pending'
+    });
 
-    try {
-      // Decrementar estoque
-      await Reward.decrementStock(reward.id);
-      
-      // Debitar AmaCoins do usuário
-      await User.updateAmacoins(user.id, -reward.amacoins_cost);
-      
-      // Registrar resgate
-      const [id] = await trx('redemptions').insert({
-        user_id: user.id,
-        reward_id: reward.id,
-        amacoins_spent: reward.amacoins_cost,
-        redeemed_at: new Date(),
-        status: 'pending'
-      });
-      
-      await trx.commit();
-      
-      return this.findById(id);
-    } catch (error) {
-      await trx.rollback();
-      throw error;
-    }
+    return this.findById(id);
   }
 
   // Atualizar status de um resgate

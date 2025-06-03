@@ -1,100 +1,122 @@
-const EmergencyService = require('./EmergencyService');
-const EmergencyPhrase = require('./EmergencyPhrase');
+const db = require('../config/database');
 const { NotFoundError, ValidationError } = require('../middleware/error');
 
-/**
- * Serviço responsável por operações relacionadas a serviços de emergência
- */
-class EmergencyServiceClass {
+class EmergencyService {
+  /**
+   * Obtém um serviço de emergência por ID
+   */
+  static findById(id) {
+    return db('emergency_services').where({ id }).first();
+  }
+
   /**
    * Lista serviços de emergência
-   * @param {number} page - Página atual
-   * @param {number} limit - Limite por página
-   * @param {Object} filters - Filtros para a busca
-   * @returns {Array} - Lista de serviços de emergência
    */
-  async getEmergencyServices(page = 1, limit = 10, filters = {}) {
-    return EmergencyService.findAll(page, limit, filters);
+  static findAll(page = 1, limit = 10, filters = {}) {
+    const offset = (page - 1) * limit;
+    let query = db('emergency_services');
+    
+    // Aplicar filtros
+    if (filters.is24h) {
+      query = query.where('is_24h', true);
+    }
+    
+    if (filters.language) {
+      query = query.whereRaw('languages_spoken LIKE ?', [`%${filters.language}%`]);
+    }
+    
+    if (filters.search) {
+      query = query.whereRaw('LOWER(name) LIKE ?', [`%${filters.search.toLowerCase()}%`])
+        .orWhereRaw('LOWER(address) LIKE ?', [`%${filters.search.toLowerCase()}%`]);
+    }
+    
+    return query
+      .select('*')
+      .limit(limit)
+      .offset(offset)
+      .orderBy('name');
   }
 
   /**
    * Lista serviços de emergência por tipo
-   * @param {string} serviceType - Tipo de serviço
-   * @param {number} page - Página atual
-   * @param {number} limit - Limite por página
-   * @returns {Array} - Lista de serviços de emergência do tipo especificado
    */
-  async getServicesByType(serviceType, page = 1, limit = 10) {
+  static findByType(serviceType, page = 1, limit = 10) {
     // Validar tipo de serviço
     const validTypes = ['hospital', 'pharmacy', 'police', 'fire_department', 'embassy', 'tourist_police'];
     if (!validTypes.includes(serviceType)) {
       throw new ValidationError('Tipo de serviço inválido');
     }
     
-    return EmergencyService.findByType(serviceType, page, limit);
+    const offset = (page - 1) * limit;
+    
+    return db('emergency_services')
+      .where({ service_type: serviceType })
+      .select('*')
+      .limit(limit)
+      .offset(offset)
+      .orderBy('name');
   }
 
   /**
    * Lista serviços de emergência próximos por geolocalização
-   * @param {number} latitude - Latitude
-   * @param {number} longitude - Longitude
-   * @param {number} radius - Raio de busca em km
-   * @param {number} page - Página atual
-   * @param {number} limit - Limite por página
-   * @param {Object} filters - Filtros adicionais
-   * @returns {Array} - Lista de serviços de emergência próximos
    */
-  async getNearbyServices(latitude, longitude, radius = 5, page = 1, limit = 10, filters = {}) {
+  static async findNearby(latitude, longitude, radius = 5, page = 1, limit = 10, filters = {}) {
     if (!latitude || !longitude) {
       throw new ValidationError('Latitude e longitude são obrigatórios');
     }
     
-    return EmergencyService.findNearby(
-      parseFloat(latitude),
-      parseFloat(longitude),
-      radius,
-      page,
-      limit,
-      filters
-    );
+    const offset = (page - 1) * limit;
+    
+    let query = db('emergency_services')
+      .select('*')
+      .select(db.raw(`
+        (6371 * acos(cos(radians(?)) * 
+        cos(radians(latitude)) * 
+        cos(radians(longitude) - 
+        radians(?)) + 
+        sin(radians(?)) * 
+        sin(radians(latitude)))) AS distance
+      `, [latitude, longitude, latitude]))
+      .having('distance', '<', radius);
+    
+    // Aplicar filtros adicionais
+    if (filters.serviceType) {
+      query = query.where('service_type', filters.serviceType);
+    }
+    
+    return query
+      .orderBy('distance')
+      .limit(limit)
+      .offset(offset);
   }
 
   /**
    * Obtém contatos de emergência por idioma
-   * @param {string} language - Código do idioma
-   * @returns {Object} - Contatos de emergência
    */
-  async getContactsByLanguage(language) {
+  static async getEmergencyContacts(language) {
     // Validar idioma
     const validLanguages = ['pt-BR', 'en-US', 'es-ES', 'fr-FR', 'de-DE', 'zh-CN', 'ru-RU'];
     if (!validLanguages.includes(language)) {
       throw new ValidationError('Idioma não suportado');
     }
     
-    return EmergencyService.getEmergencyContacts(language);
-  }
-
-  /**
-   * Obtém frases de emergência úteis em um idioma específico
-   * @param {string} language - Código do idioma
-   * @returns {Object} - Frases de emergência agrupadas por categoria
-   */
-  async getPhrasesByLanguage(language) {
-    // Validar idioma
-    const validLanguages = ['pt-BR', 'en-US', 'es-ES', 'fr-FR', 'de-DE', 'zh-CN', 'ru-RU'];
-    if (!validLanguages.includes(language)) {
-      throw new ValidationError('Idioma não suportado');
+    // Buscar contatos de emergência no idioma solicitado
+    const contacts = await db('emergency_contacts')
+      .where({ language })
+      .first();
+    
+    // Se não existir no idioma solicitado, retornar em inglês
+    if (!contacts && language !== 'en-US') {
+      return this.getEmergencyContacts('en-US');
     }
     
-    return EmergencyPhrase.findByLanguage(language);
+    return contacts;
   }
 
   /**
-   * Adiciona um novo serviço de emergência (admin)
-   * @param {Object} serviceData - Dados do serviço
-   * @returns {Object} - Serviço criado
+   * Adiciona um novo serviço de emergência
    */
-  async addEmergencyService(serviceData) {
+  static async create(serviceData) {
     // Validar tipo de serviço
     const validTypes = ['hospital', 'pharmacy', 'police', 'fire_department', 'embassy', 'tourist_police'];
     if (!validTypes.includes(serviceData.service_type)) {
@@ -106,17 +128,15 @@ class EmergencyServiceClass {
       serviceData.languages_spoken = JSON.stringify(serviceData.languages_spoken);
     }
     
-    return EmergencyService.create(serviceData);
+    const [id] = await db('emergency_services').insert(serviceData);
+    return this.findById(id);
   }
 
   /**
-   * Atualiza um serviço de emergência (admin)
-   * @param {number} serviceId - ID do serviço
-   * @param {Object} serviceData - Novos dados do serviço
-   * @returns {Object} - Serviço atualizado
+   * Atualiza um serviço de emergência
    */
-  async updateEmergencyService(serviceId, serviceData) {
-    const service = await EmergencyService.findById(serviceId);
+  static async update(serviceId, serviceData) {
+    const service = await this.findById(serviceId);
     if (!service) {
       throw new NotFoundError('Serviço de emergência não encontrado');
     }
@@ -134,24 +154,22 @@ class EmergencyServiceClass {
       serviceData.languages_spoken = JSON.stringify(serviceData.languages_spoken);
     }
     
-    return EmergencyService.update(serviceId, serviceData);
+    await db('emergency_services').where({ id: serviceId }).update(serviceData);
+    return this.findById(serviceId);
   }
 
   /**
-   * Remove um serviço de emergência (admin)
-   * @param {number} serviceId - ID do serviço
-   * @returns {boolean} - Sucesso da operação
+   * Remove um serviço de emergência
    */
-  async removeEmergencyService(serviceId) {
-    const service = await EmergencyService.findById(serviceId);
+  static async delete(serviceId) {
+    const service = await this.findById(serviceId);
     if (!service) {
       throw new NotFoundError('Serviço de emergência não encontrado');
     }
     
     await db('emergency_services').where({ id: serviceId }).del();
-    
     return true;
   }
 }
 
-module.exports = new EmergencyServiceClass();
+module.exports = EmergencyService;

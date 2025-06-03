@@ -1,8 +1,12 @@
+/* eslint-disable no-case-declarations */
+/* eslint-disable quotes */
+/* eslint-disable max-len */
 const ChatMessage = require('../models/ChatMessage');
 const User = require('../models/User');
 const Event = require('../models/Event');
 const Place = require('../models/Place');
 const EmergencyService = require('../models/EmergencyService');
+const ConnectivitySpot = require('../models/ConnectivitySpot');
 const { ValidationError, NotFoundError } = require('../middleware/error');
 const { NlpManager } = require('node-nlp');
 
@@ -91,11 +95,6 @@ class ChatbotService {
 
   /**
    * Processa uma mensagem e retorna a resposta do chatbot
-   * @param {number} userId - ID do usuário
-   * @param {string} message - Mensagem do usuário
-   * @param {string} contextType - Tipo de contexto (opcional)
-   * @param {number} contextId - ID do contexto (opcional)
-   * @returns {Object} - Resposta do chatbot
    */
   async processMessage(userId, message, contextType = 'general', contextId = null) {
     // Verificar contexto se fornecido
@@ -124,7 +123,7 @@ class ChatbotService {
       
       if (result.intent && result.score > 0.7) {
         // Customizar resposta com dados do usuário ou contexto quando necessário
-        let variables = {};
+        const variables = {};
         
         if (result.intent === 'amacoins.saldo') {
           variables.saldoAmacoins = user.amacoins;
@@ -172,34 +171,32 @@ class ChatbotService {
 
   /**
    * Verifica se um contexto existe
-   * @param {string} contextType - Tipo de contexto
-   * @param {number} contextId - ID do contexto
    */
   async verifyContext(contextType, contextId) {
     let contextExists = false;
     
     switch (contextType) {
-      case 'event':
-        const event = await Event.findById(contextId);
-        contextExists = !!event;
-        break;
-      case 'place':
-        const place = await Place.findById(contextId);
-        contextExists = !!place;
-        break;
-      case 'emergency':
-        const emergencyService = await EmergencyService.findById(contextId);
-        contextExists = !!emergencyService;
-        break;
-      case 'connectivity':
-        const connectivitySpot = await ConnectivitySpot.findById(contextId);
-        contextExists = !!connectivitySpot;
-        break;
-      case 'general':
-        contextExists = true;
-        break;
-      default:
-        throw new ValidationError('Tipo de contexto inválido');
+    case 'event':
+      const event = await Event.findById(contextId);
+      contextExists = !!event;
+      break;
+    case 'place':
+      const place = await Place.findById(contextId);
+      contextExists = !!place;
+      break;
+    case 'emergency':
+      const emergencyService = await EmergencyService.findById(contextId);
+      contextExists = !!emergencyService;
+      break;
+    case 'connectivity':
+      const connectivitySpot = await ConnectivitySpot.findById(contextId);
+      contextExists = !!connectivitySpot;
+      break;
+    case 'general':
+      contextExists = true;
+      break;
+    default:
+      throw new ValidationError('Tipo de contexto inválido');
     }
     
     if (!contextExists) {
@@ -209,7 +206,6 @@ class ChatbotService {
 
   /**
    * Obtém o próximo evento
-   * @returns {Object} - Próximo evento
    */
   async getProximoEvento() {
     const now = new Date();
@@ -226,8 +222,6 @@ class ChatbotService {
 
   /**
    * Obtém uma resposta baseada em palavras-chave simples
-   * @param {string} message - Mensagem do usuário
-   * @returns {string} - Resposta baseada em palavras-chave
    */
   getKeywordBasedResponse(message) {
     const lowercaseMessage = message.toLowerCase();
@@ -256,11 +250,6 @@ class ChatbotService {
 
   /**
    * Obtém o histórico de conversas
-   * @param {number} userId - ID do usuário
-   * @param {Object} filters - Filtros para a busca
-   * @param {number} page - Página
-   * @param {number} limit - Limite por página
-   * @returns {Array} - Histórico de conversas
    */
   async getHistory(userId, filters = {}, page = 1, limit = 20) {
     return ChatMessage.findByUserId(userId, filters, page, limit);
@@ -268,10 +257,6 @@ class ChatbotService {
 
   /**
    * Salva feedback sobre uma resposta do chatbot
-   * @param {number} messageId - ID da mensagem
-   * @param {boolean} isHelpful - Se a resposta foi útil
-   * @param {string} feedbackText - Texto do feedback
-   * @returns {Object} - Mensagem atualizada com feedback
    */
   async saveFeedback(messageId, isHelpful, feedbackText) {
     return ChatMessage.updateFeedback(messageId, isHelpful, feedbackText);

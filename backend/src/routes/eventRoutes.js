@@ -179,41 +179,6 @@ router.get('/', eventController.getEvents);
 
 /**
  * @swagger
- * /events/{id}:
- *   get:
- *     summary: Detalhes de um evento
- *     description: Retorna os detalhes de um evento específico
- *     tags: [Eventos]
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: integer
- *         description: ID do evento
- *     responses:
- *       200:
- *         description: Evento encontrado com sucesso
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 status:
- *                   type: string
- *                   example: success
- *                 data:
- *                   type: object
- *                   properties:
- *                     event:
- *                       $ref: '#/components/schemas/Event'
- *       404:
- *         description: Evento não encontrado
- */
-router.get('/:id', eventController.getEvent);
-
-/**
- * @swagger
  * /events/nearby:
  *   get:
  *     summary: Eventos próximos
@@ -284,6 +249,67 @@ router.get('/:id', eventController.getEvent);
  *         description: Parâmetros de localização inválidos
  */
 router.get('/nearby', eventController.getNearbyEvents);
+
+/**
+ * @swagger
+ * /events/ongoing:
+ *   get:
+ *     summary: Eventos em andamento
+ *     description: Retorna lista de eventos que estão acontecendo no momento
+ *     tags: [Eventos]
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           default: 1
+ *         description: Página a ser retornada
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           default: 10
+ *         description: Número de eventos por página
+ *     responses:
+ *       200:
+ *         description: Lista de eventos em andamento retornada com sucesso
+ */
+router.get('/ongoing', eventController.getOngoingEvents);
+
+/**
+ * @swagger
+ * /events/{id}:
+ *   get:
+ *     summary: Detalhes de um evento
+ *     description: Retorna os detalhes de um evento específico
+ *     tags: [Eventos]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID do evento
+ *     responses:
+ *       200:
+ *         description: Evento encontrado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: success
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     event:
+ *                       $ref: '#/components/schemas/Event'
+ *       404:
+ *         description: Evento não encontrado
+ */
+router.get('/:id', eventController.getEvent);
 
 /**
  * @swagger

@@ -249,7 +249,8 @@ exports.submitQuiz = async (req, res, next) => {
       }
     });
   } catch (error) {
-    nextnext(error);
+    // CORREÇÃO: Erro de digitação corrigido
+    next(error);
   }
 };
 

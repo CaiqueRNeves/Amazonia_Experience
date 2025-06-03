@@ -8,7 +8,11 @@ class ConnectivityReport {
 
   // Criar relatório
   static async create(reportData) {
-    const [id] = await db('connectivity_reports').insert(reportData);
+    const [id] = await db('connectivity_reports').insert({
+      ...reportData,
+      created_at: new Date(),
+      updated_at: new Date()
+    });
     return this.findById(id);
   }
 

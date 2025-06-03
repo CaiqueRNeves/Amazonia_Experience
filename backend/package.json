@@ -18,7 +18,8 @@
     "docker:run": "docker run -p 3000:3000 amazonia-experience-backend:latest",
     "docker:compose": "docker-compose up",
     "docker:compose:build": "docker-compose up --build",
-    "prepare-release": "standard-version"
+    "prepare-release": "standard-version",
+    "prepare": "husky install"
   },
   "keywords": [
     "cop30",
@@ -36,9 +37,9 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.17.1",
-    "express-rate-limit": "^6.7.0",
+    "express-rate-limit": "^6.11.2",
     "express-validator": "^7.0.1",
-    "helmet": "^7.0.0",
+    "helmet": "^7.2.0",
     "i18next": "^23.2.11",
     "joi": "^17.9.2",
     "jsonwebtoken": "^9.0.0",
@@ -60,11 +61,5 @@
     "prettier": "^2.8.8",
     "standard-version": "^9.5.0",
     "supertest": "^6.3.3"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint",
-      "pre-push": "npm test"
-    }
   }
 }

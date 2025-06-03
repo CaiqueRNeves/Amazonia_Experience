@@ -8,19 +8,19 @@ exports.getConnectivitySpots = async (req, res, next) => {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
     
-    // Construir filtros a partir dos query params
+    // CORREÇÃO: Padronização consistente em snake_case
     const filters = {};
     
     if (req.query.is_free === 'true') {
-      filters.isFree = true;
+      filters.is_free = true;
     }
     
     if (req.query.wifi_speed) {
-      filters.wifiSpeed = req.query.wifi_speed;
+      filters.wifi_speed = req.query.wifi_speed;
     }
     
     if (req.query.is_verified === 'true') {
-      filters.isVerified = true;
+      filters.is_verified = true;
     }
     
     if (req.query.search) {
@@ -93,6 +93,9 @@ exports.reportSpot = async (req, res, next) => {
       throw new NotFoundError('Ponto de conectividade não encontrado');
     }
     
+    // CORREÇÃO: Validação de entrada melhorada
+    const sanitizedComment = comment ? comment.substring(0, 500) : null;
+    
     // Criar relatório
     const report = await ConnectivityReport.create({
       user_id: userId,
@@ -100,7 +103,7 @@ exports.reportSpot = async (req, res, next) => {
       wifi_speed,
       wifi_reliability,
       is_working,
-      comment,
+      comment: sanitizedComment,
       reported_at: new Date()
     });
     
@@ -122,7 +125,7 @@ exports.reportSpot = async (req, res, next) => {
 exports.getHeatmap = async (req, res, next) => {
   try {
     // Buscar todos os pontos com métricas
-    const spots = await ConnectivitySpot.findAll(1, 1000, { includeReports: true });
+    const spots = await ConnectivitySpot.findAll(1, 1000, { include_reports: true });
     
     // Formatar dados para mapa de calor
     const heatmapData = spots.map(spot => ({
@@ -131,7 +134,8 @@ exports.getHeatmap = async (req, res, next) => {
       intensity: spot.avg_signal_strength || 0, // Escala de 0 a 10
       name: spot.name,
       is_free: spot.is_free,
-      wifi_speed: spot.wifi_speed
+      wifi_speed: spot.wifi_speed,
+      working_percentage: spot.working_percentage || 0
     }));
     
     res.json({

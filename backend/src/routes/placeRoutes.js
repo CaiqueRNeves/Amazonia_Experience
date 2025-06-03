@@ -6,8 +6,9 @@ const { validatePlaceCheckin } = require('../validators/placeValidator');
 
 // Rotas públicas
 router.get('/', placeController.getPlaces);
-router.get('/:id', placeController.getPlace);
+// Corrigindo a ordem - rota específica antes da rota com parâmetro
 router.get('/nearby', placeController.getNearbyPlaces);
+router.get('/:id', placeController.getPlace);
 
 // Rotas protegidas (requerem autenticação)
 router.post('/checkin', authMiddleware, validatePlaceCheckin, placeController.checkIn);

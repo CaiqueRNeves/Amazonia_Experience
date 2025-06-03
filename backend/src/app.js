@@ -31,10 +31,10 @@ app.use(cors({
 app.use(helmet());
 app.use(morgan('dev'));
 
-// Rate limiting
+// CORREÇÃO: Rate limiting consistente
 const limiter = rateLimit({
-  windowMs: (process.env.RATE_LIMIT_WINDOW || 15) * 60 * 1000, // 15 minutos padrão
-  max: process.env.RATE_LIMIT_MAX || 100, // limite de 100 requisições por janela
+  windowMs: parseInt(process.env.RATE_LIMIT_WINDOW) * 60 * 1000 || 15 * 60 * 1000,
+  max: parseInt(process.env.RATE_LIMIT_MAX) || 100,
   standardHeaders: true,
   legacyHeaders: false,
   message: {
