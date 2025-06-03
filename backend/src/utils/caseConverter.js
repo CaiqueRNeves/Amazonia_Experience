@@ -82,11 +82,41 @@ const convertQueryParams = (params) => {
   }, {});
 };
 
-// CORREÇÃO: Única exportação
+/**
+ * Middleware para converter automaticamente requests e responses
+ * @param {Object} req - Request object
+ * @param {Object} res - Response object
+ * @param {Function} next - Next middleware function
+ */
+const caseConversionMiddleware = (req, res, next) => {
+  // Converter query params de camelCase para snake_case
+  if (req.query) {
+    req.query = convertQueryParams(req.query);
+  }
+  
+  // Converter body de camelCase para snake_case
+  if (req.body) {
+    req.body = objectToSnakeCase(req.body);
+  }
+  
+  // Interceptar res.json para converter responses de snake_case para camelCase
+  const originalJson = res.json;
+  res.json = function(data) {
+    if (data && typeof data === 'object') {
+      data = objectToCamelCase(data);
+    }
+    return originalJson.call(this, data);
+  };
+  
+  next();
+};
+
+// CORREÇÃO: Única exportação sem duplicação
 module.exports = {
   camelToSnake,
   snakeToCamel,
   objectToCamelCase,
   objectToSnakeCase,
-  convertQueryParams
+  convertQueryParams,
+  caseConversionMiddleware
 };
