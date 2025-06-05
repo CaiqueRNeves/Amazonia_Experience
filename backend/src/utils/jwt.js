@@ -1,11 +1,11 @@
-const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
 
 /**
  * Gera token JWT de acesso
  * @param {Object} payload - Dados a serem incluídos no token
  * @returns {string} Token JWT
  */
-const generateToken = (payload) => {
+export const generateToken = (payload) => {
   return jwt.sign(payload, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN || '1h'
   });
@@ -16,7 +16,7 @@ const generateToken = (payload) => {
  * @param {Object} payload - Dados a serem incluídos no token
  * @returns {string} Refresh token
  */
-const generateRefreshToken = (payload) => {
+export const generateRefreshToken = (payload) => {
   return jwt.sign(payload, process.env.JWT_REFRESH_SECRET || process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_REFRESH_EXPIRES_IN || '7d'
   });
@@ -27,7 +27,7 @@ const generateRefreshToken = (payload) => {
  * @param {string} token - Token a ser verificado
  * @returns {Object|null} Dados decodificados ou null se inválido
  */
-const verifyRefreshToken = (token) => {
+export const verifyRefreshToken = (token) => {
   try {
     return jwt.verify(token, process.env.JWT_REFRESH_SECRET || process.env.JWT_SECRET);
   } catch (error) {
@@ -40,17 +40,10 @@ const verifyRefreshToken = (token) => {
  * @param {string} token - Token a ser verificado
  * @returns {Object|null} Dados decodificados ou null se inválido
  */
-const verifyToken = (token) => {
+export const verifyToken = (token) => {
   try {
     return jwt.verify(token, process.env.JWT_SECRET);
   } catch (error) {
     return null;
   }
-};
-
-module.exports = {
-  generateToken,
-  generateRefreshToken,
-  verifyRefreshToken,
-  verifyToken
 };

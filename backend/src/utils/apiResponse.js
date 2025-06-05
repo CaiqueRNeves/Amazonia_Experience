@@ -10,7 +10,7 @@
  * @param {number} statusCode - Código de status HTTP (default: 200)
  * @returns {Object} Resposta formatada
  */
-exports.success = (res, data, statusCode = 200) => {
+export const success = (res, data, statusCode = 200) => {
   return res.status(statusCode).json({
     status: 'success',
     data
@@ -24,7 +24,7 @@ exports.success = (res, data, statusCode = 200) => {
  * @param {number} statusCode - Código de status HTTP (default: 500)
  * @returns {Object} Resposta formatada
  */
-exports.error = (res, message, statusCode = 500) => {
+export const error = (res, message, statusCode = 500) => {
   return res.status(statusCode).json({
     status: 'error',
     message
@@ -41,7 +41,7 @@ exports.error = (res, message, statusCode = 500) => {
  * @param {string} itemName - Nome dos itens (opcional)
  * @returns {Object} Resposta formatada com informações de paginação
  */
-exports.paginated = (res, items, page, limit, total, itemName = 'items') => {
+export const paginated = (res, items, page, limit, total, itemName = 'items') => {
   const totalPages = Math.ceil(total / limit);
   const hasNextPage = page < totalPages;
   const hasPrevPage = page > 1;
@@ -73,7 +73,7 @@ exports.paginated = (res, items, page, limit, total, itemName = 'items') => {
  * @param {string} message - Mensagem personalizada (opcional)
  * @returns {Object} Resposta formatada com código 201
  */
-exports.created = (res, data, message = 'Recurso criado com sucesso') => {
+export const created = (res, data, message = 'Recurso criado com sucesso') => {
   return res.status(201).json({
     status: 'success',
     message,
@@ -86,6 +86,6 @@ exports.created = (res, data, message = 'Recurso criado com sucesso') => {
  * @param {Object} res - Objeto de resposta do Express
  * @returns {Object} Resposta com código 204
  */
-exports.noContent = (res) => {
+export const noContent = (res) => {
   return res.status(204).send();
 };

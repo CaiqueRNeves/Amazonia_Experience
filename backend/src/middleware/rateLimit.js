@@ -1,7 +1,7 @@
-const rateLimit = require('express-rate-limit');
+import rateLimit from 'express-rate-limit';
 
 // Configuração padrão de rate limit para API
-const apiLimiter = rateLimit({
+export const apiLimiter = rateLimit({
   windowMs: parseInt(process.env.RATE_LIMIT_WINDOW) * 60 * 1000 || 15 * 60 * 1000,
   max: parseInt(process.env.RATE_LIMIT_MAX) || 100,
   standardHeaders: true,
@@ -13,7 +13,7 @@ const apiLimiter = rateLimit({
 });
 
 // Rate limit mais rigoroso para autenticação (prevenir brute force)
-const authLimiter = rateLimit({
+export const authLimiter = rateLimit({
   windowMs: 60 * 60 * 1000, // 1 hora
   max: 10, // limite de 10 tentativas por hora
   standardHeaders: true,
@@ -25,7 +25,7 @@ const authLimiter = rateLimit({
 });
 
 // Rate limit para check-ins
-const checkinLimiter = rateLimit({
+export const checkinLimiter = rateLimit({
   windowMs: 5 * 60 * 1000, // 5 minutos
   max: 10, // limite de 10 check-ins por 5 minutos
   standardHeaders: true,
@@ -37,7 +37,7 @@ const checkinLimiter = rateLimit({
 });
 
 // Rate limit para chat
-const chatLimiter = rateLimit({
+export const chatLimiter = rateLimit({
   windowMs: 60 * 1000, // 1 minuto
   max: 20, // limite de 20 mensagens por minuto
   standardHeaders: true,
@@ -47,10 +47,3 @@ const chatLimiter = rateLimit({
     message: 'Muitas mensagens em pouco tempo, tente novamente mais tarde'
   }
 });
-
-module.exports = {
-  apiLimiter,
-  authLimiter,
-  checkinLimiter,
-  chatLimiter
-};

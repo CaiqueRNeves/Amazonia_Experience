@@ -1,4 +1,4 @@
-const db = require('../config/database');
+import db from '../config/database.js';
 
 class ConnectivityReport {
   // Métodos de busca
@@ -74,4 +74,4 @@ class ConnectivityReport {
   }
 }
 
-module.exports = ConnectivityReport;
+export default ConnectivityReport;

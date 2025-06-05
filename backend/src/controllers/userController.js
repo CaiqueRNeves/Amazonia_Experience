@@ -1,8 +1,8 @@
-const User = require('../models/User');
-const { ValidationError, NotFoundError, ForbiddenError } = require('../middleware/error');
+import User from '../models/User.js';
+import { ValidationError, NotFoundError, ForbiddenError } from '../middleware/error.js';
 
 // Obter perfil do usuário
-exports.getProfile = async (req, res, next) => {
+export const getProfile = async (req, res, next) => {
   try {
     const user = await User.findById(req.user.id);
     if (!user) {
@@ -31,7 +31,7 @@ exports.getProfile = async (req, res, next) => {
 };
 
 // Atualizar perfil do usuário
-exports.updateProfile = async (req, res, next) => {
+export const updateProfile = async (req, res, next) => {
   try {
     const userId = req.user.id;
     const { name, nationality } = req.body;
@@ -64,7 +64,7 @@ exports.updateProfile = async (req, res, next) => {
 };
 
 // Obter saldo de AmaCoins
-exports.getAmacoins = async (req, res, next) => {
+export const getAmacoins = async (req, res, next) => {
   try {
     const user = await User.findById(req.user.id);
     if (!user) {
@@ -83,7 +83,7 @@ exports.getAmacoins = async (req, res, next) => {
 };
 
 // Obter histórico de visitas do usuário
-exports.getVisits = async (req, res, next) => {
+export const getVisits = async (req, res, next) => {
   try {
     const userId = req.user.id;
     const page = parseInt(req.query.page) || 1;
@@ -107,7 +107,7 @@ exports.getVisits = async (req, res, next) => {
 };
 
 // Atualizar preferências de notificação
-exports.updateNotificationPreferences = async (req, res, next) => {
+export const updateNotificationPreferences = async (req, res, next) => {
   try {
     const userId = req.user.id;
     const preferences = req.body;

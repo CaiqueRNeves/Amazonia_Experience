@@ -1,4 +1,4 @@
-const db = require('../config/database');
+import db from '../config/database.js';
 
 class EmergencyPhrase {
   // Buscar frases por idioma
@@ -32,4 +32,4 @@ class EmergencyPhrase {
   }
 }
 
-module.exports = EmergencyPhrase;
+export default EmergencyPhrase;

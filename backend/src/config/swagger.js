@@ -1,5 +1,5 @@
-const swaggerJsdoc = require('swagger-jsdoc');
-const swaggerUi = require('swagger-ui-express');
+import swaggerJsdoc from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
 
 // Configuração do Swagger
 const swaggerOptions = {
@@ -69,4 +69,4 @@ const setupSwagger = (app) => {
   console.log('Documentação Swagger disponível em /api-docs');
 };
 
-module.exports = setupSwagger;
+export default setupSwagger;

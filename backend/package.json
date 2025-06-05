@@ -1,65 +1,58 @@
 {
-  "name": "amazonia-experience-backend",
+  "name": "amazonia-experience-api",
   "version": "0.1.0",
-  "description": "Backend para a plataforma AmazôniaExperience da COP30",
+  "description": "API backend para o aplicativo AmazôniaExperience - COP30",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "migrate": "knex migrate:latest",
-    "seed": "knex seed:run",
     "test": "jest",
-    "test:unit": "jest --testPathPattern=unit",
-    "test:integration": "jest --testPathPattern=integration",
-    "test:coverage": "jest --coverage",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "docker:build": "docker build -t amazonia-experience-backend:latest .",
-    "docker:run": "docker run -p 3000:3000 amazonia-experience-backend:latest",
-    "docker:compose": "docker-compose up",
-    "docker:compose:build": "docker-compose up --build",
-    "prepare-release": "standard-version",
-    "prepare": "husky install"
+    "test:watch": "jest --watch",
+    "migrate": "knex migrate:latest",
+    "migrate:rollback": "knex migrate:rollback",
+    "migrate:reset": "knex migrate:rollback --all && knex migrate:latest",
+    "seed": "knex seed:run",
+    "db:reset": "npm run migrate:reset && npm run seed",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix"
   },
   "keywords": [
-    "cop30",
     "amazonia",
+    "cop30",
     "tourism",
-    "gamification"
+    "belém",
+    "api",
+    "node.js",
+    "express"
   ],
-  "authors": [
-    "Caique Rabelo Neves",
-    "Lucas Soares dos Santos"
-  ],
+  "author": "Equipe AmazôniaExperience",
   "license": "MIT",
   "dependencies": {
-    "bcrypt": "^5.1.0",
+    "express": "^4.18.2",
     "cors": "^2.8.5",
-    "dotenv": "^16.0.3",
-    "express": "^4.17.1",
-    "express-rate-limit": "^6.11.2",
+    "helmet": "^7.0.0",
+    "morgan": "^1.10.0",
+    "express-rate-limit": "^6.7.0",
     "express-validator": "^7.0.1",
-    "helmet": "^7.2.0",
-    "i18next": "^23.2.11",
-    "joi": "^17.9.2",
+    "bcrypt": "^5.1.0",
     "jsonwebtoken": "^9.0.0",
     "knex": "^2.4.2",
-    "morgan": "^1.10.0",
-    "node-nlp": "^4.27.0",
-    "nodemailer": "^6.9.3",
-    "socket.io": "^4.7.1",
     "sqlite3": "^5.1.6",
     "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^5.0.0"
+    "swagger-ui-express": "^4.6.3",
+    "node-nlp": "^4.26.0",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.0.3"
   },
   "devDependencies": {
-    "eslint": "^8.44.0",
-    "eslint-config-prettier": "^8.8.0",
-    "husky": "^8.0.3",
-    "jest": "^29.5.0",
     "nodemon": "^2.0.22",
-    "prettier": "^2.8.8",
-    "standard-version": "^9.5.0",
-    "supertest": "^6.3.3"
+    "jest": "^29.5.0",
+    "supertest": "^6.3.3",
+    "eslint": "^8.40.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
   }
 }

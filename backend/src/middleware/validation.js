@@ -1,11 +1,11 @@
-const { validationResult } = require('express-validator');
-const { ValidationError } = require('./error');
+import { validationResult } from 'express-validator';
+import { ValidationError } from './error.js';
 
 /**
  * Middleware para verificar erros de validação
  * Deve ser usado após os validadores do express-validator
  */
-const validateRequest = (req, res, next) => {
+export const validateRequest = (req, res, next) => {
   const errors = validationResult(req);
   
   if (!errors.isEmpty()) {
@@ -21,7 +21,7 @@ const validateRequest = (req, res, next) => {
  * @param {Object} schema - Esquema Joi
  * @param {string} source - Fonte dos dados ('body', 'query', 'params')
  */
-const validateJoi = (schema, source = 'body') => {
+export const validateJoi = (schema, source = 'body') => {
   return (req, res, next) => {
     const { error } = schema.validate(req[source]);
     
@@ -36,7 +36,7 @@ const validateJoi = (schema, source = 'body') => {
 /**
  * Valida um ID como um número inteiro positivo
  */
-const validateId = (req, res, next) => {
+export const validateId = (req, res, next) => {
   const id = parseInt(req.params.id);
   
   if (isNaN(id) || id <= 0) {
@@ -50,7 +50,7 @@ const validateId = (req, res, next) => {
 /**
  * Valida coordenadas de geolocalização (latitude e longitude)
  */
-const validateCoordinates = (req, res, next) => {
+export const validateCoordinates = (req, res, next) => {
   const { latitude, longitude } = req.query;
   
   if (!latitude || !longitude) {
@@ -77,7 +77,7 @@ const validateCoordinates = (req, res, next) => {
 /**
  * Valida parâmetros de paginação
  */
-const validatePagination = (req, res, next) => {
+export const validatePagination = (req, res, next) => {
   let { page, limit } = req.query;
   
   if (page) {
@@ -102,7 +102,7 @@ const validatePagination = (req, res, next) => {
 /**
  * Valida que uma string contém somente caracteres alfanuméricos e espaços
  */
-const validateAlphanumericWithSpaces = (value) => {
+export const validateAlphanumericWithSpaces = (value) => {
   if (!/^[a-zA-Z0-9\s]+$/.test(value)) {
     throw new ValidationError('O valor deve conter apenas letras, números e espaços');
   }
@@ -112,7 +112,7 @@ const validateAlphanumericWithSpaces = (value) => {
 /**
  * Valida um código de verificação (formato específico)
  */
-const validateVerificationCode = (req, res, next) => {
+export const validateVerificationCode = (req, res, next) => {
   const { verification_code } = req.body;
   
   if (!verification_code) {
@@ -129,7 +129,7 @@ const validateVerificationCode = (req, res, next) => {
 /**
  * Valida que a data está no formato ISO
  */
-const validateISODate = (value) => {
+export const validateISODate = (value) => {
   try {
     if (!Boolean(new Date(value).toISOString())) {
       throw new Error();
@@ -144,7 +144,7 @@ const validateISODate = (value) => {
  * Sanitiza uma string para prevenir SQL injection
  * Não é um substituto para prepared statements!
  */
-const sanitizeSQLInput = (str) => {
+export const sanitizeSQLInput = (str) => {
   if (!str) return str;
   return String(str)
     .replace(/'/g, "''")
@@ -154,7 +154,7 @@ const sanitizeSQLInput = (str) => {
 /**
  * Sanitiza uma string para uso em HTML (prevenir XSS)
  */
-const sanitizeHtmlInput = (str) => {
+export const sanitizeHtmlInput = (str) => {
   if (!str) return str;
   return String(str)
     .replace(/&/g, '&amp;')
@@ -162,17 +162,4 @@ const sanitizeHtmlInput = (str) => {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
-};
-
-module.exports = {
-  validateRequest,
-  validateJoi,
-  validateId,
-  validateCoordinates,
-  validatePagination,
-  validateAlphanumericWithSpaces,
-  validateVerificationCode,
-  validateISODate,
-  sanitizeSQLInput,
-  sanitizeHtmlInput
 };

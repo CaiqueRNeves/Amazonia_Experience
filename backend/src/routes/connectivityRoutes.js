@@ -1,8 +1,9 @@
-const express = require('express');
+import express from 'express';
+import * as connectivityController from '../controllers/connectivityController.js';
+import { authMiddleware } from '../middleware/auth.js';
+import { validateConnectivityReport } from '../validators/connectivityValidator.js';
+
 const router = express.Router();
-const connectivityController = require('../controllers/connectivityController');
-const { authMiddleware } = require('../middleware/auth');
-const { validateConnectivityReport } = require('../validators/connectivityValidator');
 
 // Rotas públicas
 router.get('/spots', connectivityController.getConnectivitySpots);
@@ -12,4 +13,4 @@ router.get('/heatmap', connectivityController.getHeatmap);
 // Rotas protegidas (requerem autenticação)
 router.post('/spots/:id/report', authMiddleware, validateConnectivityReport, connectivityController.reportSpot);
 
-module.exports = router;
+export default router;

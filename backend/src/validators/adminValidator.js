@@ -1,6 +1,5 @@
-/* eslint-disable max-len */
-const { body, validationResult } = require('express-validator');
-const { ValidationError } = require('../middleware/error');
+import { body, validationResult } from 'express-validator';
+import { ValidationError } from '../middleware/error.js';
 
 // Middleware para verificar se há erros de validação
 const validateRequest = (req, res, next) => {
@@ -13,7 +12,7 @@ const validateRequest = (req, res, next) => {
 };
 
 // Validação para criação de local
-exports.validateCreatePlace = [
+export const validateCreatePlace = [
   body('name')
     .notEmpty().withMessage('O nome é obrigatório')
     .isLength({ min: 3, max: 100 }).withMessage('O nome deve ter entre 3 e 100 caracteres'),
@@ -58,7 +57,7 @@ exports.validateCreatePlace = [
 ];
 
 // Validação para atualização de local
-exports.validateUpdatePlace = [
+export const validateUpdatePlace = [
   body('name')
     .optional()
     .isLength({ min: 3, max: 100 }).withMessage('O nome deve ter entre 3 e 100 caracteres'),
@@ -95,7 +94,7 @@ exports.validateUpdatePlace = [
 ];
 
 // Validação para criação de parceiro
-exports.validateCreatePartner = [
+export const validateCreatePartner = [
   body('user_id')
     .notEmpty().withMessage('O ID do usuário é obrigatório')
     .isInt({ min: 1 }).withMessage('ID de usuário inválido'),
@@ -120,7 +119,7 @@ exports.validateCreatePartner = [
 ];
 
 // Validação para atualização de função de usuário
-exports.validateUpdateRole = [
+export const validateUpdateRole = [
   body('role')
     .notEmpty().withMessage('A função é obrigatória')
     .isIn(['user', 'partner', 'admin']).withMessage('Função inválida'),
@@ -129,7 +128,7 @@ exports.validateUpdateRole = [
 ];
 
 // Validação para criação de quiz
-exports.validateCreateQuiz = [
+export const validateCreateQuiz = [
   body('title')
     .notEmpty().withMessage('O título é obrigatório')
     .isLength({ min: 3, max: 100 }).withMessage('O título deve ter entre 3 e 100 caracteres'),
@@ -170,8 +169,8 @@ exports.validateCreateQuiz = [
   validateRequest
 ];
 
-// Validação para atualização de quiz (IMPLEMENTADO COMPLETO)
-exports.validateUpdateQuiz = [
+// Validação para atualização de quiz
+export const validateUpdateQuiz = [
   body('title')
     .optional()
     .isLength({ min: 3, max: 100 }).withMessage('O título deve ter entre 3 e 100 caracteres'),
@@ -217,7 +216,7 @@ exports.validateUpdateQuiz = [
 ];
 
 // Validação para adicionar serviço de emergência
-exports.validateAddEmergencyService = [
+export const validateAddEmergencyService = [
   body('name')
     .notEmpty().withMessage('O nome é obrigatório')
     .isLength({ min: 3, max: 100 }).withMessage('O nome deve ter entre 3 e 100 caracteres'),
@@ -254,7 +253,7 @@ exports.validateAddEmergencyService = [
 ];
 
 // Validação para atualizar ponto de conectividade
-exports.validateUpdateConnectivitySpot = [
+export const validateUpdateConnectivitySpot = [
   body('id')
     .notEmpty().withMessage('O ID do ponto de conectividade é obrigatório')
     .isInt({ min: 1 }).withMessage('ID inválido'),

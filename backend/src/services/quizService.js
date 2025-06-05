@@ -1,7 +1,7 @@
-const Quiz = require('../models/Quiz');
-const QuizAttempt = require('../models/QuizAttempt');
-const User = require('../models/User');
-const { NotFoundError, ValidationError, ForbiddenError } = require('../middleware/error');
+import Quiz from '../models/Quiz.js';
+import QuizAttempt from '../models/QuizAttempt.js';
+import User from '../models/User.js';
+import { NotFoundError, ValidationError, ForbiddenError } from '../middleware/error.js';
 
 /**
  * Serviço responsável por operações relacionadas a quizzes
@@ -347,4 +347,4 @@ class QuizService {
   }
 }
 
-module.exports = new QuizService();
+export default new QuizService();

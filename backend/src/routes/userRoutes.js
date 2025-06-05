@@ -1,8 +1,9 @@
-const express = require('express');
+import express from 'express';
+import * as userController from '../controllers/userController.js';
+import { authMiddleware } from '../middleware/auth.js';
+import { validateUpdateProfile, validateNotificationPreferences } from '../validators/userValidator.js';
+
 const router = express.Router();
-const userController = require('../controllers/userController');
-const { authMiddleware } = require('../middleware/auth');
-const { validateUpdateProfile, validateNotificationPreferences } = require('../validators/userValidator');
 
 // Todas as rotas requerem autenticação
 router.use(authMiddleware);
@@ -13,4 +14,4 @@ router.get('/amacoins', userController.getAmacoins);
 router.get('/visits', userController.getVisits);
 router.put('/notification-preferences', validateNotificationPreferences, userController.updateNotificationPreferences);
 
-module.exports = router;
+export default router;

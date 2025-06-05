@@ -1,8 +1,9 @@
-const express = require('express');
+import express from 'express';
+import * as eventController from '../controllers/eventController.js';
+import { authMiddleware } from '../middleware/auth.js';
+import { validateEventCheckin } from '../validators/eventValidator.js';
+
 const router = express.Router();
-const eventController = require('../controllers/eventController');
-const { authMiddleware } = require('../middleware/auth');
-const { validateEventCheckin } = require('../validators/eventValidator');
 
 /**
  * @swagger
@@ -360,4 +361,4 @@ router.get('/:id', eventController.getEvent);
  */
 router.post('/checkin', authMiddleware, validateEventCheckin, eventController.checkIn);
 
-module.exports = router;
+export default router;

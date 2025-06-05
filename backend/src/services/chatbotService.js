@@ -1,14 +1,14 @@
 /* eslint-disable no-case-declarations */
 /* eslint-disable quotes */
 /* eslint-disable max-len */
-const ChatMessage = require('../models/ChatMessage');
-const User = require('../models/User');
-const Event = require('../models/Event');
-const Place = require('../models/Place');
-const EmergencyService = require('../models/EmergencyService');
-const ConnectivitySpot = require('../models/ConnectivitySpot');
-const { ValidationError, NotFoundError } = require('../middleware/error');
-const { NlpManager } = require('node-nlp');
+import ChatMessage from '../models/ChatMessage.js';
+import User from '../models/User.js';
+import Event from '../models/Event.js';
+import Place from '../models/Place.js';
+import EmergencyService from '../models/EmergencyService.js';
+import ConnectivitySpot from '../models/ConnectivitySpot.js';
+import { ValidationError, NotFoundError } from '../middleware/error.js';
+import { NlpManager } from 'node-nlp';
 
 /**
  * Serviço responsável pelo processamento de mensagens do chatbot
@@ -263,4 +263,4 @@ class ChatbotService {
   }
 }
 
-module.exports = new ChatbotService();
+export default new ChatbotService();

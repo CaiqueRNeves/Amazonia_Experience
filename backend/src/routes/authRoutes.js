@@ -1,8 +1,9 @@
-const express = require('express');
+import express from 'express';
+import * as authController from '../controllers/authController.js';
+import { validateRegister, validateLogin, validateChangePassword } from '../validators/authValidator.js';
+import { authMiddleware } from '../middleware/auth.js';
+
 const router = express.Router();
-const authController = require('../controllers/authController');
-const { validateRegister, validateLogin, validateChangePassword } = require('../validators/authValidator');
-const { authMiddleware } = require('../middleware/auth');
 
 /**
  * @swagger
@@ -268,4 +269,4 @@ router.get('/me', authMiddleware, authController.getMe);
  */
 router.post('/change-password', authMiddleware, validateChangePassword, authController.changePassword);
 
-module.exports = router;
+export default router;

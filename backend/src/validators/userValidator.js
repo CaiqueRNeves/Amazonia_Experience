@@ -1,5 +1,5 @@
-const { body, validationResult } = require('express-validator');
-const { ValidationError } = require('../middleware/error');
+import { body, validationResult } from 'express-validator';
+import { ValidationError } from '../middleware/error.js';
 
 // Middleware para verificar se há erros de validação
 const validateRequest = (req, res, next) => {
@@ -12,7 +12,7 @@ const validateRequest = (req, res, next) => {
 };
 
 // Validação para atualização de perfil
-exports.validateUpdateProfile = [
+export const validateUpdateProfile = [
   body('name')
     .optional()
     .isLength({ min: 3, max: 50 }).withMessage('O nome deve ter entre 3 e 50 caracteres'),
@@ -25,7 +25,7 @@ exports.validateUpdateProfile = [
 ];
 
 // Validação para preferências de notificação
-exports.validateNotificationPreferences = [
+export const validateNotificationPreferences = [
   body('events')
     .optional()
     .isBoolean().withMessage('O valor para eventos deve ser um booleano'),

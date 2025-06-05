@@ -1,8 +1,9 @@
-const express = require('express');
+import express from 'express';
+import * as placeController from '../controllers/placeController.js';
+import { authMiddleware } from '../middleware/auth.js';
+import { validatePlaceCheckin } from '../validators/placeValidator.js';
+
 const router = express.Router();
-const placeController = require('../controllers/placeController');
-const { authMiddleware } = require('../middleware/auth');
-const { validatePlaceCheckin } = require('../validators/placeValidator');
 
 // Rotas públicas
 router.get('/', placeController.getPlaces);
@@ -13,4 +14,4 @@ router.get('/:id', placeController.getPlace);
 // Rotas protegidas (requerem autenticação)
 router.post('/checkin', authMiddleware, validatePlaceCheckin, placeController.checkIn);
 
-module.exports = router;
+export default router;

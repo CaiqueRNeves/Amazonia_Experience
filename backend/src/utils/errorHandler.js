@@ -3,14 +3,14 @@
  */
 
 // Criar erro padrão para API
-const createError = (statusCode, message) => {
+export const createError = (statusCode, message) => {
   const error = new Error(message);
   error.statusCode = statusCode;
   return error;
 };
 
 // Formatar erro para resposta da API
-const formatError = (error, includeStack = false) => {
+export const formatError = (error, includeStack = false) => {
   const response = {
     status: 'error',
     message: error.message || 'Erro interno do servidor'
@@ -24,24 +24,17 @@ const formatError = (error, includeStack = false) => {
 };
 
 // Tratar erros assíncronos
-const asyncHandler = (fn) => {
+export const asyncHandler = (fn) => {
   return (req, res, next) => {
     Promise.resolve(fn(req, res, next)).catch(next);
   };
 };
 
 // Logger de erros
-const logError = (error) => {
+export const logError = (error) => {
   console.error(`[${new Date().toISOString()}] ERROR:`, {
     message: error.message,
     stack: error.stack,
     name: error.name
   });
-};
-
-module.exports = {
-  createError,
-  formatError,
-  asyncHandler,
-  logError
 };

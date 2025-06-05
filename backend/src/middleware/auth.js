@@ -1,5 +1,5 @@
-const jwt = require('jsonwebtoken');
-const { UnauthorizedError, ForbiddenError } = require('./error');
+import jwt from 'jsonwebtoken';
+import { UnauthorizedError, ForbiddenError } from './error.js';
 
 /**
  * Middleware de autenticação que verifica o token JWT
@@ -7,7 +7,7 @@ const { UnauthorizedError, ForbiddenError } = require('./error');
  * @param {Object} res - Objeto da resposta
  * @param {Function} next - Função next do Express
  */
-const authMiddleware = (req, res, next) => {
+export const authMiddleware = (req, res, next) => {
   try {
     // Obter o cabeçalho de autorização
     const authHeader = req.headers.authorization;
@@ -52,7 +52,7 @@ const authMiddleware = (req, res, next) => {
  * @param {Array<string>} roles - Array de funções permitidas
  * @returns {Function} Middleware que verifica a função do usuário
  */
-const checkRole = (roles) => {
+export const checkRole = (roles) => {
   return (req, res, next) => {
     try {
       if (!req.user) {
@@ -68,9 +68,4 @@ const checkRole = (roles) => {
       next(error);
     }
   };
-};
-
-module.exports = {
-  authMiddleware,
-  checkRole
 };

@@ -1,8 +1,7 @@
-const express = require('express');
-const router = express.Router();
-const adminController = require('../controllers/adminController');
-const { authMiddleware, checkRole } = require('../middleware/auth');
-const { 
+import express from 'express';
+import * as adminController from '../controllers/adminController.js';
+import { authMiddleware, checkRole } from '../middleware/auth.js';
+import { 
   validateCreatePlace, 
   validateUpdatePlace,
   validateCreatePartner,
@@ -11,7 +10,9 @@ const {
   validateUpdateQuiz,
   validateAddEmergencyService,
   validateUpdateConnectivitySpot
-} = require('../validators/adminValidator');
+} from '../validators/adminValidator.js';
+
+const router = express.Router();
 
 // Todas as rotas requerem autenticação e função de administrador
 router.use(authMiddleware);
@@ -37,4 +38,4 @@ router.post('/emergency/services', validateAddEmergencyService, adminController.
 // Gerenciamento de conectividade
 router.put('/connectivity/spots', validateUpdateConnectivitySpot, adminController.updateConnectivitySpot);
 
-module.exports = router;
+export default router;

@@ -1,9 +1,9 @@
-const User = require('../models/User');
-const { generateToken, generateRefreshToken, verifyRefreshToken } = require('../utils/jwt');
-const { ValidationError, UnauthorizedError } = require('../middleware/error');
+import User from '../models/User.js';
+import { generateToken, generateRefreshToken, verifyRefreshToken } from '../utils/jwt.js';
+import { ValidationError, UnauthorizedError } from '../middleware/error.js';
 
 // Registrar novo usuário
-exports.register = async (req, res, next) => {
+export const register = async (req, res, next) => {
   try {
     const { email, password, name, nationality } = req.body;
 
@@ -58,7 +58,7 @@ exports.register = async (req, res, next) => {
 };
 
 // Login de usuário
-exports.login = async (req, res, next) => {
+export const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
 
@@ -108,7 +108,7 @@ exports.login = async (req, res, next) => {
 };
 
 // Obter dados do usuário atual
-exports.getMe = async (req, res, next) => {
+export const getMe = async (req, res, next) => {
   try {
     const user = await User.findById(req.user.id);
     if (!user) {
@@ -137,7 +137,7 @@ exports.getMe = async (req, res, next) => {
 };
 
 // Atualizar token de acesso usando refresh token
-exports.refreshToken = async (req, res, next) => {
+export const refreshToken = async (req, res, next) => {
   try {
     const { refreshToken } = req.body;
     if (!refreshToken) {
@@ -175,7 +175,7 @@ exports.refreshToken = async (req, res, next) => {
 };
 
 // Alterar senha
-exports.changePassword = async (req, res, next) => {
+export const changePassword = async (req, res, next) => {
   try {
     const { currentPassword, newPassword } = req.body;
     const userId = req.user.id;

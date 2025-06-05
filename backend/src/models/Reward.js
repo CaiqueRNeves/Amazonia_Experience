@@ -1,4 +1,4 @@
-const db = require('../config/database');
+import db from '../config/database.js';
 
 class Reward {
   // Métodos de busca
@@ -12,23 +12,23 @@ class Reward {
     let query = db('rewards');
     
     // Aplicar filtros se fornecidos
-    if (filters.rewardType) {
-      if (Array.isArray(filters.rewardType)) {
-        query = query.whereIn('reward_type', filters.rewardType);
+    if (filters.reward_type) {
+      if (Array.isArray(filters.reward_type)) {
+        query = query.whereIn('reward_type', filters.reward_type);
       } else {
-        query = query.where('reward_type', filters.rewardType);
+        query = query.where('reward_type', filters.reward_type);
       }
     }
     
-    if (filters.partnerId) {
-      query = query.where('partner_id', filters.partnerId);
+    if (filters.partner_id) {
+      query = query.where('partner_id', filters.partner_id);
     }
     
-    if (filters.maxCost) {
-      query = query.where('amacoins_cost', '<=', filters.maxCost);
+    if (filters.max_cost) {
+      query = query.where('amacoins_cost', '<=', filters.max_cost);
     }
     
-    if (filters.inStock === true) {
+    if (filters.in_stock === true) {
       query = query.where('stock', '>', 0);
     }
     
@@ -96,4 +96,4 @@ class Reward {
   }
 }
 
-module.exports = Reward;
+export default Reward;

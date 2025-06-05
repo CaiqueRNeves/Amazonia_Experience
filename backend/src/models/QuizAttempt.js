@@ -1,4 +1,4 @@
-const db = require('../config/database');
+import db from '../config/database.js';
 
 class QuizAttempt {
   // Métodos de busca
@@ -122,4 +122,4 @@ class QuizAttempt {
   }
 }
 
-module.exports = QuizAttempt;
+export default QuizAttempt;

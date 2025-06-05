@@ -1,7 +1,7 @@
-const rateLimit = require('express-rate-limit');
-const helmet = require('helmet');
-const { body, query, param, validationResult } = require('express-validator');
-const { ValidationError } = require('./error');
+import rateLimit from 'express-rate-limit';
+import helmet from 'helmet';
+import { body, query, param, validationResult } from 'express-validator';
+import { ValidationError } from './error.js';
 
 /**
  * Middleware de segurança aprimorado para proteção da API
@@ -24,7 +24,7 @@ const createRateLimit = (windowMs, max, message) => rateLimit({
 });
 
 // Rate limits específicos
-const rateLimits = {
+export const rateLimits = {
   // Autenticação - muito restritivo
   auth: createRateLimit(
     15 * 60 * 1000, // 15 minutos
@@ -71,7 +71,7 @@ const rateLimits = {
 /**
  * Configuração de segurança com Helmet
  */
-const securityHeaders = helmet({
+export const securityHeaders = helmet({
   contentSecurityPolicy: {
     directives: {
       defaultSrc: ["'self'"],
@@ -97,7 +97,7 @@ const securityHeaders = helmet({
 /**
  * Sanitização de entrada para prevenir XSS e injection
  */
-const sanitizeInput = (value) => {
+export const sanitizeInput = (value) => {
   if (typeof value !== 'string') return value;
   
   return value
@@ -117,7 +117,7 @@ const sanitizeInput = (value) => {
 /**
  * Middleware para sanitização automática
  */
-const sanitizeRequest = (req, res, next) => {
+export const sanitizeRequest = (req, res, next) => {
   // Sanitizar query parameters
   if (req.query) {
     Object.keys(req.query).forEach(key => {
@@ -159,7 +159,7 @@ const sanitizeRequest = (req, res, next) => {
 /**
  * Validadores comuns para proteção de entrada
  */
-const commonValidators = {
+export const commonValidators = {
   // Validação de ID
   validateId: param('id')
     .isInt({ min: 1 })
@@ -217,7 +217,7 @@ const commonValidators = {
 /**
  * Middleware para log de segurança
  */
-const securityLogger = (req, res, next) => {
+export const securityLogger = (req, res, next) => {
   // Detectar potenciais ataques
   const suspiciousPatterns = [
     /(\<script[^>]*\>.*\<\/script\>)/gi,
@@ -252,7 +252,7 @@ const securityLogger = (req, res, next) => {
 /**
  * Middleware para proteção CSRF simples
  */
-const csrfProtection = (req, res, next) => {
+export const csrfProtection = (req, res, next) => {
   // Para métodos que modificam dados, verificar origem
   if (['POST', 'PUT', 'DELETE', 'PATCH'].includes(req.method)) {
     const origin = req.get('Origin') || req.get('Referer');
@@ -277,19 +277,8 @@ const csrfProtection = (req, res, next) => {
 /**
  * Middleware para proteção contra enumeração de usuários
  */
-const preventUserEnumeration = (req, res, next) => {
+export const preventUserEnumeration = (req, res, next) => {
   // Adicionar delay aleatório pequeno para mascarar timing
   const delay = Math.floor(Math.random() * 100) + 50;
   setTimeout(() => next(), delay);
-};
-
-module.exports = {
-  rateLimits,
-  securityHeaders,
-  sanitizeRequest,
-  commonValidators,
-  securityLogger,
-  csrfProtection,
-  preventUserEnumeration,
-  sanitizeInput
 };

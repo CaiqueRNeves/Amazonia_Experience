@@ -1,4 +1,4 @@
-const db = require('../config/database');
+import db from '../config/database.js';
 
 class Place {
   // Métodos de busca
@@ -99,4 +99,4 @@ class Place {
   }
 }
 
-module.exports = Place;
+export default Place;

@@ -1,9 +1,9 @@
-const Event = require('../models/Event');
-const Visit = require('../models/Visit');
-const { NotFoundError, ValidationError } = require('../middleware/error');
+import Event from '../models/Event.js';
+import Visit from '../models/Visit.js';
+import { NotFoundError, ValidationError } from '../middleware/error.js';
 
 // Listar eventos
-exports.getEvents = async (req, res, next) => {
+export const getEvents = async (req, res, next) => {
   try {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
@@ -49,7 +49,7 @@ exports.getEvents = async (req, res, next) => {
 };
 
 // Obter detalhes de um evento
-exports.getEvent = async (req, res, next) => {
+export const getEvent = async (req, res, next) => {
   try {
     const eventId = req.params.id;
     const event = await Event.findById(eventId);
@@ -70,7 +70,7 @@ exports.getEvent = async (req, res, next) => {
 };
 
 // Obter eventos em andamento
-exports.getOngoingEvents = async (req, res, next) => {
+export const getOngoingEvents = async (req, res, next) => {
   try {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
@@ -93,7 +93,7 @@ exports.getOngoingEvents = async (req, res, next) => {
 };
 
 // Listar eventos próximos (geolocalização)
-exports.getNearbyEvents = async (req, res, next) => {
+export const getNearbyEvents = async (req, res, next) => {
   try {
     const { latitude, longitude, radius } = req.query;
     const page = parseInt(req.query.page) || 1;
@@ -129,7 +129,7 @@ exports.getNearbyEvents = async (req, res, next) => {
 };
 
 // Realizar check-in em um evento
-exports.checkIn = async (req, res, next) => {
+export const checkIn = async (req, res, next) => {
   try {
     const { event_id } = req.body;
     const user_id = req.user.id;

@@ -1,5 +1,5 @@
-const { body, validationResult } = require('express-validator');
-const { ValidationError } = require('../middleware/error');
+import { body, validationResult } from 'express-validator';
+import { ValidationError } from '../middleware/error.js';
 
 // Middleware para verificar se há erros de validação
 const validateRequest = (req, res, next) => {
@@ -12,7 +12,7 @@ const validateRequest = (req, res, next) => {
 };
 
 // Validação para relatório de ponto de conectividade
-exports.validateConnectivityReport = [
+export const validateConnectivityReport = [
   body('wifi_speed')
     .optional()
     .isIn(['slow', 'medium', 'fast']).withMessage('Velocidade Wi-Fi inválida'),

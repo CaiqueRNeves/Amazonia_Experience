@@ -1,4 +1,4 @@
-const db = require('../config/database');
+import db from '../config/database.js';
 
 class ConnectivitySpot {
   // Métodos de busca
@@ -12,15 +12,15 @@ class ConnectivitySpot {
     let query = db('connectivity_spots');
     
     // Aplicar filtros se fornecidos
-    if (filters.isFree) {
+    if (filters.is_free) {
       query = query.where('is_free', true);
     }
     
-    if (filters.wifiSpeed) {
-      query = query.where('wifi_speed', filters.wifiSpeed);
+    if (filters.wifi_speed) {
+      query = query.where('wifi_speed', filters.wifi_speed);
     }
     
-    if (filters.isVerified) {
+    if (filters.is_verified) {
       query = query.where('is_verified', true);
     }
     
@@ -29,7 +29,7 @@ class ConnectivitySpot {
     }
     
     // Incluir relatórios recentes, se solicitado
-    if (filters.includeReports) {
+    if (filters.include_reports) {
       query = query
         .leftJoin('connectivity_reports', 'connectivity_spots.id', '=', 'connectivity_reports.spot_id')
         .select(
@@ -125,4 +125,4 @@ class ConnectivitySpot {
   }
 }
 
-module.exports = ConnectivitySpot;
+export default ConnectivitySpot;

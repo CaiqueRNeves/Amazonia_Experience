@@ -1,9 +1,8 @@
-/* eslint-disable no-unused-vars */
-const Partner = require('../models/Partner');
-const { NotFoundError, ValidationError } = require('../middleware/error');
+import Partner from '../models/Partner.js';
+import { NotFoundError, ValidationError } from '../middleware/error.js';
 
 // Listar parceiros
-exports.getPartners = async (req, res, next) => {
+export const getPartners = async (req, res, next) => {
   try {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
@@ -36,7 +35,7 @@ exports.getPartners = async (req, res, next) => {
 };
 
 // Obter recompensas de um parceiro
-exports.getPartnerRewards = async (req, res, next) => {
+export const getPartnerRewards = async (req, res, next) => {
   try {
     const partnerId = req.params.id;
     const page = parseInt(req.query.page) || 1;
@@ -66,7 +65,7 @@ exports.getPartnerRewards = async (req, res, next) => {
 };
 
 // Verificar código de visita
-exports.verifyCode = async (req, res, next) => {
+export const verifyCode = async (req, res, next) => {
   try {
     const { verification_code } = req.body;
     const userId = req.user.id;

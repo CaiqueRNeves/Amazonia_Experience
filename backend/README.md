@@ -2,255 +2,221 @@
 
 Este é o backend da plataforma AmazôniaExperience, desenvolvida para a COP30 em Belém do Pará. O sistema permite que visitantes acumulem **AmaCoins** ao participar de eventos oficiais da COP30, visitar pontos turísticos e estabelecimentos credenciados, podendo posteriormente trocar esses créditos por produtos e serviços de parceiros locais.
 
-## 🚀 Tecnologias Utilizadas
+## Funcionalidades
 
-- **Node.js**: Ambiente de execução JavaScript
-- **Express.js**: Framework web para API RESTful
-- **SQLite**: Banco de dados relacional leve
-- **Knex.js**: Query builder e sistema de migrations
-- **JWT**: Autenticação via JSON Web Tokens
-- **bcrypt**: Hash seguro de senhas
-- **Outras bibliotecas**: Helmet, Express Rate Limit, Express Validator, i18next, etc.
+-  **Autenticação JWT** - Sistema completo de login/registro
+-  **Gamificação** - Sistema de AmaCoins e pontuação
+-  **Geolocalização** - Eventos e locais próximos
+-  **Check-ins** - Sistema de verificação de presença
+-  **Quizzes** - Sistema educativo com recompensas
+-  **Recompensas** - Marketplace de produtos e serviços
+-  **Chatbot** - Assistente virtual com NLP
+-  **Conectividade** - Pontos de Wi-Fi e relatórios
+-  **Emergência** - Serviços e contatos de emergência
+-  **Parceiros** - Sistema de verificação para estabelecimentos
 
-## 📁 Estrutura do Projeto
+## Tecnologias Utilizadas
 
-```
-backend/
-├── src/
-│   ├── config/              # Configurações da aplicação
-│   ├── controllers/         # Controladores da API
-│   ├── database/
-│   │   ├── migrations/      # Migrations do banco de dados
-│   │   └── seeds/           # Seeds para dados iniciais
-│   ├── middleware/          # Middlewares do Express
-│   ├── models/              # Modelos de dados
-│   ├── routes/              # Rotas da API
-│   ├── services/            # Serviços de negócio
-│   ├── utils/               # Funções utilitárias
-│   ├── validators/          # Validadores de entrada
-│   └── app.js               # Inicialização da aplicação
-├── tests/                   # Testes automatizados
-├── .env.example             # Exemplo de configurações de ambiente
-└── server.js                # Ponto de entrada da aplicação
-```
+- **Node.js 18+** com ES6 Modules
+- **Express.js** - Framework web para API RESTful
+- **SQLite** - Banco de dados relacional leve (desenvolvimento)
+- **Knex.js** - Query builder e sistema de migrations
+- **JWT** - Autenticação via JSON Web Tokens
+- **bcrypt** - Hash seguro de senhas
+- **Swagger** - Documentação da API
+- **Jest** - Testes automatizados
+- **ESLint** - Linting de código
+- **node-nlp** - Processamento de linguagem natural
+- **Helmet, Express Rate Limit, Express Validator** - Segurança e validação
 
-## 🔧 Instalação e Configuração
+## Instalação
 
 1. **Clone o repositório**
-
 ```bash
-git clone <repository-url>
-cd backend
+git clone https://https://github.com/CaiqueRNeves/Amazonia_Experience.git
+cd amazonia-experience-api
 ```
 
 2. **Instale as dependências**
-
 ```bash
 npm install
 ```
 
 3. **Configure as variáveis de ambiente**
-
 ```bash
 cp .env.example .env
+# Edite o arquivo .env com suas configurações
 ```
 
-Edite o arquivo `.env` com suas configurações específicas.
-
-4. **Execute as migrations**
-
+4. **Execute as migrations e seeds**
 ```bash
 npm run migrate
-```
-
-5. **Popule o banco de dados com dados iniciais**
-
-```bash
 npm run seed
 ```
 
-## 🚀 Executando o Servidor
-
-**Modo de desenvolvimento**
-
+5. **Inicie o servidor**
 ```bash
+# Desenvolvimento
 npm run dev
-```
-
-**Modo de produção**
-
-```bash
+# Produção
 npm start
 ```
 
-Por padrão, o servidor será executado na porta 3000. Você pode acessar a API em [http://localhost:3000](http://localhost:3000).
+## Scripts Disponíveis
 
-## 📝 API Endpoints
+```bash
+# Desenvolvimento
+npm run dev          # Inicia servidor com nodemon
+npm start           # Inicia servidor em produção
 
-A API está organizada nos seguintes grupos principais:
+# Banco de dados
+npm run migrate     # Executa migrations
+npm run migrate:rollback # Desfaz migrations
+npm run seed        # Executa seeds
+
+# Testes
+npm test           # Executa todos os testes
+npm run test:watch # Executa testes em modo watch
+npm run test:integration # Apenas testes de integração
+npm run test:unit  # Apenas testes unitários
+
+# Qualidade de código
+npm run lint       # Verifica código com ESLint
+npm run lint:fix   # Corrige automaticamente problemas de lint
+```
+
+## Documentação da API
+
+A documentação da API está disponível via Swagger UI:
+
+- **Desenvolvimento**: http://localhost:3000/api-docs
+- **JSON Schema**: http://localhost:3000/api-docs.json
+
+## Autenticação
+
+A API utiliza JWT para autenticação. Inclua o token no header:
+
+```http
+Authorization: Bearer <seu-jwt-token>
+```
+
+### Usuários de teste:
+
+- **Admin**: admin@amazonia-experience.com / admin123
+- **Usuário**: maria@example.com / password123
+- **Parceiro**: contato@restauranteamazonico.com / partner123
+
+## Estrutura do Projeto
+
+```
+backend/
+├── src/
+│   ├── config/              # Configurações (database, swagger)
+│   ├── controllers/         # Controladores da API
+│   ├── middleware/          # Middlewares (auth, error, etc)
+│   ├── models/              # Modelos de dados
+│   ├── routes/              # Definição das rotas
+│   ├── services/            # Lógica de negócio
+│   ├── utils/               # Utilitários (jwt, logger, etc)
+│   ├── validators/          # Validações de entrada
+│   ├── app.js              # Configuração do Express
+│   └── server.js           # Entrada da aplicação
+├── migrations/             # Migrations do banco de dados
+├── seeds/                  # Seeds para dados iniciais
+├── tests/                  # Testes automatizados
+│   ├── integration/        # Testes de integração
+│   ├── unit/              # Testes unitários
+│   └── setup.js           # Configuração dos testes
+├── data/                   # Arquivos do banco SQLite
+├── .env.example           # Exemplo de configurações de ambiente
+├── knexfile.js            # Configuração do Knex
+└── package.json           # Dependências e scripts
+```
+
+## Testes
+
+O projeto inclui testes unitários e de integração:
+
+```bash
+# Executar todos os testes
+npm test
+
+# Executar testes específicos
+npm run test:unit        # Testes unitários
+npm run test:integration # Testes de integração
+
+# Executar com coverage
+npm test -- --coverage
+```
+
+## Rotas Principais
 
 ### Autenticação
-
-- `POST /api/auth/register` - Registro de novo usuário
-- `POST /api/auth/login` - Login de usuário
+- `POST /api/auth/register` - Registro de usuário
+- `POST /api/auth/login` - Login
 - `GET /api/auth/me` - Dados do usuário atual
-- `POST /api/auth/refresh` - Atualizar token de acesso
-
-### Usuários
-
-- `GET /api/users/profile` - Perfil do usuário
-- `PUT /api/users/profile` - Atualizar perfil
-- `GET /api/users/amacoins` - Saldo de AmaCoins
-- `GET /api/users/visits` - Histórico de visitas
-- `PUT /api/users/notification-preferences` - Atualizar preferências de notificação
+- `POST /api/auth/refresh` - Renovar token
 
 ### Eventos
-
 - `GET /api/events` - Listar eventos
-- `GET /api/events/:id` - Detalhes de um evento
-- `GET /api/events/nearby` - Eventos próximos (geolocalização)
-- `POST /api/events/checkin` - Realizar check-in em um evento
+- `GET /api/events/nearby` - Eventos próximos
+- `POST /api/events/checkin` - Check-in em evento
 
 ### Locais
-
 - `GET /api/places` - Listar locais
-- `GET /api/places/:id` - Detalhes de um local
-- `GET /api/places/nearby` - Locais próximos (geolocalização)
-- `POST /api/places/checkin` - Realizar check-in em um local
-
-### Parceiros
-
-- `GET /api/partners` - Listar parceiros
-- `GET /api/partners/:id/rewards` - Recompensas de um parceiro
-- `POST /api/partners/verify-code` - Verificar código de visita (parceiros)
-
-### Recompensas
-
-- `GET /api/rewards` - Listar recompensas
-- `GET /api/rewards/physical` - Listar produtos físicos
-- `GET /api/rewards/digital` - Listar serviços e descontos digitais
-- `GET /api/rewards/:id` - Detalhes de uma recompensa
-- `POST /api/rewards/:id/redeem` - Resgatar uma recompensa
-- `GET /api/rewards/redemptions` - Histórico de resgates do usuário
+- `GET /api/places/nearby` - Locais próximos
+- `POST /api/places/checkin` - Check-in em local
 
 ### Quizzes
+- `GET /api/quizzes` - Listar quizzes
+- `POST /api/quizzes/:id/start` - Iniciar quiz
+- `POST /api/quizzes/attempts/:id/submit` - Finalizar quiz
 
-- `GET /api/quizzes` - Listar quizzes disponíveis
-- `GET /api/quizzes/:id` - Obter detalhes e perguntas de um quiz
-- `POST /api/quizzes/:id/start` - Iniciar tentativa de um quiz
-- `POST /api/quizzes/attempts/:attempt_id/answer` - Responder pergunta de quiz
-- `POST /api/quizzes/attempts/:attempt_id/submit` - Finalizar tentativa de quiz
-- `GET /api/quizzes/attempts` - Histórico de quizzes realizados pelo usuário
-- `GET /api/quizzes/leaderboard` - Ranking de usuários em quizzes
+### Recompensas
+- `GET /api/rewards` - Listar recompensas
+- `POST /api/rewards/:id/redeem` - Resgatar recompensa
 
-### Chatbot
+## Deploy
 
-- `POST /api/chat/message` - Enviar mensagem para o chatbot
-- `GET /api/chat/history` - Obter histórico de conversas
-- `GET /api/chat/context/:entity_type/:entity_id` - Obter informações contextuais para um local ou evento
-- `POST /api/chat/feedback` - Enviar feedback sobre resposta do chatbot
-
-### Conectividade
-
-- `GET /api/connectivity/spots` - Listar pontos de conectividade Wi-Fi
-- `GET /api/connectivity/spots/nearby` - Encontrar pontos de conectividade próximos
-- `POST /api/connectivity/spots/:id/report` - Reportar informação sobre ponto de conectividade
-- `GET /api/connectivity/heatmap` - Obter mapa de calor de qualidade de sinal
-
-### Serviços de Emergência
-
-- `GET /api/emergency/services` - Listar serviços de emergência
-- `GET /api/emergency/services/:type` - Filtrar serviços por tipo
-- `GET /api/emergency/services/nearby` - Encontrar serviços de emergência próximos
-- `GET /api/emergency/contacts/:language` - Obter contatos de emergência por idioma
-- `GET /api/emergency/phrases/:language` - Frases de emergência úteis em um idioma específico
-
-### Admin
-
-- `POST /api/admin/places` - Criar local (admin)
-- `PUT /api/admin/places/:id` - Atualizar local (admin)
-- `POST /api/admin/partners` - Criar parceiro (admin)
-- `PUT /api/admin/users/:id/role` - Alterar função de usuário (admin)
-- `POST /api/admin/quizzes` - Criar novo quiz (admin)
-- `PUT /api/admin/quizzes/:id` - Atualizar quiz existente (admin)
-- `POST /api/admin/emergency/services` - Adicionar serviço de emergência (admin)
-- `PUT /api/admin/connectivity/spots` - Atualizar informações de pontos de conectividade (admin)
-
-## 🧪 Testes
-
-Para executar os testes automatizados:
-
+### Variáveis de Ambiente de Produção
 ```bash
-npm test
+NODE_ENV=production
+JWT_SECRET=your-production-secret
+# ... outras configurações
 ```
 
-## 🔒 Autenticação
-
-O sistema utiliza autenticação JWT (JSON Web Token). Para acessar endpoints protegidos, é necessário incluir o token no cabeçalho da requisição:
-
+### Docker (Opcional)
+```dockerfile
+FROM node:18-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+COPY . .
+EXPOSE 3000
+CMD ["npm", "start"]
 ```
-Authorization: Bearer {seu_token_jwt}
-```
 
-Você pode obter um token válido através do endpoint de login (`POST /api/auth/login`).
-
-## 👥 Usuários de Teste
-
-Os seguintes usuários são criados pelos seeds para testes:
-
-| Nome | Email | Senha | Função |
-|------|-------|-------|--------|
-| Administrador | admin@amazonia-experience.com | admin123 | admin |
-| Maria Silva | maria@example.com | password123 | user |
-| John Doe | john@example.com | password123 | user |
-| Restaurante Amazônico | contato@restauranteamazonico.com | partner123 | partner |
-| Artesanato Regional | contato@artesanatoregional.com | partner123 | partner |
-
-## 🛠️ Guia de Desenvolvimento
-
-### Criando novas migrations
-
+### ESLint
 ```bash
-npx knex migrate:make nome_da_migration
+npm run lint:fix
 ```
 
-### Criando novas seeds
+### Husky (Git Hooks)
+O projeto usa Husky para executar verificações antes de commits:
+- Pre-commit: ESLint
+- Pre-push: Testes
 
-```bash
-npx knex seed:make nome_da_seed
-```
+### Banco de Dados
+Durante desenvolvimento, é usado SQLite em arquivo. Para produção, pode ser configurado outro banco via Knex.
 
-### Adicionando um novo modelo
+## Suporte
 
-1. Crie um arquivo para o modelo em `src/models/`
-2. Implemente as funções para interagir com o banco de dados
-3. Exporte o modelo
-
-### Adicionando um novo controlador
-
-1. Crie um arquivo para o controlador em `src/controllers/`
-2. Implemente os métodos de manipulação das requisições
-3. Exporte os métodos
-
-### Adicionando novas rotas
-
-1. Crie ou edite o arquivo de rotas em `src/routes/`
-2. Importe o controlador correspondente
-3. Defina as rotas e associe-as aos métodos do controlador
-4. Não esqueça de registrar as novas rotas em `src/app.js`
-
-## 📋 Padrões de Código
-
-- Utilize async/await para operações assíncronas
-- Utilize try/catch para tratamento de erros
-- Siga os padrões RESTful para endpoints da API
-- Valide todas as entradas do usuário
-- Utilize middleware de autenticação para proteger rotas que requerem login
-
-
-Este projeto está licenciado sob a Licença MIT - veja o arquivo LICENSE para detalhes.
+Para suporte técnico ou dúvidas:
+- Issues: [GitHub Issues](https://https://github.com/CaiqueRNeves/Amazonia_Experience-api/issues)
 
 ## Autores
 
 - **Caique Rabelo Neves** - caiquerabelo2015@hotmail.com
 - **Lucas Soares dos Santos** - lluquinhas482@gmail.com
+
+---

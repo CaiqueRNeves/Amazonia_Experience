@@ -1,5 +1,5 @@
-const { body, validationResult } = require('express-validator');
-const { ValidationError } = require('../middleware/error');
+import { body, validationResult } from 'express-validator';
+import { ValidationError } from '../middleware/error.js';
 
 // Middleware para verificar se há erros de validação
 const validateRequest = (req, res, next) => {
@@ -12,7 +12,7 @@ const validateRequest = (req, res, next) => {
 };
 
 // Validação para verificação de código de visita
-exports.validateVerifyCode = [
+export const validateVerifyCode = [
   body('verification_code')
     .notEmpty().withMessage('O código de verificação é obrigatório')
     .isLength({ min: 8, max: 8 }).withMessage('O código de verificação deve ter 8 caracteres'),
