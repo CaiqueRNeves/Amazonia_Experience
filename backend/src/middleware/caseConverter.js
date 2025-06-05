@@ -8,7 +8,7 @@
  * @param {string} str - String em camelCase
  * @returns {string} String em snake_case
  */
-const camelToSnake = (str) => {
+export const camelToSnake = (str) => {
   return str.replace(/[A-Z]/g, letter => `_${letter.toLowerCase()}`);
 };
 
@@ -17,7 +17,7 @@ const camelToSnake = (str) => {
  * @param {string} str - String em snake_case
  * @returns {string} String em camelCase
  */
-const snakeToCamel = (str) => {
+export const snakeToCamel = (str) => {
   return str.replace(/_([a-z])/g, (_, letter) => letter.toUpperCase());
 };
 
@@ -26,7 +26,7 @@ const snakeToCamel = (str) => {
  * @param {Object|Array} obj - Objeto ou array a ser convertido
  * @returns {Object|Array} Objeto ou array com chaves convertidas
  */
-const objectToCamelCase = (obj) => {
+export const objectToCamelCase = (obj) => {
   if (obj === null || obj === undefined || typeof obj !== 'object') {
     return obj;
   }
@@ -47,7 +47,7 @@ const objectToCamelCase = (obj) => {
  * @param {Object|Array} obj - Objeto ou array a ser convertido
  * @returns {Object|Array} Objeto ou array com chaves convertidas
  */
-const objectToSnakeCase = (obj) => {
+export const objectToSnakeCase = (obj) => {
   if (obj === null || obj === undefined || typeof obj !== 'object') {
     return obj;
   }
@@ -68,7 +68,7 @@ const objectToSnakeCase = (obj) => {
  * @param {Object} params - Parâmetros em camelCase
  * @returns {Object} Parâmetros em snake_case
  */
-const convertQueryParams = (params) => {
+export const convertQueryParams = (params) => {
   if (!params || typeof params !== 'object') {
     return params;
   }
@@ -82,20 +82,31 @@ const convertQueryParams = (params) => {
   }, {});
 };
 
-// Exportações nomeadas
-module.exports = {
-  camelToSnake,
-  snakeToCamel,
-  objectToCamelCase,
-  objectToSnakeCase,
-  convertQueryParams
-};
-
-// Exportação padrão
-module.exports = {
-  camelToSnake,
-  snakeToCamel,
-  objectToCamelCase,
-  objectToSnakeCase,
-  convertQueryParams
+/**
+ * Middleware para converter automaticamente requests e responses
+ * @param {Object} req - Request object
+ * @param {Object} res - Response object
+ * @param {Function} next - Next middleware function
+ */
+export const caseConversionMiddleware = (req, res, next) => {
+  // Converter query params de camelCase para snake_case
+  if (req.query) {
+    req.query = convertQueryParams(req.query);
+  }
+  
+  // Converter body de camelCase para snake_case
+  if (req.body) {
+    req.body = objectToSnakeCase(req.body);
+  }
+  
+  // Interceptar res.json para converter responses de snake_case para camelCase
+  const originalJson = res.json;
+  res.json = function(data) {
+    if (data && typeof data === 'object') {
+      data = objectToCamelCase(data);
+    }
+    return originalJson.call(this, data);
+  };
+  
+  next();
 };

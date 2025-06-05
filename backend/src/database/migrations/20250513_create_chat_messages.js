@@ -1,4 +1,4 @@
-exports.up = function(knex) {
+export const up = function(knex) {
   return knex.schema.createTable('chat_messages', (table) => {
     table.increments('id').primary();
     table.integer('user_id').unsigned().notNullable();
@@ -11,6 +11,6 @@ exports.up = function(knex) {
   });
 };
 
-exports.down = function(knex) {
+export const down = function(knex) {
   return knex.schema.dropTable('chat_messages');
 };

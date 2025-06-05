@@ -1,9 +1,9 @@
-const Place = require('../models/Place');
-const Visit = require('../models/Visit');
-const { NotFoundError, ValidationError } = require('../middleware/error');
+import Place from '../models/Place.js';
+import Visit from '../models/Visit.js';
+import { NotFoundError, ValidationError } from '../middleware/error.js';
 
 // Listar locais
-exports.getPlaces = async (req, res, next) => {
+export const getPlaces = async (req, res, next) => {
   try {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
@@ -45,7 +45,7 @@ exports.getPlaces = async (req, res, next) => {
 };
 
 // Obter detalhes de um local
-exports.getPlace = async (req, res, next) => {
+export const getPlace = async (req, res, next) => {
   try {
     const placeId = req.params.id;
     const place = await Place.findById(placeId);
@@ -66,7 +66,7 @@ exports.getPlace = async (req, res, next) => {
 };
 
 // Listar locais próximos (geolocalização)
-exports.getNearbyPlaces = async (req, res, next) => {
+export const getNearbyPlaces = async (req, res, next) => {
   try {
     const { latitude, longitude, radius } = req.query;
     const page = parseInt(req.query.page) || 1;
@@ -102,7 +102,7 @@ exports.getNearbyPlaces = async (req, res, next) => {
 };
 
 // Realizar check-in em um local
-exports.checkIn = async (req, res, next) => {
+export const checkIn = async (req, res, next) => {
   try {
     const { place_id } = req.body;
     const user_id = req.user.id;

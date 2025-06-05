@@ -1,4 +1,4 @@
-const db = require('../config/database');
+import db from '../config/database.js';
 
 class ChatMessage {
   // Métodos de busca
@@ -51,4 +51,4 @@ class ChatMessage {
   }
 }
 
-module.exports = ChatMessage;
+export default ChatMessage;

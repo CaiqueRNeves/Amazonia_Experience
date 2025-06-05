@@ -1,40 +1,89 @@
-# Dependências
+# Dependencies
 node_modules/
-npm-debug.log
-yarn-error.log
-yarn-debug.log
-package-lock.json
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# Arquivos de ambiente
+# Environment variables
 .env
 .env.local
-.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# Logs
-logs
-*.log
-
-# Arquivos de banco de dados
-*.sqlite
+# Database files
+data/
 *.sqlite3
 *.db
 
-# Diretório de cobertura de testes
-coverage/
+# Logs
+logs/
+*.log
 
-# Diretório de build
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Dependency directories
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Build output
 dist/
 build/
 
-# Arquivos do sistema
-.DS_Store
-Thumbs.db
+# Test output
+test-results/
+.jest-cache/
 
-# Diretório de uploads
-uploads/
+# Temporary files
+tmp/
+temp/
 
-# Arquivos de IDE e editores
-.idea/
-.vscode/
-*.swp
-*.swo
+# Documentation
+docs/build/

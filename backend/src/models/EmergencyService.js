@@ -1,5 +1,5 @@
-const db = require('../config/database');
-const { NotFoundError, ValidationError } = require('../middleware/error');
+import db from '../config/database.js';
+import { NotFoundError, ValidationError } from '../middleware/error.js';
 
 class EmergencyService {
   /**
@@ -17,7 +17,7 @@ class EmergencyService {
     let query = db('emergency_services');
     
     // Aplicar filtros
-    if (filters.is24h) {
+    if (filters.is_24h) {
       query = query.where('is_24h', true);
     }
     
@@ -80,8 +80,8 @@ class EmergencyService {
       .having('distance', '<', radius);
     
     // Aplicar filtros adicionais
-    if (filters.serviceType) {
-      query = query.where('service_type', filters.serviceType);
+    if (filters.service_type) {
+      query = query.where('service_type', filters.service_type);
     }
     
     return query
@@ -172,4 +172,4 @@ class EmergencyService {
   }
 }
 
-module.exports = EmergencyService;
+export default EmergencyService;

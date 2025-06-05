@@ -1,10 +1,10 @@
-const Quiz = require('../models/Quiz');
-const QuizAttempt = require('../models/QuizAttempt');
-const User = require('../models/User');
-const { NotFoundError, ValidationError, ForbiddenError } = require('../middleware/error');
+import Quiz from '../models/Quiz.js';
+import QuizAttempt from '../models/QuizAttempt.js';
+import User from '../models/User.js';
+import { NotFoundError, ValidationError, ForbiddenError } from '../middleware/error.js';
 
 // Listar quizzes disponíveis
-exports.getQuizzes = async (req, res, next) => {
+export const getQuizzes = async (req, res, next) => {
   try {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
@@ -42,7 +42,7 @@ exports.getQuizzes = async (req, res, next) => {
 };
 
 // Obter detalhes e perguntas de um quiz
-exports.getQuiz = async (req, res, next) => {
+export const getQuiz = async (req, res, next) => {
   try {
     const quizId = req.params.id;
     const quiz = await Quiz.findById(quizId);
@@ -73,7 +73,7 @@ exports.getQuiz = async (req, res, next) => {
 };
 
 // Iniciar tentativa de um quiz
-exports.startQuiz = async (req, res, next) => {
+export const startQuiz = async (req, res, next) => {
   try {
     const quizId = req.params.id;
     const userId = req.user.id;
@@ -136,7 +136,7 @@ exports.startQuiz = async (req, res, next) => {
 };
 
 // Responder pergunta de quiz
-exports.answerQuiz = async (req, res, next) => {
+export const answerQuiz = async (req, res, next) => {
   try {
     const attemptId = req.params.attempt_id;
     const userId = req.user.id;
@@ -194,7 +194,7 @@ exports.answerQuiz = async (req, res, next) => {
 };
 
 // Finalizar tentativa de quiz
-exports.submitQuiz = async (req, res, next) => {
+export const submitQuiz = async (req, res, next) => {
   try {
     const attemptId = req.params.attempt_id;
     const userId = req.user.id;
@@ -249,13 +249,12 @@ exports.submitQuiz = async (req, res, next) => {
       }
     });
   } catch (error) {
-    // CORREÇÃO: Erro de digitação corrigido
     next(error);
   }
 };
 
 // Obter histórico de quizzes realizados pelo usuário
-exports.getQuizAttempts = async (req, res, next) => {
+export const getQuizAttempts = async (req, res, next) => {
   try {
     const userId = req.user.id;
     const page = parseInt(req.query.page) || 1;
@@ -279,7 +278,7 @@ exports.getQuizAttempts = async (req, res, next) => {
 };
 
 // Obter ranking de usuários em quizzes
-exports.getLeaderboard = async (req, res, next) => {
+export const getLeaderboard = async (req, res, next) => {
   try {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;

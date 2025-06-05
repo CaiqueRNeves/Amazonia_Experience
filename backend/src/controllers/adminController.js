@@ -1,13 +1,13 @@
-const Place = require('../models/Place');
-const Partner = require('../models/Partner');
-const User = require('../models/User');
-const Quiz = require('../models/Quiz');
-const EmergencyService = require('../models/EmergencyService');
-const ConnectivitySpot = require('../models/ConnectivitySpot');
-const { NotFoundError, ValidationError } = require('../middleware/error');
+import Place from '../models/Place.js';
+import Partner from '../models/Partner.js';
+import User from '../models/User.js';
+import Quiz from '../models/Quiz.js';
+import EmergencyService from '../models/EmergencyService.js';
+import ConnectivitySpot from '../models/ConnectivitySpot.js';
+import { NotFoundError, ValidationError } from '../middleware/error.js';
 
 // Criar local
-exports.createPlace = async (req, res, next) => {
+export const createPlace = async (req, res, next) => {
   try {
     const placeData = req.body;
     
@@ -33,7 +33,7 @@ exports.createPlace = async (req, res, next) => {
 };
 
 // Atualizar local
-exports.updatePlace = async (req, res, next) => {
+export const updatePlace = async (req, res, next) => {
   try {
     const placeId = req.params.id;
     const placeData = req.body;
@@ -66,7 +66,7 @@ exports.updatePlace = async (req, res, next) => {
 };
 
 // Criar parceiro
-exports.createPartner = async (req, res, next) => {
+export const createPartner = async (req, res, next) => {
   try {
     const { user_id, business_name, business_type, address, contact_phone } = req.body;
     
@@ -106,7 +106,7 @@ exports.createPartner = async (req, res, next) => {
 };
 
 // Atualizar função de usuário
-exports.updateUserRole = async (req, res, next) => {
+export const updateUserRole = async (req, res, next) => {
   try {
     const userId = req.params.id;
     const { role } = req.body;
@@ -137,7 +137,7 @@ exports.updateUserRole = async (req, res, next) => {
 };
 
 // Criar novo quiz
-exports.createQuiz = async (req, res, next) => {
+export const createQuiz = async (req, res, next) => {
   try {
     const { title, description, difficulty, topic, amacoins_reward, questions } = req.body;
     
@@ -173,7 +173,7 @@ exports.createQuiz = async (req, res, next) => {
 };
 
 // Atualizar quiz existente
-exports.updateQuiz = async (req, res, next) => {
+export const updateQuiz = async (req, res, next) => {
   try {
     const quizId = req.params.id;
     const quizData = req.body;
@@ -200,13 +200,6 @@ exports.updateQuiz = async (req, res, next) => {
     
     // Atualizar perguntas, se fornecidas
     if (quizData.questions) {
-      // Opção 1: Remover todas as perguntas e adicionar novas
-      // await Quiz.deleteAllQuestions(quizId);
-      // for (const questionData of quizData.questions) {
-      //   await Quiz.addQuestion(quizId, questionData);
-      // }
-      
-      // Opção 2: Atualizar perguntas existentes e adicionar novas
       for (const questionData of quizData.questions) {
         if (questionData.id) {
           // Atualizar pergunta existente
@@ -235,7 +228,7 @@ exports.updateQuiz = async (req, res, next) => {
 };
 
 // Adicionar serviço de emergência
-exports.addEmergencyService = async (req, res, next) => {
+export const addEmergencyService = async (req, res, next) => {
   try {
     const serviceData = req.body;
     
@@ -259,7 +252,7 @@ exports.addEmergencyService = async (req, res, next) => {
 };
 
 // Atualizar informações de pontos de conectividade
-exports.updateConnectivitySpot = async (req, res, next) => {
+export const updateConnectivitySpot = async (req, res, next) => {
   try {
     const { id, ...spotData } = req.body;
     

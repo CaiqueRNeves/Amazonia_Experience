@@ -1,7 +1,7 @@
-const db = require('../config/database');
-const User = require('./User');
-const Reward = require('./Reward');
-const { ValidationError } = require('../middleware/error');
+import db from '../config/database.js';
+import User from './User.js';
+import Reward from './Reward.js';
+import { ValidationError } from '../middleware/error.js';
 
 class Redemption {
   // Métodos de busca
@@ -53,10 +53,10 @@ class Redemption {
   }
 
   // Listar resgates por usuário
-  static getByUserId(userId, page = 1, limit = 10) {
+  static getByUserId(userId, page = 1, limit = 10, filters = {}) {
     const offset = (page - 1) * limit;
     
-    return db('redemptions')
+    let query = db('redemptions')
       .where({ user_id: userId })
       .join('rewards', 'redemptions.reward_id', '=', 'rewards.id')
       .select(
@@ -64,7 +64,14 @@ class Redemption {
         'rewards.name as reward_name',
         'rewards.reward_type',
         'rewards.image_url'
-      )
+      );
+    
+    // Aplicar filtro por status se fornecido
+    if (filters.status) {
+      query = query.where('redemptions.status', filters.status);
+    }
+    
+    return query
       .limit(limit)
       .offset(offset)
       .orderBy('redemptions.redeemed_at', 'desc');
@@ -91,4 +98,4 @@ class Redemption {
   }
 }
 
-module.exports = Redemption;
+export default Redemption;

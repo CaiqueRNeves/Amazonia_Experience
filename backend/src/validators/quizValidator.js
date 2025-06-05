@@ -1,5 +1,5 @@
-const { body, validationResult } = require('express-validator');
-const { ValidationError } = require('../middleware/error');
+import { body, validationResult } from 'express-validator';
+import { ValidationError } from '../middleware/error.js';
 
 // Middleware para verificar se há erros de validação
 const validateRequest = (req, res, next) => {
@@ -12,7 +12,7 @@ const validateRequest = (req, res, next) => {
 };
 
 // Validação para resposta de quiz
-exports.validateQuizAnswer = [
+export const validateQuizAnswer = [
   body('question_id')
     .notEmpty().withMessage('O ID da pergunta é obrigatório')
     .isInt({ min: 1 }).withMessage('ID de pergunta inválido'),

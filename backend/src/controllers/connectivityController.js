@@ -1,14 +1,13 @@
-const ConnectivitySpot = require('../models/ConnectivitySpot');
-const ConnectivityReport = require('../models/ConnectivityReport');
-const { NotFoundError, ValidationError } = require('../middleware/error');
+import ConnectivitySpot from '../models/ConnectivitySpot.js';
+import ConnectivityReport from '../models/ConnectivityReport.js';
+import { NotFoundError, ValidationError } from '../middleware/error.js';
 
 // Listar pontos de conectividade
-exports.getConnectivitySpots = async (req, res, next) => {
+export const getConnectivitySpots = async (req, res, next) => {
   try {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
     
-    // CORREÇÃO: Padronização consistente em snake_case
     const filters = {};
     
     if (req.query.is_free === 'true') {
@@ -45,7 +44,7 @@ exports.getConnectivitySpots = async (req, res, next) => {
 };
 
 // Listar pontos de conectividade próximos (geolocalização)
-exports.getNearbySpots = async (req, res, next) => {
+export const getNearbySpots = async (req, res, next) => {
   try {
     const { latitude, longitude, radius } = req.query;
     const page = parseInt(req.query.page) || 1;
@@ -81,7 +80,7 @@ exports.getNearbySpots = async (req, res, next) => {
 };
 
 // Reportar informação sobre ponto de conectividade
-exports.reportSpot = async (req, res, next) => {
+export const reportSpot = async (req, res, next) => {
   try {
     const spotId = req.params.id;
     const userId = req.user.id;
@@ -93,7 +92,6 @@ exports.reportSpot = async (req, res, next) => {
       throw new NotFoundError('Ponto de conectividade não encontrado');
     }
     
-    // CORREÇÃO: Validação de entrada melhorada
     const sanitizedComment = comment ? comment.substring(0, 500) : null;
     
     // Criar relatório
@@ -122,7 +120,7 @@ exports.reportSpot = async (req, res, next) => {
 };
 
 // Obter mapa de calor de qualidade de sinal
-exports.getHeatmap = async (req, res, next) => {
+export const getHeatmap = async (req, res, next) => {
   try {
     // Buscar todos os pontos com métricas
     const spots = await ConnectivitySpot.findAll(1, 1000, { include_reports: true });

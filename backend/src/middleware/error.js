@@ -63,7 +63,7 @@ class NotFoundError extends AppError {
   }
 }
 
-module.exports = {
+export {
   errorHandler,
   AppError,
   ValidationError,

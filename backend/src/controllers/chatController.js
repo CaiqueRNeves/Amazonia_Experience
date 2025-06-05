@@ -1,16 +1,13 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable max-len */
-/* eslint-disable no-case-declarations */
-const ChatMessage = require('../models/ChatMessage');
-const User = require('../models/User');
-const Event = require('../models/Event');
-const Place = require('../models/Place');
-const EmergencyService = require('../models/EmergencyService');
-const ConnectivitySpot = require('../models/ConnectivitySpot');
-const { NotFoundError, ValidationError } = require('../middleware/error');
+import ChatMessage from '../models/ChatMessage.js';
+import User from '../models/User.js';
+import Event from '../models/Event.js';
+import Place from '../models/Place.js';
+import EmergencyService from '../models/EmergencyService.js';
+import ConnectivitySpot from '../models/ConnectivitySpot.js';
+import { NotFoundError, ValidationError } from '../middleware/error.js';
 
 // Enviar mensagem para o chatbot
-exports.sendMessage = async (req, res, next) => {
+export const sendMessage = async (req, res, next) => {
   try {
     const { message, context_type, context_id } = req.body;
     const userId = req.user.id;
@@ -118,7 +115,7 @@ exports.sendMessage = async (req, res, next) => {
 };
 
 // Obter histórico de conversas
-exports.getHistory = async (req, res, next) => {
+export const getHistory = async (req, res, next) => {
   try {
     const userId = req.user.id;
     const page = parseInt(req.query.page) || 1;
@@ -154,7 +151,7 @@ exports.getHistory = async (req, res, next) => {
 };
 
 // Obter informações contextuais para um local ou evento
-exports.getContext = async (req, res, next) => {
+export const getContext = async (req, res, next) => {
   try {
     const { entity_type, entity_id } = req.params;
 
@@ -230,7 +227,7 @@ exports.getContext = async (req, res, next) => {
 };
 
 // Enviar feedback sobre resposta do chatbot
-exports.sendFeedback = async (req, res, next) => {
+export const sendFeedback = async (req, res, next) => {
   try {
     const { message_id, is_helpful, feedback_text } = req.body;
     const userId = req.user.id;

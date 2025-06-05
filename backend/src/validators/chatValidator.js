@@ -1,5 +1,5 @@
-const { body, validationResult } = require('express-validator');
-const { ValidationError } = require('../middleware/error');
+import { body, validationResult } from 'express-validator';
+import { ValidationError } from '../middleware/error.js';
 
 // Middleware para verificar se há erros de validação
 const validateRequest = (req, res, next) => {
@@ -12,7 +12,7 @@ const validateRequest = (req, res, next) => {
 };
 
 // Validação para mensagem de chat
-exports.validateChatMessage = [
+export const validateChatMessage = [
   body('message')
     .notEmpty().withMessage('A mensagem é obrigatória')
     .isLength({ min: 1, max: 500 }).withMessage('A mensagem deve ter entre 1 e 500 caracteres'),

@@ -1,11 +1,11 @@
-const Reward = require('../models/Reward');
-const Redemption = require('../models/Redemption');
-const User = require('../models/User');
-const db = require('../config/database');
-const { NotFoundError, ValidationError, ForbiddenError } = require('../middleware/error');
+import Reward from '../models/Reward.js';
+import Redemption from '../models/Redemption.js';
+import User from '../models/User.js';
+import db from '../config/database.js';
+import { NotFoundError, ValidationError, ForbiddenError } from '../middleware/error.js';
 
 // Listar recompensas
-exports.getRewards = async (req, res, next) => {
+export const getRewards = async (req, res, next) => {
   try {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
@@ -51,7 +51,7 @@ exports.getRewards = async (req, res, next) => {
 };
 
 // Listar produtos físicos
-exports.getPhysicalRewards = async (req, res, next) => {
+export const getPhysicalRewards = async (req, res, next) => {
   try {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
@@ -79,7 +79,7 @@ exports.getPhysicalRewards = async (req, res, next) => {
 };
 
 // Listar serviços e produtos digitais
-exports.getDigitalRewards = async (req, res, next) => {
+export const getDigitalRewards = async (req, res, next) => {
   try {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
@@ -106,7 +106,7 @@ exports.getDigitalRewards = async (req, res, next) => {
 };
 
 // Obter detalhes de uma recompensa
-exports.getReward = async (req, res, next) => {
+export const getReward = async (req, res, next) => {
   try {
     const rewardId = req.params.id;
     const reward = await Reward.findById(rewardId);
@@ -126,8 +126,8 @@ exports.getReward = async (req, res, next) => {
   }
 };
 
-// CORREÇÃO: Resgatar recompensa com transação completa e verificação de concorrência
-exports.redeemReward = async (req, res, next) => {
+// Resgatar recompensa com transação completa e verificação de concorrência
+export const redeemReward = async (req, res, next) => {
   const trx = await db.transaction();
   
   try {
@@ -280,7 +280,7 @@ exports.redeemReward = async (req, res, next) => {
 };
 
 // Obter histórico de resgates do usuário
-exports.getRedemptions = async (req, res, next) => {
+export const getRedemptions = async (req, res, next) => {
   try {
     const userId = req.user.id;
     const page = parseInt(req.query.page) || 1;
@@ -310,7 +310,7 @@ exports.getRedemptions = async (req, res, next) => {
 };
 
 // Cancelar resgate (se ainda não foi processado)
-exports.cancelRedemption = async (req, res, next) => {
+export const cancelRedemption = async (req, res, next) => {
   const trx = await db.transaction();
   
   try {
@@ -457,156 +457,4 @@ async function sendRedemptionNotification(userId, reward, redemptionCode) {
     });
   } catch (error) {
     console.error('Erro ao enviar notificação de resgate:', error);
-  }
-}
-
-// Verificar código de resgate (para parceiros)
-exports.verifyRedemptionCode = async (req, res, next) => {
-  try {
-    const { redemption_code } = req.body;
-    const partnerId = req.user.partner_id; // Assumindo que parceiros têm partner_id
-    
-    if (!partnerId) {
-      throw new ForbiddenError('Apenas parceiros podem verificar códigos de resgate');
-    }
-    
-    // Buscar resgate pelo código
-    const redemption = await db('redemptions')
-      .join('rewards', 'redemptions.reward_id', '=', 'rewards.id')
-      .join('users', 'redemptions.user_id', '=', 'users.id')
-      .where({
-        'redemptions.redemption_code': redemption_code,
-        'rewards.partner_id': partnerId
-      })
-      .select(
-        'redemptions.*',
-        'rewards.name as reward_name',
-        'rewards.reward_type',
-        'rewards.description as reward_description',
-        'users.name as user_name',
-        'users.email as user_email'
-      )
-      .first();
-    
-    if (!redemption) {
-      throw new NotFoundError('Código de resgate inválido ou não pertence a este parceiro');
-    }
-    
-    // Verificar se o resgate expirou
-    if (redemption.expires_at && new Date(redemption.expires_at) < new Date()) {
-      throw new ValidationError('Código de resgate expirado');
-    }
-    
-    // Verificar se já foi usado
-    if (redemption.status === 'completed') {
-      throw new ValidationError('Este código já foi utilizado');
-    }
-    
-    if (redemption.status === 'cancelled') {
-      throw new ValidationError('Este código foi cancelado');
-    }
-    
-    res.json({
-      status: 'success',
-      data: {
-        redemption: {
-          id: redemption.id,
-          code: redemption.redemption_code,
-          status: redemption.status,
-          redeemed_at: redemption.redeemed_at,
-          expires_at: redemption.expires_at
-        },
-        reward: {
-          name: redemption.reward_name,
-          type: redemption.reward_type,
-          description: redemption.reward_description
-        },
-        user: {
-          name: redemption.user_name,
-          email: redemption.user_email
-        }
-      }
-    });
-  } catch (error) {
-    next(error);
-  }
-};
-
-// Confirmar uso do resgate (para parceiros)
-exports.confirmRedemption = async (req, res, next) => {
-  try {
-    const { redemption_code } = req.body;
-    const partnerId = req.user.partner_id;
-    
-    if (!partnerId) {
-      throw new ForbiddenError('Apenas parceiros podem confirmar resgates');
-    }
-    
-    const trx = await db.transaction();
-    
-    try {
-      // Buscar e bloquear resgate
-      const redemption = await trx('redemptions')
-        .join('rewards', 'redemptions.reward_id', '=', 'rewards.id')
-        .where({
-          'redemptions.redemption_code': redemption_code,
-          'rewards.partner_id': partnerId,
-          'redemptions.status': 'pending'
-        })
-        .forUpdate()
-        .select('redemptions.*')
-        .first();
-      
-      if (!redemption) {
-        await trx.rollback();
-        throw new NotFoundError('Código inválido, já usado ou não pertence a este parceiro');
-      }
-      
-      // Marcar como completado
-      await trx('redemptions')
-        .where({ id: redemption.id })
-        .update({
-          status: 'completed',
-          completed_at: new Date(),
-          completed_by_partner_id: partnerId,
-          updated_at: new Date()
-        });
-      
-      await trx.commit();
-      
-      // Enviar confirmação para o usuário
-      setImmediate(() => {
-        sendRedemptionConfirmation(redemption.user_id, redemption_code);
-      });
-      
-      res.json({
-        status: 'success',
-        message: 'Resgate confirmado com sucesso',
-        data: {
-          redemption_id: redemption.id,
-          completed_at: new Date()
-        }
-      });
-    } catch (error) {
-      await trx.rollback();
-      throw error;
-    }
-  } catch (error) {
-    next(error);
-  }
-};
-
-async function sendRedemptionConfirmation(userId, redemptionCode) {
-  try {
-    await db('user_notifications').insert({
-      user_id: userId,
-      type: 'redemption_confirmed',
-      title: 'Resgate confirmado!',
-      message: `Seu resgate com código ${redemptionCode} foi confirmado pelo parceiro.`,
-      data: JSON.stringify({ redemption_code: redemptionCode }),
-      created_at: new Date()
-    });
-  } catch (error) {
-    console.error('Erro ao enviar confirmação de resgate:', error);
-  }
-}
+  }}

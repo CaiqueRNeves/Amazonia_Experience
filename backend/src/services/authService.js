@@ -1,7 +1,6 @@
-const User = require('../models/User');
-const { generateToken, generateRefreshToken, verifyRefreshToken } = require('../utils/jwt');
-const { ValidationError, UnauthorizedError } = require('../middleware/error');
-const bcrypt = require('bcrypt');
+import User from '../models/User.js';
+import { generateToken, generateRefreshToken, verifyRefreshToken } from '../utils/jwt.js';
+import { ValidationError, UnauthorizedError } from '../middleware/error.js';
 
 /**
  * Serviço responsável pela autenticação e autorização de usuários
@@ -164,4 +163,4 @@ class AuthService {
   }
 }
 
-module.exports = new AuthService();
+export default new AuthService();

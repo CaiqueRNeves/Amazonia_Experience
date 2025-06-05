@@ -1,5 +1,5 @@
-const db = require('../config/database');
-const bcrypt = require('bcrypt');
+import db from '../config/database.js';
+import bcrypt from 'bcrypt';
 
 class User {
   // Métodos de busca
@@ -48,7 +48,7 @@ class User {
     return this.findById(id);
   }
 
-  // CORREÇÃO: Método transacional para atualizar AmaCoins
+  // Método transacional para atualizar AmaCoins
   static async updateAmacoins(id, amount) {
     const trx = await db.transaction();
     
@@ -306,4 +306,4 @@ class User {
   }
 }
 
-module.exports = User;
+export default User;

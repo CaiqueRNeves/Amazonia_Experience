@@ -1,5 +1,6 @@
-const User = require('../models/User');
-const { ValidationError, NotFoundError, ForbiddenError } = require('../middleware/error');
+import User from '../models/User.js';
+import db from '../config/database.js';
+import { ValidationError, NotFoundError, ForbiddenError } from '../middleware/error.js';
 
 /**
  * Serviço responsável por operações relacionadas a usuários
@@ -254,4 +255,4 @@ class UserService {
   }
 }
 
-module.exports = new UserService();
+export default new UserService();

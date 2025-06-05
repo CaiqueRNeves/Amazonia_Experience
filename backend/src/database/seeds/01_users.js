@@ -1,6 +1,6 @@
-const bcrypt = require('bcrypt');
+import bcrypt from 'bcrypt';
 
-exports.seed = async function(knex) {
+export const seed = async function(knex) {
   // Deleta todos os registros existentes
   await knex('users').del();
   

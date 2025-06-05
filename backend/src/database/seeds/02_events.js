@@ -1,4 +1,4 @@
-exports.seed = async function(knex) {
+export const seed = async function(knex) {
   // Deleta todos os registros existentes
   await knex('events').del();
   

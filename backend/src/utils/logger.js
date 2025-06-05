@@ -46,24 +46,24 @@ const log = (level, message, data = {}) => {
 };
 
 // Métodos específicos para cada nível
-const error = (message, data = {}) => {
+export const error = (message, data = {}) => {
   log(LOG_LEVELS.ERROR, message, data);
 };
 
-const warn = (message, data = {}) => {
+export const warn = (message, data = {}) => {
   log(LOG_LEVELS.WARN, message, data);
 };
 
-const info = (message, data = {}) => {
+export const info = (message, data = {}) => {
   log(LOG_LEVELS.INFO, message, data);
 };
 
-const debug = (message, data = {}) => {
+export const debug = (message, data = {}) => {
   log(LOG_LEVELS.DEBUG, message, data);
 };
 
 // Middleware para logging de requisições
-const requestLogger = (req, res, next) => {
+export const requestLogger = (req, res, next) => {
   const start = Date.now();
   
   res.on('finish', () => {
@@ -80,12 +80,4 @@ const requestLogger = (req, res, next) => {
   });
   
   next();
-};
-
-module.exports = {
-  error,
-  warn,
-  info,
-  debug,
-  requestLogger
 };

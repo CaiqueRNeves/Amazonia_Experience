@@ -1,6 +1,6 @@
-const { body, validationResult } = require('express-validator');
-const { ValidationError } = require('../middleware/error');
-const rateLimit = require('express-rate-limit');
+import { body, validationResult } from 'express-validator';
+import { ValidationError } from '../middleware/error.js';
+import rateLimit from 'express-rate-limit';
 
 // Middleware para verificar se há erros de validação
 const validateRequest = (req, res, next) => {
@@ -13,7 +13,7 @@ const validateRequest = (req, res, next) => {
 };
 
 // Rate limiting específico para autenticação
-const authLimiter = rateLimit({
+export const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutos
   max: 5, // máximo 5 tentativas por IP
   message: {
@@ -31,7 +31,7 @@ const sanitizeInput = (value) => {
 };
 
 // Validação para registro de usuário - MELHORADA
-exports.validateRegister = [
+export const validateRegister = [
   authLimiter,
   
   body('name')
@@ -53,7 +53,7 @@ exports.validateRegister = [
     .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/)
     .withMessage('A senha deve conter pelo menos: 1 letra minúscula, 1 maiúscula, 1 número e 1 caractere especial'),
   
-  // CORREÇÃO: Adicionada validação de confirmação de senha
+  // Adicionada validação de confirmação de senha
   body('confirmPassword')
     .notEmpty().withMessage('A confirmação de senha é obrigatória')
     .custom((value, { req }) => {
@@ -78,7 +78,7 @@ exports.validateRegister = [
 ];
 
 // Validação para login - MELHORADA
-exports.validateLogin = [
+export const validateLogin = [
   authLimiter,
   
   body('email')
@@ -102,7 +102,7 @@ exports.validateLogin = [
 ];
 
 // Validação para alteração de senha - MELHORADA
-exports.validateChangePassword = [
+export const validateChangePassword = [
   body('currentPassword')
     .notEmpty().withMessage('A senha atual é obrigatória')
     .isLength({ min: 1, max: 128 }).withMessage('Senha atual inválida'),
@@ -119,7 +119,7 @@ exports.validateChangePassword = [
       return true;
     }),
   
-  // CORREÇÃO: Adicionada confirmação da nova senha
+  // Adicionada confirmação da nova senha
   body('confirmNewPassword')
     .notEmpty().withMessage('A confirmação da nova senha é obrigatória')
     .custom((value, { req }) => {
@@ -133,7 +133,7 @@ exports.validateChangePassword = [
 ];
 
 // Validação para recuperação de senha
-exports.validateForgotPassword = [
+export const validateForgotPassword = [
   authLimiter,
   
   body('email')
@@ -146,7 +146,7 @@ exports.validateForgotPassword = [
 ];
 
 // Validação para redefinição de senha
-exports.validateResetPassword = [
+export const validateResetPassword = [
   body('token')
     .notEmpty().withMessage('Token de recuperação é obrigatório')
     .isLength({ min: 32, max: 128 }).withMessage('Token inválido'),
@@ -168,6 +168,3 @@ exports.validateResetPassword = [
   
   validateRequest
 ];
-
-// Exportar também o rate limiter para uso em rotas específicas
-exports.authLimiter = authLimiter;

@@ -1,4 +1,4 @@
-const db = require('../config/database');
+import db from '../config/database.js';
 
 class Partner {
   // Métodos de busca
@@ -22,8 +22,8 @@ class Partner {
       );
     
     // Aplicar filtros se fornecidos
-    if (filters.businessType) {
-      query = query.where('partners.business_type', filters.businessType);
+    if (filters.business_type) {
+      query = query.where('partners.business_type', filters.business_type);
     }
     
     if (filters.search) {
@@ -106,4 +106,4 @@ class Partner {
   }
 }
 
-module.exports = Partner;
+export default Partner;

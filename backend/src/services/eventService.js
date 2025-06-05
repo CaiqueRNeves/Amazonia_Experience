@@ -1,7 +1,7 @@
-const Event = require('../models/Event');
-const Visit = require('../models/Visit');
-const User = require('../models/User');
-const { NotFoundError, ValidationError } = require('../middleware/error');
+import Event from '../models/Event.js';
+import Visit from '../models/Visit.js';
+import User from '../models/User.js';
+import { NotFoundError, ValidationError } from '../middleware/error.js';
 
 /**
  * Serviço responsável por operações relacionadas a eventos
@@ -124,7 +124,6 @@ class EventService {
   }
 
   /**
-   * Cria um novo evento (admin)/**
    * Cria um novo evento (admin)
    * @param {Object} eventData - Dados do evento
    * @returns {Object} - Evento criado
@@ -173,4 +172,4 @@ class EventService {
   }
 }
 
-module.exports = new EventService();
+export default new EventService();

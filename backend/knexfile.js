@@ -1,43 +1,64 @@
-require('dotenv').config();
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
 
-module.exports = {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+export default {
   development: {
     client: 'sqlite3',
     connection: {
-      filename: './src/database/dev.sqlite3'
+      filename: join(__dirname, './src/database/dev.sqlite3')
     },
+    useNullAsDefault: true,
     migrations: {
-      directory: './src/database/migrations'
+      directory: join(__dirname, './src/database/migrations')
     },
     seeds: {
-      directory: './src/database/seeds'
+      directory: join(__dirname, './src/database/seeds')
     },
-    useNullAsDefault: true
+    pool: {
+      afterCreate: (conn, cb) => {
+        conn.run('PRAGMA foreign_keys = ON', cb);
+      }
+    }
   },
+  
   test: {
     client: 'sqlite3',
-    connection: {
-      filename: ':memory:'
-    },
+    connection: ':memory:',
+    useNullAsDefault: true,
     migrations: {
-      directory: './src/database/migrations'
+      directory: join(__dirname, './src/database/migrations')
     },
     seeds: {
-      directory: './src/database/seeds/test'
+      directory: join(__dirname, './src/database/seeds')
     },
-    useNullAsDefault: true
+    pool: {
+      afterCreate: (conn, cb) => {
+        conn.run('PRAGMA foreign_keys = ON', cb);
+      }
+    }
   },
+  
   production: {
     client: 'sqlite3',
     connection: {
-      filename: process.env.DB_FILENAME || './src/database/prod.sqlite3'
+      filename: join(__dirname, './data/production.sqlite3')
     },
+    useNullAsDefault: true,
     migrations: {
-      directory: './src/database/migrations'
+      directory: join(__dirname, './src/database/migrations')
     },
     seeds: {
-      directory: './src/database/seeds'
+      directory: join(__dirname, './src/database/seeds')
     },
-    useNullAsDefault: true
+    pool: {
+      min: 2,
+      max: 10,
+      afterCreate: (conn, cb) => {
+        conn.run('PRAGMA foreign_keys = ON', cb);
+      }
+    }
   }
 };

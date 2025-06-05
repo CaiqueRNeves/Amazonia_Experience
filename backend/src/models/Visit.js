@@ -1,9 +1,9 @@
-const db = require('../config/database');
-const User = require('./User');
-const Event = require('./Event');
-const Place = require('./Place');
-const { ValidationError } = require('../middleware/error');
-const crypto = require('crypto');
+import db from '../config/database.js';
+import User from './User.js';
+import Event from './Event.js';
+import Place from './Place.js';
+import { ValidationError } from '../middleware/error.js';
+import crypto from 'crypto';
 
 class Visit {
   // Métodos de busca
@@ -121,4 +121,4 @@ class Visit {
   }
 }
 
-module.exports = Visit;
+export default Visit;

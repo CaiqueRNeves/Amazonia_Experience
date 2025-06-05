@@ -1,8 +1,9 @@
-const express = require('express');
+import express from 'express';
+import * as chatController from '../controllers/chatController.js';
+import { authMiddleware } from '../middleware/auth.js';
+import { validateChatMessage } from '../validators/chatValidator.js';
+
 const router = express.Router();
-const chatController = require('../controllers/chatController');
-const { authMiddleware } = require('../middleware/auth');
-const { validateChatMessage } = require('../validators/chatValidator');
 
 // Todas as rotas requerem autenticação
 router.use(authMiddleware);
@@ -12,4 +13,4 @@ router.get('/history', chatController.getHistory);
 router.get('/context/:entity_type/:entity_id', chatController.getContext);
 router.post('/feedback', chatController.sendFeedback);
 
-module.exports = router;
+export default router;

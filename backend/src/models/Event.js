@@ -1,4 +1,4 @@
-const db = require('../config/database');
+import db from '../config/database.js';
 
 class Event {
   // Métodos de busca
@@ -125,4 +125,4 @@ class Event {
   }
 }
 
-module.exports = Event;
+export default Event;

@@ -1,10 +1,9 @@
-/* eslint-disable no-unused-vars */
-const EmergencyService = require('../models/EmergencyService');
-const EmergencyPhrase = require('../models/EmergencyPhrase');
-const { NotFoundError, ValidationError } = require('../middleware/error');
+import EmergencyService from '../models/EmergencyService.js';
+import EmergencyPhrase from '../models/EmergencyPhrase.js';
+import { NotFoundError, ValidationError } from '../middleware/error.js';
 
 // Listar serviços de emergência
-exports.getEmergencyServices = async (req, res, next) => {
+export const getEmergencyServices = async (req, res, next) => {
   try {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
@@ -41,7 +40,7 @@ exports.getEmergencyServices = async (req, res, next) => {
 };
 
 // Listar serviços por tipo
-exports.getServicesByType = async (req, res, next) => {
+export const getServicesByType = async (req, res, next) => {
   try {
     const { type } = req.params;
     const page = parseInt(req.query.page) || 1;
@@ -65,7 +64,7 @@ exports.getServicesByType = async (req, res, next) => {
 };
 
 // Listar serviços próximos
-exports.getNearbyServices = async (req, res, next) => {
+export const getNearbyServices = async (req, res, next) => {
   try {
     const { latitude, longitude, radius } = req.query;
     const page = parseInt(req.query.page) || 1;
@@ -107,7 +106,7 @@ exports.getNearbyServices = async (req, res, next) => {
 };
 
 // Obter contatos por idioma
-exports.getContactsByLanguage = async (req, res, next) => {
+export const getContactsByLanguage = async (req, res, next) => {
   try {
     const { language } = req.params;
     
@@ -125,7 +124,7 @@ exports.getContactsByLanguage = async (req, res, next) => {
 };
 
 // Obter frases por idioma
-exports.getPhrasesByLanguage = async (req, res, next) => {
+export const getPhrasesByLanguage = async (req, res, next) => {
   try {
     const { language } = req.params;
     
