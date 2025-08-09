@@ -1,10 +1,10 @@
-const placeService = require('../../src/services/placeService');
-const Place = require('../../src/models/Place');
-const Visit = require('../../src/models/Visit');
+import placeService from '../../src/services/placeService.js';
+import Place from '../../src/models/Place.js';
+import Visit from '../../src/models/Visit.js';
 
 // Mock dos modelos
-jest.mock('../../src/models/Place');
-jest.mock('../../src/models/Visit');
+jest.mock('../../src/models/Place.js');
+jest.mock('../../src/models/Visit.js');
 
 describe('PlaceService', () => {
   beforeEach(() => {

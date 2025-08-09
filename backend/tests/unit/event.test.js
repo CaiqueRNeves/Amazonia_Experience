@@ -1,10 +1,10 @@
-const eventService = require('../../src/services/eventService');
-const Event = require('../../src/models/Event');
-const Visit = require('../../src/models/Visit');
+import eventService from '../../src/services/eventService.js';
+import Event from '../../src/models/Event.js';
+import Visit from '../../src/models/Visit.js';
 
 // Mock dos modelos
-jest.mock('../../src/models/Event');
-jest.mock('../../src/models/Visit');
+jest.mock('../../src/models/Event.js');
+jest.mock('../../src/models/Visit.js');
 
 describe('EventService', () => {
   beforeEach(() => {
