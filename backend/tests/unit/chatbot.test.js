@@ -1,14 +1,14 @@
-const chatbotService = require('../../src/services/chatbotService');
-const ChatMessage = require('../../src/models/ChatMessage');
-const User = require('../../src/models/User');
-const Event = require('../../src/models/Event');
-const Place = require('../../src/models/Place');
+import chatbotService from '../../src/services/chatbotService.js';
+import ChatMessage from '../../src/models/ChatMessage.js';
+import User from '../../src/models/User.js';
+import Event from '../../src/models/Event.js';
+import Place from '../../src/models/Place.js';
 
 // Mock dos modelos
-jest.mock('../../src/models/ChatMessage');
-jest.mock('../../src/models/User');
-jest.mock('../../src/models/Event');
-jest.mock('../../src/models/Place');
+jest.mock('../../src/models/ChatMessage.js');
+jest.mock('../../src/models/User.js');
+jest.mock('../../src/models/Event.js');
+jest.mock('../../src/models/Place.js');
 jest.mock('node-nlp');
 
 describe('ChatbotService', () => {

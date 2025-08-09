@@ -1,5 +1,5 @@
-const jwt = require('jsonwebtoken');
-const { generateToken, generateRefreshToken, verifyToken, verifyRefreshToken } = require('../../src/utils/jwt');
+import jwt from 'jsonwebtoken';
+import { generateToken, generateRefreshToken, verifyToken, verifyRefreshToken } from '../../src/utils/jwt.js';
 
 // Mock do módulo jsonwebtoken
 jest.mock('jsonwebtoken');

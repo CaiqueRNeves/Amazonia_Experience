@@ -263,10 +263,8 @@ class QuizService {
     });
     
     // Adicionar perguntas ao quiz
-    if (questions && Array.isArray(questions)) {
-      for (const questionData of questions) {
-        await Quiz.addQuestion(quiz.id, questionData);
-      }
+    if (questions && Array.isArray(questions) && questions.length) {
+      await Promise.all(questions.map(questionData => Quiz.addQuestion(quiz.id, questionData)));
     }
     
     // Buscar quiz completo com perguntas
@@ -304,16 +302,17 @@ class QuizService {
     await Quiz.update(quizId, updateData);
     
     // Atualizar perguntas, se fornecidas
-    if (questions && Array.isArray(questions)) {
-      for (const questionData of questions) {
-        if (questionData.id) {
-          // Atualizar pergunta existente
-          await Quiz.updateQuestion(questionData.id, questionData);
-        } else {
+    if (questions && Array.isArray(questions) && questions.length) {
+      await Promise.all(
+        questions.map(questionData => {
+          if (questionData.id) {
+            // Atualizar pergunta existente
+            return Quiz.updateQuestion(questionData.id, questionData);
+          }
           // Adicionar nova pergunta
-          await Quiz.addQuestion(quizId, questionData);
-        }
-      }
+          return Quiz.addQuestion(quizId, questionData);
+        })
+      );
     }
     
     // Buscar quiz atualizado

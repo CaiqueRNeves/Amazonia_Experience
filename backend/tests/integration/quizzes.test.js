@@ -1,4 +1,4 @@
-const { app, request, setupTestDB, teardownTestDB, generateTestToken } = require('./setup');
+import { app, request, setupTestDB, teardownTestDB, generateTestToken } from './setup.js';
 
 describe('Testes de Integração - Quizzes', () => {
   let db;
