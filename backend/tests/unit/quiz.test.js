@@ -1,12 +1,12 @@
-const quizService = require('../../src/services/quizService');
-const Quiz = require('../../src/models/Quiz');
-const QuizAttempt = require('../../src/models/QuizAttempt');
-const User = require('../../src/models/User');
+import quizService from '../../src/services/quizService.js';
+import Quiz from '../../src/models/Quiz.js';
+import QuizAttempt from '../../src/models/QuizAttempt.js';
+import User from '../../src/models/User.js';
 
 // Mock dos modelos
-jest.mock('../../src/models/Quiz');
-jest.mock('../../src/models/QuizAttempt');
-jest.mock('../../src/models/User');
+jest.mock('../../src/models/Quiz.js');
+jest.mock('../../src/models/QuizAttempt.js');
+jest.mock('../../src/models/User.js');
 
 describe('QuizService', () => {
   beforeEach(() => {

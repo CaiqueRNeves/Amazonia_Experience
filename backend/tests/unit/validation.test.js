@@ -1,4 +1,4 @@
-const { isValidEmail, isValidCoordinates, isAlphanumericWithSpaces, sanitizeSQLInput, sanitizeHtmlInput, isValidISODate, hasRequiredProperties } = require('../../src/utils/validation');
+import { isValidEmail, isValidCoordinates, isAlphanumericWithSpaces, sanitizeSQLInput, sanitizeHtmlInput, isValidISODate, hasRequiredProperties } from '../../src/utils/validation.js';
 
 describe('Validation Utilities', () => {
   describe('isValidEmail', () => {

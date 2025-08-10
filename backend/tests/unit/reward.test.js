@@ -1,13 +1,13 @@
 // tests/unit/reward.test.js
-const rewardService = require('../../src/services/rewardService');
-const Reward = require('../../src/models/Reward');
-const Redemption = require('../../src/models/Redemption');
-const User = require('../../src/models/User');
+import rewardService from '../../src/services/rewardService.js';
+import Reward from '../../src/models/Reward.js';
+import Redemption from '../../src/models/Redemption.js';
+import User from '../../src/models/User.js';
 
 // Mock dos modelos
-jest.mock('../../src/models/Reward');
-jest.mock('../../src/models/Redemption');
-jest.mock('../../src/models/User');
+jest.mock('../../src/models/Reward.js');
+jest.mock('../../src/models/Redemption.js');
+jest.mock('../../src/models/User.js');
 
 describe('RewardService', () => {
   beforeEach(() => {

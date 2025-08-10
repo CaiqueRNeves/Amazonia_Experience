@@ -1,12 +1,11 @@
-const jwt = require('jsonwebtoken');
-const { generateToken, generateRefreshToken, verifyToken, verifyRefreshToken } = require('../../src/utils/jwt');
-
-// Mock do módulo jsonwebtoken
-jest.mock('jsonwebtoken');
+import { jest } from '@jest/globals';
+import jwt from 'jsonwebtoken';
+import { generateToken, generateRefreshToken, verifyToken, verifyRefreshToken } from '../../src/utils/jwt.js';
 
 describe('JWT Utility', () => {
   // Restaurar todos os mocks antes de cada teste
   beforeEach(() => {
+    jest.restoreAllMocks();
     jest.clearAllMocks();
     
     // Configurar variáveis de ambiente para testes
@@ -18,8 +17,7 @@ describe('JWT Utility', () => {
 
   describe('generateToken', () => {
     it('deve chamar jwt.sign com os parâmetros corretos', () => {
-      // Configurar o mock
-      jwt.sign.mockReturnValue('mocked_token');
+      const signSpy = jest.spyOn(jwt, 'sign').mockReturnValue('mocked_token');
       
       // Payload de teste
       const payload = { id: 1, email: 'test@example.com', role: 'user' };
@@ -29,7 +27,7 @@ describe('JWT Utility', () => {
       
       // Verificar o resultado
       expect(token).toBe('mocked_token');
-      expect(jwt.sign).toHaveBeenCalledWith(
+      expect(signSpy).toHaveBeenCalledWith(
         payload,
         process.env.JWT_SECRET,
         { expiresIn: process.env.JWT_EXPIRES_IN }
@@ -40,7 +38,7 @@ describe('JWT Utility', () => {
   describe('generateRefreshToken', () => {
     it('deve chamar jwt.sign com os parâmetros corretos para refresh token', () => {
       // Configurar o mock
-      jwt.sign.mockReturnValue('mocked_refresh_token');
+      const signSpy = jest.spyOn(jwt, 'sign').mockReturnValue('mocked_refresh_token');
       
       // Payload de teste
       const payload = { id: 1 };
@@ -50,7 +48,7 @@ describe('JWT Utility', () => {
       
       // Verificar o resultado
       expect(refreshToken).toBe('mocked_refresh_token');
-      expect(jwt.sign).toHaveBeenCalledWith(
+      expect(signSpy).toHaveBeenCalledWith(
         payload,
         process.env.JWT_REFRESH_SECRET,
         { expiresIn: process.env.JWT_REFRESH_EXPIRES_IN }
@@ -70,7 +68,7 @@ describe('JWT Utility', () => {
       };
       
       // Configurar o mock para retornar o payload decodificado
-      jwt.verify.mockReturnValue(decodedPayload);
+      const verifySpy = jest.spyOn(jwt, 'verify').mockReturnValue(decodedPayload);
       
       // Token de teste
       const token = 'valid_token';
@@ -80,12 +78,12 @@ describe('JWT Utility', () => {
       
       // Verificar o resultado
       expect(result).toEqual(decodedPayload);
-      expect(jwt.verify).toHaveBeenCalledWith(token, process.env.JWT_SECRET);
+      expect(verifySpy).toHaveBeenCalledWith(token, process.env.JWT_SECRET);
     });
 
     it('deve retornar null para um token inválido', () => {
       // Configurar o mock para lançar um erro
-      jwt.verify.mockImplementation(() => {
+      const verifySpy = jest.spyOn(jwt, 'verify').mockImplementation(() => {
         throw new Error('Invalid token');
       });
       
@@ -97,7 +95,7 @@ describe('JWT Utility', () => {
       
       // Verificar o resultado
       expect(result).toBeNull();
-      expect(jwt.verify).toHaveBeenCalledWith(token, process.env.JWT_SECRET);
+      expect(verifySpy).toHaveBeenCalledWith(token, process.env.JWT_SECRET);
     });
   });
 
@@ -111,7 +109,7 @@ describe('JWT Utility', () => {
       };
       
       // Configurar o mock para retornar o payload decodificado
-      jwt.verify.mockReturnValue(decodedPayload);
+      const verifySpy = jest.spyOn(jwt, 'verify').mockReturnValue(decodedPayload);
       
       // Refresh token de teste
       const refreshToken = 'valid_refresh_token';
@@ -121,12 +119,12 @@ describe('JWT Utility', () => {
       
       // Verificar o resultado
       expect(result).toEqual(decodedPayload);
-      expect(jwt.verify).toHaveBeenCalledWith(refreshToken, process.env.JWT_REFRESH_SECRET);
+      expect(verifySpy).toHaveBeenCalledWith(refreshToken, process.env.JWT_REFRESH_SECRET);
     });
 
     it('deve retornar null para um refresh token inválido', () => {
       // Configurar o mock para lançar um erro
-      jwt.verify.mockImplementation(() => {
+      const verifySpy = jest.spyOn(jwt, 'verify').mockImplementation(() => {
         throw new Error('Invalid refresh token');
       });
       
@@ -138,7 +136,7 @@ describe('JWT Utility', () => {
       
       // Verificar o resultado
       expect(result).toBeNull();
-      expect(jwt.verify).toHaveBeenCalledWith(refreshToken, process.env.JWT_REFRESH_SECRET);
+      expect(verifySpy).toHaveBeenCalledWith(refreshToken, process.env.JWT_REFRESH_SECRET);
     });
   });
 });

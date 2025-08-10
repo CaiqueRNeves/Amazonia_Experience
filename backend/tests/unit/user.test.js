@@ -1,8 +1,8 @@
-const userService = require('../../src/services/userService');
-const User = require('../../src/models/User');
+import userService from '../../src/services/userService.js';
+import User from '../../src/models/User.js';
 
 // Mock do modelo User
-jest.mock('../../src/models/User');
+jest.mock('../../src/models/User.js');
 
 describe('UserService', () => {
   beforeEach(() => {

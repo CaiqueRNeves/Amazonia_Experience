@@ -1,16 +1,14 @@
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
-const authService = require('../../src/services/authService');
-const User = require('../../src/models/User');
+import jwt from 'jsonwebtoken';
+import authService from '../../src/services/authService.js';
+import User from '../../src/models/User.js';
 
 // Mock do modelo User
-jest.mock('../../src/models/User');
+jest.mock('../../src/models/User.js');
 
 // Mock do módulo jwt
 jest.mock('jsonwebtoken');
 
-// Mock do módulo bcrypt
-jest.mock('bcrypt');
+
 
 describe('AuthService', () => {
   beforeEach(() => {

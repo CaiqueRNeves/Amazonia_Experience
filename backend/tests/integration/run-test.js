@@ -1,4 +1,4 @@
-const jest = require('jest');
+import jest from 'jest';
 
 // Configuração do ambiente de teste
 process.env.NODE_ENV = 'test';

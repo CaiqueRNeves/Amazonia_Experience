@@ -25,5 +25,6 @@ module.exports = {
     '/src/database/migrations/',
     '/src/database/seeds/'
   ],
-  setupFilesAfterEnv: ['./jest.setup.js']
+  setupFilesAfterEnv: ['./jest.setup.js'],
+  extensionsToTreatAsEsm: ['.js']
 };

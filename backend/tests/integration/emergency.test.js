@@ -1,4 +1,4 @@
-const { app, request, setupTestDB, teardownTestDB } = require('./setup');
+import { app, request, setupTestDB, teardownTestDB } from './setup.js';
 
 describe('Testes de Integração - Serviços de Emergência', () => {
   let db;
