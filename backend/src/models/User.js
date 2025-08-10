@@ -1,5 +1,5 @@
 import db from '../config/database.js';
-import bcrypt from 'bcrypt';
+import bcrypt from '../utils/password.js';
 
 class User {
   // Métodos de busca

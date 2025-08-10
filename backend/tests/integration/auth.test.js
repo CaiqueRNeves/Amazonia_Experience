@@ -1,5 +1,5 @@
-const { app, request, setupTestDB, teardownTestDB } = require('./setup');
-const bcrypt = require('bcrypt');
+import { app, request, setupTestDB, teardownTestDB } from './setup.js';
+import jwt from 'jsonwebtoken';
 
 describe('Testes de Integração - Autenticação', () => {
   let db;
@@ -44,7 +44,7 @@ describe('Testes de Integração - Autenticação', () => {
 
     it('deve retornar erro ao registrar com email já existente', async () => {
       // Primeiro, inserir um usuário no banco
-      const passwordHash = await bcrypt.hash('testpassword', 10);
+        const passwordHash = 'hashed_testpassword';
       await db('users').insert({
         name: 'Usuário Existente',
         email: 'existente@example.com',
@@ -85,7 +85,7 @@ describe('Testes de Integração - Autenticação', () => {
       await db('users').where('email', 'login@example.com').delete();
       
       // Inserir usuário para teste de login
-      const passwordHash = await bcrypt.hash('senha123', 10);
+      const passwordHash = 'hashed_senha123';
       await db('users').insert({
         name: 'Usuário Login',
         email: 'login@example.com',
@@ -132,7 +132,7 @@ describe('Testes de Integração - Autenticação', () => {
       await db('users').where('email', 'me@example.com').delete();
       
       // Inserir usuário para teste
-      const passwordHash = await bcrypt.hash('senha123', 10);
+      const passwordHash = 'hashed_senha123';
       await db('users').insert({
         id: 999,
         name: 'Usuário Me',
@@ -142,7 +142,6 @@ describe('Testes de Integração - Autenticação', () => {
       });
       
       // Gerar token para o usuário
-      const jwt = require('jsonwebtoken');
       token = jwt.sign(
         { id: 999, email: 'me@example.com', role: 'user' },
         process.env.JWT_SECRET,
@@ -185,7 +184,6 @@ describe('Testes de Integração - Autenticação', () => {
     
     beforeEach(async () => {
       // Gerar refresh token para teste
-      const jwt = require('jsonwebtoken');
       refreshToken = jwt.sign(
         { id: 2 },
         process.env.JWT_REFRESH_SECRET,

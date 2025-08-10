@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt';
+import bcrypt from '../../utils/password.js';
 
 export const seed = async function(knex) {
   // Deleta todos os registros existentes
