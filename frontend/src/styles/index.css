@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Variáveis globais opcionais */
+:root {
+  --color-primary: #2e7d32;   /* Verde Amazônia */
+  --color-secondary: #ffb300; /* Amarelo Pará */
+}
+
+/* Correção padrão do Leaflet */
+.leaflet-container {
+  height: 70vh;
+  width: 100%;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilização básica para o body */
+body {
+  @apply bg-gray-50 text-gray-800 antialiased;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Classes auxiliares personalizadas */
+.btn-primary {
+  @apply bg-green-700 text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-800 transition;
+}
+
+.btn-secondary {
+  @apply bg-yellow-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-yellow-600 transition;
+}
+
+.card {
+  @apply bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition;
+}

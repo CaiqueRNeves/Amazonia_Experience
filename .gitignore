@@ -1,0 +1,61 @@
+# Node
+node_modules/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-lock.yaml
+
+# Build
+/dist/
+/build/
+/.next/
+/.nuxt/
+
+# Vite
+/.vite/
+
+# Environment
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Docker
+*.pid
+docker-compose*.yml
+Dockerfile
+
+# Database
+*.sqlite
+*.db
+
+# Test
+coverage/
+*.lcov
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Misc
+*.bak
+*.tmp
+
+# Presentations
+*.pptx
+
+# Others
+frontend/public/
+backend/database/migrations/
+backend/database/seeds/
